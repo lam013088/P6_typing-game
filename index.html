@@ -2,7 +2,7 @@
 <html lang="zh-HK">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>⚡ 六年級打字大師聯賽 · 寶可夢倉頡榮譽殿堂 🏆</title>
   <style>
     :root {
@@ -1664,6 +1664,315 @@
       color: #334155;
     }
 
+
+    /* ======================================================== */
+    /* 📱 手機端自動適配 (P6 Mobile Responsive Layout) */
+    /* ======================================================== */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 6px !important;
+      }
+      .tab-bar {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+      }
+      .action-tools {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+      .search-box, .search-input {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .game-box {
+        width: 96% !important;
+        max-width: 96% !important;
+        padding: 8px 10px !important;
+        margin: 6px auto !important;
+      }
+      .trainer-header-bar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 6px !important;
+        padding: 6px 8px !important;
+      }
+      .trainer-actions {
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        gap: 4px !important;
+      }
+      .trainer-actions .btn-hub {
+        flex: 1 !important;
+        text-align: center !important;
+        justify-content: center !important;
+        padding: 4px 6px !important;
+        font-size: 11px !important;
+      }
+      .mode-tab-bar {
+        gap: 4px !important;
+        margin: 4px auto 6px !important;
+      }
+      .mode-tab-btn {
+        flex-direction: column !important;
+        padding: 5px 2px !important;
+        font-size: 11px !important;
+        gap: 2px !important;
+        white-space: normal !important;
+        text-align: center !important;
+      }
+      .mode-badge-pill {
+        font-size: 9px !important;
+        padding: 1px 4px !important;
+      }
+      .target-monster-badge {
+        font-size: 28px !important;
+      }
+      .target-word {
+        font-size: 40px !important;
+      }
+      .input-slots-row {
+        gap: 6px !important;
+      }
+      .code-slot {
+        width: 48px !important;
+        height: 44px !important;
+        padding: 2px 3px !important;
+        border-radius: 8px !important;
+      }
+      .code-slot-label {
+        font-size: 8.5px !important;
+      }
+      .code-slot-val {
+        font-size: 16px !important;
+      }
+      .split-slots-container {
+        gap: 6px !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+      }
+      .split-slot-group {
+        padding: 4px 6px !important;
+        border-radius: 10px !important;
+      }
+      .split-group-slots {
+        gap: 4px !important;
+      }
+      .split-group-header {
+        font-size: 10px !important;
+      }
+      .capture-arena-container {
+        height: 220px !important;
+        touch-action: manipulation !important;
+      }
+      .poke-orb {
+        width: 58px !important;
+        height: 58px !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+      .poke-orb-center-ring {
+        width: 18px !important;
+        height: 18px !important;
+      }
+      .poke-orb-char {
+        font-size: 20px !important;
+      }
+      .podium-container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+      .podium-step {
+        height: auto !important;
+        margin-bottom: 8px !important;
+        order: initial !important;
+      }
+      .rank-card {
+        padding: 8px 10px !important;
+        gap: 6px !important;
+      }
+      .modal-content {
+        width: 95% !important;
+        max-width: 95% !important;
+        padding: 12px 10px !important;
+        border-radius: 16px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-banner {
+        padding: 8px 10px !important;
+      }
+      h1.title {
+        font-size: 17px !important;
+      }
+      p.subtitle {
+        font-size: 10.5px !important;
+      }
+      .stats-bar {
+        display: none !important;
+      }
+      .tab-btn {
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+      }
+      .mode-tab-btn {
+        font-size: 10px !important;
+        padding: 4px 1px !important;
+      }
+      .capture-arena-container {
+        height: 200px !important;
+      }
+      .poke-orb {
+        width: 52px !important;
+        height: 52px !important;
+      }
+      .poke-orb-char {
+        font-size: 18px !important;
+      }
+    }
+
+    /* ======================================================== */
+    /* 🌟 六年級榜單：第4-10名 & 各班前3名 炫彩流光閃爍特效 */
+    /* ======================================================== */
+    @keyframes elitePulseGlow {
+      0% {
+        box-shadow: 0 0 8px rgba(245, 158, 11, 0.45), 0 0 0 2px #F59E0B;
+        border-color: #F59E0B;
+      }
+      50% {
+        box-shadow: 0 0 22px rgba(239, 68, 68, 0.75), 0 0 0 3.5px #EF4444;
+        border-color: #EF4444;
+      }
+      100% {
+        box-shadow: 0 0 8px rgba(245, 158, 11, 0.45), 0 0 0 2px #F59E0B;
+        border-color: #F59E0B;
+      }
+    }
+    @keyframes eliteBgShimmer {
+      0% { background: linear-gradient(135deg, #FFFDF5 0%, #FEF3C7 100%); }
+      50% { background: linear-gradient(135deg, #FFF1F2 0%, #FED7AA 100%); }
+      100% { background: linear-gradient(135deg, #FFFDF5 0%, #FEF3C7 100%); }
+    }
+    .rank-card-elite-flash {
+      position: relative !important;
+      animation: elitePulseGlow 2.2s infinite ease-in-out, eliteBgShimmer 4s infinite ease-in-out !important;
+      border: 2px solid #F59E0B !important;
+      overflow: visible !important;
+    }
+    .badge-elite-top10 {
+      background: linear-gradient(90deg, #F59E0B 0%, #EF4444 100%);
+      color: white;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(239, 68, 68, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-left: 6px;
+      animation: badgePulseAnim 1.8s infinite ease-in-out;
+    }
+
+    /* 各班前 10 名之第 1 名（冠軍）：黃金熾熱光環閃爍 */
+    @keyframes classTop1Pulse {
+      0% {
+        box-shadow: 0 0 8px rgba(245, 158, 11, 0.5), 0 0 0 2.5px #F59E0B;
+        border-color: #F59E0B;
+      }
+      50% {
+        box-shadow: 0 0 24px rgba(234, 179, 8, 0.9), 0 0 0 4px #EAB308;
+        border-color: #EAB308;
+      }
+      100% {
+        box-shadow: 0 0 8px rgba(245, 158, 11, 0.5), 0 0 0 2.5px #F59E0B;
+        border-color: #F59E0B;
+      }
+    }
+    .rank-card-class-champion {
+      position: relative !important;
+      background: linear-gradient(135deg, #FFFDF5 0%, #FEF3C7 100%) !important;
+      animation: classTop1Pulse 2s infinite ease-in-out !important;
+      border: 2.5px solid #F59E0B !important;
+      overflow: visible !important;
+    }
+
+    /* 各班前 10 名之第 2 名（亞軍）：蔚藍銀光呼吸閃爍 */
+    @keyframes classTop2Pulse {
+      0% {
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.45), 0 0 0 2px #3B82F6;
+        border-color: #3B82F6;
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(96, 165, 250, 0.85), 0 0 0 3.5px #60A5FA;
+        border-color: #60A5FA;
+      }
+      100% {
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.45), 0 0 0 2px #3B82F6;
+        border-color: #3B82F6;
+      }
+    }
+    .rank-card-class-runnerup {
+      position: relative !important;
+      background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%) !important;
+      animation: classTop2Pulse 2.3s infinite ease-in-out !important;
+      border: 2px solid #3B82F6 !important;
+      overflow: visible !important;
+    }
+
+    /* 各班前 10 名之第 3 名（季軍）：曜石古銅光彩閃爍 */
+    @keyframes classTop3Pulse {
+      0% {
+        box-shadow: 0 0 8px rgba(217, 119, 6, 0.45), 0 0 0 2px #D97706;
+        border-color: #D97706;
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(249, 115, 22, 0.8), 0 0 0 3.5px #F97316;
+        border-color: #F97316;
+      }
+      100% {
+        box-shadow: 0 0 8px rgba(217, 119, 6, 0.45), 0 0 0 2px #D97706;
+        border-color: #D97706;
+      }
+    }
+    .rank-card-class-third {
+      position: relative !important;
+      background: linear-gradient(135deg, #FFFBEB 0%, #FFEDD5 100%) !important;
+      animation: classTop3Pulse 2.6s infinite ease-in-out !important;
+      border: 2px solid #D97706 !important;
+      overflow: visible !important;
+    }
+
+    .badge-class-honor {
+      color: white;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-left: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      animation: badgePulseAnim 2s infinite ease-in-out;
+    }
+    .badge-class-honor.gold {
+      background: linear-gradient(90deg, #F59E0B 0%, #EAB308 100%);
+    }
+    .badge-class-honor.silver {
+      background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 100%);
+    }
+    .badge-class-honor.bronze {
+      background: linear-gradient(90deg, #D97706 0%, #F97316 100%);
+    }
+    @keyframes badgePulseAnim {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.06); opacity: 0.9; }
+    }
+
   </style>
 </head>
 <body>
@@ -1995,9 +2304,9 @@
             
             <div class="arena-controls-bar">
               <span style="font-size: 11px; font-weight: 800; color: #475569;">游行速度：</span>
-              <button class="arena-speed-btn active" id="spd-btn-gentle" onclick="setArenaSpeed(0.85, 'spd-btn-gentle')">🟢 悠閒</button>
-              <button class="arena-speed-btn" id="spd-btn-fast" onclick="setArenaSpeed(1.6, 'spd-btn-fast')">🟡 敏捷</button>
-              <button class="arena-speed-btn" id="spd-btn-static" onclick="setArenaSpeed(0, 'spd-btn-static')">⏸️ 定點</button>
+              <button class="arena-speed-btn active" id="spd-btn-gentle" onclick="setArenaSpeed(0.85, 'spd-btn-gentle')" title="標準游行速度 (1.0x 標準分)">🟢 悠閒 (1.0x)</button>
+              <button class="arena-speed-btn" id="spd-btn-fast" onclick="setArenaSpeed(1.6, 'spd-btn-fast')" title="敏捷高速游行 (1.4x 獎勵加成)">🟡 敏捷 (1.4x 獎勵)</button>
+              <button class="arena-speed-btn" id="spd-btn-static" onclick="setArenaSpeed(0, 'spd-btn-static')" title="定點靜止輔助 (0.6x 簡易得分)">⏸️ 定點 (0.6x 簡易)</button>
             </div>
 
             <div id="orbs-container" style="position: absolute; top:0; left:0; width:100%; height:100%;"></div>
@@ -2616,14 +2925,18 @@
       const listArea = document.getElementById('top40-list');
       listArea.innerHTML = rest.map((s, idx) => {
         const pm = restPool[idx % restPool.length];
+        const isElite = (s.rank >= 4 && s.rank <= 10);
         return `
-          <div class="rank-card" data-student="${s.cls}-${s.num}-${s.name}">
+          <div class="rank-card ${isElite ? 'rank-card-elite-flash' : ''}" data-student="${s.cls}-${s.num}-${s.name}">
             <div class="rank-left">
               <div class="rank-poke-avatar" style="background:${pm.color}; border-color:${pm.border};" title="${pm.name}">
                 <img class="rank-poke-img" src="${pm.img}" alt="${pm.name}" onerror="handleRankImgError(this, '${pm.icon || '⚡'}')">
               </div>
               <div>
-                <div class="st-name">#${s.rank} ${s.name} <span class="st-poke-tag">${pm.name}</span></div>
+                <div class="st-name">
+                  #${s.rank} ${s.name} <span class="st-poke-tag">${pm.name}</span>
+                  ${isElite ? '<span class="badge-elite-top10">✨ TOP 10 菁英</span>' : ''}
+                </div>
                 <div class="st-class">${s.cls} · ${s.num}號 · 夥伴：${pm.name} (${pm.tag})</div>
               </div>
             </div>
@@ -2654,15 +2967,36 @@
       
       container.innerHTML = students.map((s, idx) => {
         const pm = DATA.pokemon_pool[(classOffset + idx) % DATA.pokemon_pool.length];
-        const medal = idx === 0 ? '🥇 ' : (idx === 1 ? '🥈 ' : (idx === 2 ? '🥉 ' : ''));
+        let medal = '';
+        let cardClass = 'rank-card';
+        let honorBadge = '';
+
+        // 各班前 10 名榮譽榜：前 3 名配置冠軍、亞軍、季軍專屬流光閃爍特效
+        if (idx === 0) {
+          medal = '🥇 ';
+          cardClass += ' rank-card-class-champion';
+          honorBadge = '<span class="badge-class-honor gold">👑 班級冠軍</span>';
+        } else if (idx === 1) {
+          medal = '🥈 ';
+          cardClass += ' rank-card-class-runnerup';
+          honorBadge = '<span class="badge-class-honor silver">🥈 班級亞軍</span>';
+        } else if (idx === 2) {
+          medal = '🥉 ';
+          cardClass += ' rank-card-class-third';
+          honorBadge = '<span class="badge-class-honor bronze">🥉 班級季軍</span>';
+        }
+
         return `
-          <div class="rank-card" data-student="${currentClass}-${s.num}-${s.name}">
+          <div class="${cardClass}" data-student="${currentClass}-${s.num}-${s.name}">
             <div class="rank-left">
               <div class="rank-poke-avatar" style="background:${pm.color}; border-color:${pm.border};" title="${pm.name}">
                 <img class="rank-poke-img" src="${pm.img}" alt="${pm.name}" onerror="handleRankImgError(this, '${pm.icon || '⚡'}')">
               </div>
               <div>
-                <div class="st-name">${medal}#${s.rank} ${s.name} <span class="st-poke-tag">${pm.name}</span></div>
+                <div class="st-name">
+                  ${medal}#${s.rank} ${s.name} <span class="st-poke-tag">${pm.name}</span>
+                  ${honorBadge}
+                </div>
                 <div class="st-class">${currentClass} · ${s.num}號 · 夥伴：${pm.name} (${pm.tag})</div>
               </div>
             </div>
@@ -2863,6 +3197,16 @@
       document.querySelectorAll('.arena-speed-btn').forEach(b => b.classList.remove('active'));
       const activeBtn = document.getElementById(activeBtnId);
       if (activeBtn) activeBtn.classList.add('active');
+
+      let tip = '';
+      if (speed > 1.2) {
+        tip = '⚡ 切換為【敏捷速度】：精靈球高速遊行，答對享有 1.4x (+40%) 速度積分加成！';
+      } else if (speed === 0) {
+        tip = '⏸️ 切換為【定點輔助】：精靈球靜止不動，簡易模式得分為 0.6x 折減。';
+      } else {
+        tip = '🟢 切換為【悠閒模式】：標準遊行速度，答對獲取 1.0x 標準分數。';
+      }
+      showPassToast(tip);
     }
 
     function startNewSession() {
@@ -3313,7 +3657,22 @@
         comboCount++;
         sessionCorrectCount++;
 
-        let roundEarned = baseScore;
+        // 🎯 游行速度不同選擇對得分的影響 (定點最容易得分最低，敏捷最高)
+        let speedMultiplier = 1.0;
+        let speedNotice = '';
+        if (wanderingSpeedMultiplier > 1.2) {
+          speedMultiplier = 1.4; // 敏捷模式獎勵 +40%
+          speedNotice = '⚡敏捷1.4x';
+        } else if (wanderingSpeedMultiplier === 0) {
+          speedMultiplier = 0.6; // 定點簡易模式扣減至 60%
+          speedNotice = '⏸️定點0.6x';
+        } else {
+          speedMultiplier = 1.0; // 悠閒標準模式 100%
+          speedNotice = '🟢悠閒1.0x';
+        }
+
+        let roundEarned = Math.max(1, Math.round(baseScore * speedMultiplier));
+
         let comboBonus = 0;
         if (comboCount === 2) comboBonus = 2;
         else if (comboCount === 3) comboBonus = 4;
@@ -3344,7 +3703,7 @@
         roundEarned += skillBonus;
         sessionScore += roundEarned;
 
-        document.getElementById('game-score-tag').textContent = `本輪得分：${sessionScore} 分 (+${roundEarned})`;
+        document.getElementById('game-score-tag').textContent = `本輪得分：${sessionScore} 分 (+${roundEarned} ${speedNotice})`;
         document.getElementById('game-combo-tag').textContent = `連擊：${comboCount} Hit 🔥`;
         document.getElementById('monster-icon').textContent = '💥';
 
