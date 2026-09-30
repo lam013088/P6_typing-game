@@ -3097,6 +3097,7 @@
         <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
           <span style="font-size: 26px;">📊</span>
           <h3 style="color: #1E3A8A; font-size: 20px; font-weight: 900;" id="lb-modal-main-title">🏆 六年級寶可夢倉頡討伐龍虎榜</h3>
+          <span id="lb-cloud-status" style="font-size: 11.5px; font-weight: 800; padding: 3px 10px; border-radius: 6px; background: #EEF2F6; color: #475569; border: 1px solid #CBD5E1;">正在檢測雲端連線...</span>
           <button type="button" onclick="fetchCloudLeaderboard(false)" style="background: #2563EB; color: #FFFFFF; border: none; padding: 4px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; font-size: 11.5px; transition: 0.2s;" title="同步 Google 雲端試算表最新全級天梯戰況">🔄 刷新雲端最新排名</button>
         </div>
         <button class="modal-close-btn" onclick="closeModal('modal-leaderboard')">✕</button>
@@ -20780,7 +20781,7 @@ const SafeStorage = {
         const res = await fetch(url, {
           method: 'POST',
           mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(payload)
         });
         // 觸發雲端刷新
@@ -21938,10 +21939,13 @@ const SafeStorage = {
 
     function updateSyncStatus(msg, isError = false) {
       try {
-        const dot = document.getElementById('lb-cloud-dot');
         const text = document.getElementById('lb-cloud-status');
-        if (text) text.textContent = msg;
-        if (dot) dot.style.background = isError ? '#EF4444' : '#10B981';
+        if (text) {
+          text.textContent = msg;
+          text.style.background = isError ? '#FEF2F2' : '#F0FDF4';
+          text.style.color = isError ? '#DC2626' : '#15803D';
+          text.style.borderColor = isError ? '#F87171' : '#86EFAC';
+        }
       } catch(e) {}
     }
 
