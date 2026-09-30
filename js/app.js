@@ -54,11 +54,18 @@ const SafeStorage = {
     let currentSpeedWeek = 'w5_hw1';
     let currentSpeedWordCount = 10;
     let isSpeedPracticeMode = false;
-    let speedLeaderboardWeek = 'w5_hw1';
-    let speedLeaderboardWordCount = 10;
-    let currentSpeedWeek = 'w5_hw1';
-    let currentSpeedWordCount = 10;
-    let isSpeedPracticeMode = false;
+    let speedWordList = [];
+    let speedWordIdx = 0;
+    let speedInputCodes = [];
+    let speedStartTime = null;
+    let speedTimerInterval = null;
+    let speedPenaltySeconds = 0.0;
+    let speedMistakes = 0;
+    let speedTotalKeys = 0;
+    let speedCorrectKeys = 0;
+    let speedHintTimer = null;
+    let speedActive = false;
+    let speedWordReadyForSpace = false;
     let currentClass = 'P6A';
     let currentStudent = null;       // { cls, num, name }
     let activeSkills = [];           // 當前已解鎖技能清單
@@ -310,7 +317,8 @@ const SafeStorage = {
 
       // 1. 各班入選前 40 名人數分佈統計
       const top40Counts = {};
-      DATA.top40.forEach(s => top40Counts[s.cls] = (top40Counts[s.cls] || 0) + 1);
+      const top40List = (DATA && Array.isArray(DATA.top40)) ? DATA.top40 : [];
+      top40List.forEach(s => top40Counts[s.cls] = (top40Counts[s.cls] || 0) + 1);
       let maxTop40 = 1;
       classes.forEach(c => {
         if ((top40Counts[c] || 0) > maxTop40) maxTop40 = top40Counts[c];
@@ -332,7 +340,7 @@ const SafeStorage = {
       let maxPerf = 1;
       let totalPerf = 0;
       const perfData = classes.map(c => {
-        const count = (DATA.perfect_students[c] || []).length;
+        const count = (DATA && DATA.perfect_students && DATA.perfect_students[c] ? DATA.perfect_students[c] : []).length;
         if (count > maxPerf) maxPerf = count;
         totalPerf += count;
         return { cls: c, val: count };
@@ -354,8 +362,22 @@ const SafeStorage = {
     // TAB 1: 🏆 全級前 40 名龍虎榜 (頒獎台 + 角色卡)
     // ==========================================
     function renderTop40() {
-      const top3 = DATA.top40.slice(0, 3);
-      const rest = DATA.top40.slice(3);
+      const top40List = (DATA && Array.isArray(DATA.top40)) ? DATA.top40 : [];
+      if (top40List.length < 3) {
+        const podiumArea = document.getElementById('podium-area');
+        if (podiumArea) {
+          podiumArea.innerHTML = `
+            <div style="text-align: center; padding: 32px 16px; color: #64748B; font-weight: 800; font-size: 15px; width: 100%;">
+              🏆 龍虎榜數據同步中，請點擊上方【全級前40名龍虎榜】或登入挑戰開創紀錄！
+            </div>
+          `;
+        }
+        const listArea = document.getElementById('top40-list');
+        if (listArea) listArea.innerHTML = '';
+        return;
+      }
+      const top3 = top40List.slice(0, 3);
+      const rest = top40List.slice(3);
       
       const podiumArea = document.getElementById('podium-area');
       podiumArea.innerHTML = `
@@ -426,7 +448,7 @@ const SafeStorage = {
 
     function renderClassCards() {
       const container = document.getElementById('class-cards');
-      const students = DATA.class_top10[currentClass] || [];
+      const students = (DATA && DATA.class_top10 && DATA.class_top10[currentClass]) ? DATA.class_top10[currentClass] : [];
       const classOffset = ['P6A', 'P6B', 'P6C', 'P6D', 'P6E', 'P6F'].indexOf(currentClass) * 14;
       
       container.innerHTML = students.map((s, idx) => {
@@ -482,7 +504,7 @@ const SafeStorage = {
       let globalCounter = 0;
       
       container.innerHTML = classes.map(cls => {
-        const members = DATA.perfect_students[cls] || [];
+        const members = (DATA && DATA.perfect_students && DATA.perfect_students[cls]) ? DATA.perfect_students[cls] : [];
         return `
           <div style="margin-bottom: 20px;">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
@@ -1319,7 +1341,7 @@ const SafeStorage = {
     }
 
     // Leaderboard Modal
-    let currentLeaderboardFilter = 'ALL';
+    // currentLeaderboardFilter already declared at top
     function openLeaderboardModal(defaultType) {
       if (defaultType === 'speed') {
         switchLeaderboardType('speed');
@@ -1853,6 +1875,63 @@ const SafeStorage = {
         btn.onclick = () => filterSpeedLeaderboardWeek(k);
         container.appendChild(btn);
       });
+    }
+
+    
+    // =========================================================================
+    // 🖼️ 圖片載入容錯降級處理 (Image Fallback Handlers)
+    // =========================================================================
+    function handlePodiumImgError(el, icon) {
+      el.outerHTML = `<div class="podium-pokemon-icon">${icon}</div>`;
+    }
+    function handleRankImgError(el, icon) {
+      el.outerHTML = icon || '⚡';
+    }
+
+    // =========================================================================
+    // ⚡ 手速賽等效競賽耗時演算法與控制輔助函式
+    // =========================================================================
+    function calculateEffectiveSpeedTime(rawTime, mistakes, accuracy, wordCount) {
+      const keyPenalty = mistakes * 0.3;
+      const baseFactor = (wordCount === 20) ? 30.0 : 15.0;
+      const accRatio = Math.max(0, Math.min(100, accuracy)) / 100;
+      const accPenalty = Math.round(baseFactor * (1 - Math.pow(accRatio, 2)) * 100) / 100;
+      const bonus = (accuracy >= 100) ? ((wordCount === 20) ? 2.0 : 1.0) : 0.0;
+      const effectiveTime = parseFloat((rawTime + keyPenalty + accPenalty - bonus).toFixed(2));
+      return {
+        keyPenalty: parseFloat(keyPenalty.toFixed(2)),
+        accPenalty: parseFloat(accPenalty.toFixed(2)),
+        bonus: parseFloat(bonus.toFixed(2)),
+        effectiveTime: Math.max(1.0, effectiveTime)
+      };
+    }
+
+    function onSpeedSettingChange() {
+      const wcSelect = document.getElementById('speed-word-count-select');
+      const wkSelect = document.getElementById('speed-ready-week-select');
+      if (wcSelect) currentSpeedWordCount = parseInt(wcSelect.value, 10) || 10;
+      if (wkSelect) currentSpeedWeek = wkSelect.value || 'w5_hw1';
+    }
+
+    function toggleSpeedPracticeMode() {
+      isSpeedPracticeMode = !isSpeedPracticeMode;
+      const btn = document.getElementById('speed-mode-toggle-btn');
+      if (btn) {
+        if (isSpeedPracticeMode) {
+          btn.innerHTML = '💡 練習模式 (全程字根可見)';
+          btn.style.color = '#34D399';
+          btn.style.borderColor = '#10B981';
+          btn.style.background = '#0F172A';
+        } else {
+          btn.innerHTML = '⚔️ 競技排位賽 (停頓3秒提燈)';
+          btn.style.color = '#FDE047';
+          btn.style.borderColor = '#FACC15';
+          btn.style.background = '#0F172A';
+        }
+      }
+      if (typeof speedActive !== 'undefined' && speedActive) {
+        renderSpeedTargetWord();
+      }
     }
 
     function returnToSpeedReadyStage() {
