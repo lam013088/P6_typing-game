@@ -3097,7 +3097,7 @@
         <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
           <span style="font-size: 26px;">📊</span>
           <h3 style="color: #1E3A8A; font-size: 20px; font-weight: 900;" id="lb-modal-main-title">🏆 六年級寶可夢倉頡討伐龍虎榜</h3>
-          <span id="lb-cloud-status" style="font-size: 11.5px; font-weight: 800; padding: 3px 10px; border-radius: 6px; background: #EEF2F6; color: #475569; border: 1px solid #CBD5E1;">正在檢測雲端連線...</span>
+          <span id="lb-cloud-status" onclick="inspectWebhookStatus()" title="點擊查看雲端連線診斷詳情" style="cursor: pointer; font-size: 11.5px; font-weight: 800; padding: 3px 10px; border-radius: 6px; background: #EEF2F6; color: #475569; border: 1px solid #CBD5E1; transition: 0.2s;">正在檢測雲端連線...</span>
           <button type="button" onclick="fetchCloudLeaderboard(false)" style="background: #2563EB; color: #FFFFFF; border: none; padding: 4px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; font-size: 11.5px; transition: 0.2s;" title="同步 Google 雲端試算表最新全級天梯戰況">🔄 刷新雲端最新排名</button>
         </div>
         <button class="modal-close-btn" onclick="closeModal('modal-leaderboard')">✕</button>
@@ -20519,6 +20519,31 @@ if (typeof window !== "undefined") {
 
 
 
+function inspectWebhookStatus() {
+  const url = getGasWebhookUrl();
+  const statusEl = document.getElementById('lb-cloud-status');
+  const curStatus = statusEl ? statusEl.textContent : '未知';
+  const lastSync = (typeof lastCloudSyncTime !== 'undefined' && lastCloudSyncTime) ? lastCloudSyncTime.toLocaleString() : '尚未成功連通';
+  const msg = [
+    '【雲端天梯連線診斷報告】',
+    '',
+    '1. 當前偵測到的 Webhook 網址:',
+    url || '⚠️ (未讀取到，請確認 config.js 中的 GAS_WEBHOOK_URL 是否已填寫)',
+    '',
+    '2. 最新同步狀態:',
+    curStatus,
+    '',
+    '3. 最後成功同步時間:',
+    lastSync,
+    '',
+    '💡 常見故障排除排查指南：',
+    '・若顯示連線失敗或超時：請確認 Apps Script 部署設定中的「誰可以存取」是否選為「任何人 (Anyone)」，若選成「只有我」會被 Google 權限阻擋。',
+    '・若網址結尾為 /dev，請改為正式發布的 /exec 結尾網址。',
+    '・若修改了 GitHub 的 config.js，GitHub Pages 通常需 1~2 分鐘編譯，請按 Ctrl+F5 強制重新整理。'
+  ].join(String.fromCharCode(10));
+  alert(msg);
+}
+
 function getGasWebhookUrl() {
   if (typeof window !== 'undefined' && window.CONFIG && window.CONFIG.GAS_WEBHOOK_URL && !window.CONFIG.GAS_WEBHOOK_URL.includes('YourDeploymentIdHere')) {
     return window.CONFIG.GAS_WEBHOOK_URL;
@@ -21953,24 +21978,29 @@ const SafeStorage = {
       if (isFetchingCloudLeaderboard) return;
       const url = getGasWebhookUrl();
       if (!url) {
-        updateSyncStatus('🟡 離線單機模式 (未連接 config.js Webhook 網址)');
+        updateSyncStatus('🟡 離線單機模式 (未連接 config.js Webhook 網址)', false);
         if (!silent) {
           showPassToast('🟡 離線模式：請確認已在 config.js 填入 Webhook 網址');
         }
         return;
       }
 
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 6000);
+
       try {
         isFetchingCloudLeaderboard = true;
         if (!silent) updateSyncStatus('⏳ 正在同步 Google 雲端試算表最新題庫與榮譽榜...');
 
-        // 🛡️ 方案 A 錯峰防護：隨機等待 0~600ms (打散電腦室全班併發請求)
-        await new Promise(r => setTimeout(r, Math.random() * 600));
+        // 🛡️ 方案 A 錯峰防護：隨機等待 0~300ms (打散電腦室全班併發請求)
+        await new Promise(r => setTimeout(r, Math.random() * 300));
 
         // 🚀 方案 A：向 GAS 請求完整動態題庫與天梯戰況 (支援 CacheService 記憶體秒級回傳)
         const queryUrl = url + (url.includes('?') ? '&' : '?') + 'action=get_data&t=' + Date.now();
-        const res = await fetch(queryUrl, { method: 'GET' });
-        if (!res.ok) throw new Error('伺服器連線狀態碼: ' + res.status);
+        const res = await fetch(queryUrl, { method: 'GET', signal: controller.signal });
+        clearTimeout(timeoutId);
+        
+        if (!res.ok) throw new Error('伺服器 HTTP 狀態碼: ' + res.status);
 
         const data = await res.json();
         if (data && data.status === 'success') {
@@ -22049,18 +22079,22 @@ const SafeStorage = {
 
           lastCloudSyncTime = new Date();
           const timeStr = lastCloudSyncTime.toLocaleTimeString('zh-HK', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-          updateSyncStatus(`✅ 雲端題庫與天梯戰況已同步 (${timeStr})`);
-          showPassToast('⚡ 雲端試算表最新題庫與榮譽榜已即時同步！');
+          updateSyncStatus(`✅ 雲端已同步 (${timeStr})`, false);
+          if (!silent) showPassToast('⚡ 雲端試算表最新題庫與榮譽榜已即時同步！');
+        } else {
+          throw new Error((data && data.message) ? data.message : '後端回傳格式非 success');
         }
       } catch (err) {
+        clearTimeout(timeoutId);
         console.warn('雲端載入提醒 (自動維持本機安全離線模式):', err);
-        if (!silent) updateSyncStatus('⚠️ 雲端連線失敗，已自動啟用本機離線模式');
+        const errMsg = (err.name === 'AbortError') ? '連線超時(>6s)' : (err.message || '權限或跨域阻擋');
+        updateSyncStatus(`🔴 同步失敗: ${errMsg}`, true);
+        if (!silent) showPassToast(`⚠️ 雲端連線失敗: ${errMsg} (請點擊狀態標籤查看詳情)`);
       } finally {
         isFetchingCloudLeaderboard = false;
       }
     }
 
-    
     // 🛡️ 格式化勳章稱號 (防範數字代碼或異常格式，保證 100% 呈現標準圖文勳章)
     function getFormattedBadgeTitle(item) {
       if (!item) return '🥉【新手訓練家】';
