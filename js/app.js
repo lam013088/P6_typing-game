@@ -1345,22 +1345,26 @@ const SafeStorage = {
       if (isFetchingCloudLeaderboard) return;
       const url = (typeof CONFIG !== 'undefined' && CONFIG.GAS_WEBHOOK_URL) ? CONFIG.GAS_WEBHOOK_URL : '';
       if (!url || url.includes('YourDeploymentIdHere')) {
-        if (!silent) updateSyncStatus('⚠️ 尚未部署 Google Webhook 網址 (目前為本機單機模式)', true);
+        if (!silent) updateSyncStatus('⚠️ 尚未部署 Google Webhook 網址 (目前為離線示範模式)', true);
         return;
       }
 
       try {
         isFetchingCloudLeaderboard = true;
-        if (!silent) updateSyncStatus('⏳ 正在同步全級最新天梯戰況...');
+        if (!silent) updateSyncStatus('⏳ 正在同步 Google 雲端試算表最新題庫與榮譽榜...');
 
-        const queryUrl = url + (url.includes('?') ? '&' : '?') + 'action=getLeaderboard&t=' + Date.now();
+        // 🛡️ 方案 A 錯峰防護：隨機等待 0~600ms (打散電腦室全班併發請求)
+        await new Promise(r => setTimeout(r, Math.random() * 600));
+
+        // 🚀 方案 A：向 GAS 請求完整動態題庫與天梯戰況 (支援 CacheService 記憶體秒級回傳)
+        const queryUrl = url + (url.includes('?') ? '&' : '?') + 'action=get_data&t=' + Date.now();
         const res = await fetch(queryUrl, { method: 'GET' });
         if (!res.ok) throw new Error('伺服器連線狀態碼: ' + res.status);
 
         const data = await res.json();
         if (data && data.status === 'success') {
+          // 1. 動態更新名冊與天梯榜單
           if (Array.isArray(data.combatLeaderboard) && data.combatLeaderboard.length > 0) {
-            // 雲端資料標準化映射 (相容 grandTotal 與 score，確保全級 200+ 人完整入榜)
             DATA.benchmark_leaderboard = data.combatLeaderboard.map(item => {
               const pts = (typeof item.grandTotal === 'number') ? item.grandTotal : 
                           ((typeof item.score === 'number') ? item.score : (parseInt(item.totalScore, 10) || 0));
@@ -1375,23 +1379,68 @@ const SafeStorage = {
               };
             });
           }
-          if (data.speedLeaderboard) {
-            DATA.cloud_speed_records = data.speedLeaderboard;
+          if (data.speedLeaderboard || data.speedByWeek) {
+            DATA.cloud_speed_records = data.speedLeaderboard || data.speedByWeek;
           }
+          if (Array.isArray(data.top40) && data.top40.length > 0) {
+            DATA.top40 = data.top40;
+          }
+          if (data.class_top10) DATA.class_top10 = data.class_top10;
+          if (data.perfect_students) DATA.perfect_students = data.perfect_students;
+
+          // 2. 🛡️ 方案 A 核心：動態由雲端載入本週及全部正式題庫 (GitHub 完全不公開)
+          if (data.weeklyBanks && typeof data.weeklyBanks === 'object' && Object.keys(data.weeklyBanks).length > 0) {
+            window.MODE2_WEEKLY_BANKS = data.weeklyBanks;
+            // 自動校準鍵位
+            Object.values(window.MODE2_WEEKLY_BANKS).forEach(b => {
+              if (b && Array.isArray(b.words)) {
+                b.words.forEach(w => {
+                  if (typeof autoDeriveWordKeys === 'function') autoDeriveWordKeys(w);
+                });
+              }
+            });
+          }
+          if (Array.isArray(data.cangjieWords) && data.cangjieWords.length > 0) {
+            DATA.cangjie_words = data.cangjieWords;
+          }
+          if (Array.isArray(data.connectedWords) && data.connectedWords.length > 0) {
+            DATA.connected_words = data.connectedWords;
+          }
+          if (Array.isArray(data.splitWords) && data.splitWords.length > 0) {
+            DATA.split_words = data.splitWords;
+          }
+          if (Array.isArray(data.specialWords) && data.specialWords.length > 0) {
+            DATA.special_words = data.specialWords;
+          }
+
+          // 3. 刷新頁面天梯排行榜渲染
+          renderLeaderboardTable();
+          renderSpeedLeaderboardTable();
+
+          // 4. 更新頂部數據統計條
+          if (data.stats) {
+            const pCountEl = document.querySelector('.stat-pill:nth-child(1)');
+            if (pCountEl && data.stats.perfectCount !== undefined) {
+              pCountEl.innerHTML = `🎉 滿分訓練家：<strong>${data.stats.perfectCount} 位同學獲得 400 分！</strong>`;
+            }
+            const avgEl = document.querySelector('.stat-pill:nth-child(2)');
+            if (avgEl && data.stats.avgScore !== undefined) {
+              avgEl.innerHTML = `⭐ 全級平均分：<strong>${data.stats.avgScore} 分</strong>`;
+            }
+            const speedKingEl = document.querySelector('.stat-pill:nth-child(3)');
+            if (speedKingEl && data.stats.speedKing) {
+              speedKingEl.innerHTML = `⚡ 速度神捕：<strong>${data.stats.speedKing}</strong>`;
+            }
+          }
+
           lastCloudSyncTime = new Date();
-          const timeStr = (lastCloudSyncTime.getHours() < 10 ? '0' : '') + lastCloudSyncTime.getHours() + ':' +
-                          (lastCloudSyncTime.getMinutes() < 10 ? '0' : '') + lastCloudSyncTime.getMinutes() + ':' +
-                          (lastCloudSyncTime.getSeconds() < 10 ? '0' : '') + lastCloudSyncTime.getSeconds();
-          updateSyncStatus(`🟢 全級即時天梯已同步 (最新更新時間 ${timeStr})`);
-          if (typeof renderLeaderboardTable === 'function') {
-            renderLeaderboardTable();
-          }
-        } else {
-          throw new Error(data.message || '回傳格式異常');
+          const timeStr = lastCloudSyncTime.toLocaleTimeString('zh-HK', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          updateSyncStatus(`✅ 雲端題庫與天梯戰況已同步 (${timeStr})`);
+          showPassToast('⚡ 雲端試算表最新題庫與榮譽榜已即時同步！');
         }
       } catch (err) {
-        console.warn('全級跨電腦同步提醒:', err);
-        if (!silent) updateSyncStatus('⚠️ 雲端連線失敗，已自動載入本機離線榜單', true);
+        console.warn('雲端載入提醒 (自動維持本機安全離線模式):', err);
+        if (!silent) updateSyncStatus('⚠️ 雲端連線失敗，已自動啟用本機離線模式');
       } finally {
         isFetchingCloudLeaderboard = false;
       }
