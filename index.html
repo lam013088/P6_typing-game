@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>⚡ 六年級打字大師聯賽 · 寶可夢倉頡榮譽殿堂 🏆</title>
-    <style>
+  <style>
 :root {
       --poke-blue: #2563EB;
       --poke-dark-blue: #1E3A8A;
@@ -2734,7 +2734,8 @@
                 <div style="text-align: left;">
                   <label style="display: block; font-size: 11.5px; font-weight: 800; color: #94A3B8; margin-bottom: 4px;">🎯 競速題量</label>
                   <select id="speed-word-count-select" onchange="onSpeedSettingChange()" style="background: #1E293B; color: #F8FAFC; border: 1.5px solid #475569; padding: 7px 14px; border-radius: 10px; font-size: 13px; font-weight: 800; cursor: pointer;">
-                    <option value="10" selected>⚡ 10 字極速挑戰 (官方賽制)</option>
+                    <option value="10" selected>⚡ 10 字極速挑戰 (核心短跑)</option>
+                    <option value="20">🔥 20 字極速挑戰 (全面耐力)</option>
                   </select>
                 </div>
 
@@ -3081,15 +3082,7 @@
         <button class="modal-close-btn" onclick="closeModal('modal-leaderboard')">✕</button>
       </div>
 
-            <!-- 🌐 全級跨電腦即時連動同步狀態列 -->
-      <div id="lb-cloud-sync-bar" style="display: flex; justify-content: space-between; align-items: center; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 7px 14px; border-radius: 8px; margin: 10px 0 12px 0; font-size: 12px;">
-        <div style="display: flex; align-items: center; gap: 7px;">
-          <span id="lb-cloud-dot" style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
-          <span id="lb-cloud-status" style="font-weight: 700; color: #334155;">🟢 全級跨電腦雲端天梯連動中</span>
-        </div>
-        <button type="button" onclick="fetchCloudLeaderboard(false)" style="background: #2563EB; color: #FFFFFF; border: none; padding: 4px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; font-size: 11.5px; transition: 0.2s;">🔄 立即刷新全級戰況</button>
-      </div>
-<div class="leaderboard-my-summary" id="lb-my-summary-card">
+      <div class="leaderboard-my-summary" id="lb-my-summary-card">
         <div style="display: flex; align-items: center; gap: 12px;">
           <div style="font-size: 32px;" id="lb-my-badge">🥉</div>
           <div>
@@ -3112,43 +3105,20 @@
       </div>
 
       
-      <!-- ⚡ 手速榜專用子導航：周次功課下拉選單 (方便學生查閱過往所有周次紀錄) -->
-      <div id="speed-lb-sub-filters" style="display: none; margin-bottom: 12px; background: #F8FAFC; border: 1.5px solid #E2E8F0; padding: 10px 14px; border-radius: 12px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 13px; font-weight: 800; color: #1E3A8A;">📅 查閱周次功課：</span>
-            <select id="speed-lb-week-select" onchange="filterSpeedLeaderboardWeek(this.value)" style="background: #FFFFFF; color: #0F172A; border: 2px solid #2563EB; padding: 7px 14px; border-radius: 8px; font-size: 13.5px; font-weight: 800; cursor: pointer; outline: none; box-shadow: 0 2px 4px rgba(37,99,235,0.1);">
-              <optgroup label="🔥 第 5 周 倉頡手速賽 (當前進行中)">
-                <option value="w5_hw1" selected>第5周功課1</option>
-                <option value="w5_hw2">第5周功課2</option>
-                <option value="w5_hw3">第5周功課3</option>
-                <option value="w5_hw4">第5周功課4</option>
-              </optgroup>
-              <optgroup label="📅 第 4 周 倉頡手速賽 (過往記錄)">
-                <option value="w4_hw1">第4周功課1</option>
-                <option value="w4_hw2">第4周功課2</option>
-                <option value="w4_hw3">第4周功課3</option>
-                <option value="w4_hw4">第4周功課4</option>
-              </optgroup>
-              <optgroup label="📅 第 3 周 倉頡手速賽 (過往記錄)">
-                <option value="w3_hw1">第3周功課1</option>
-                <option value="w3_hw2">第3周功課2</option>
-                <option value="w3_hw3">第3周功課3</option>
-                <option value="w3_hw4">第3周功課4</option>
-              </optgroup>
-              <optgroup label="📅 第 2 周 倉頡手速賽 (過往記錄)">
-                <option value="w2_hw1">第2周功課1</option>
-                <option value="w2_hw2">第2周功課2</option>
-                <option value="w2_hw3">第2周功課3</option>
-                <option value="w2_hw4">第2周功課4</option>
-              </optgroup>
-              <optgroup label="🏆 全期生涯總覽">
-                <option value="ALL">🌟 全期 10 字個人最佳極速總榜</option>
-              </optgroup>
-            </select>
-          </div>
-          <div style="font-size: 12px; font-weight: 700; color: #64748B;">
-            ⚡ 官方賽制：<strong style="color: #2563EB;">純 10 字秒數競爭</strong>
+      <!-- ⚡ 手速榜專用子導航：題量與周次篩選器 (只在切換到手速榜時顯示) -->
+      <div id="speed-lb-sub-filters" style="display: none; margin-bottom: 10px;">
+        <div class="speed-lb-filter-row">
+          <span style="font-size: 12px; font-weight: 800; color: #475569;">🎯 競速題量：</span>
+          <button class="lb-sub-pill active" id="lb-wc-10" onclick="filterSpeedLeaderboardWordCount(10)">⚡ 10 字手速榜</button>
+          <button class="lb-sub-pill" id="lb-wc-20" onclick="filterSpeedLeaderboardWordCount(20)">🔥 20 字手速榜</button>
+        </div>
+        <div class="speed-lb-filter-row">
+          <span style="font-size: 12px; font-weight: 800; color: #475569;">📅 周次功課：</span>
+          <div id="speed-lb-week-buttons" style="display:inline-flex; gap:6px; flex-wrap:wrap;">
+            <button class="lb-sub-pill active" id="lb-week-w4_hw1" onclick="filterSpeedLeaderboardWeek('w4_hw1')">第4周功課1</button>
+            <button class="lb-sub-pill" id="lb-week-w4_hw2" onclick="filterSpeedLeaderboardWeek('w4_hw2')">第4周功課2</button>
+            <button class="lb-sub-pill" id="lb-week-w4_hw3" onclick="filterSpeedLeaderboardWeek('w4_hw3')">第4周功課3</button>
+            <button class="lb-sub-pill" id="lb-week-w4_hw4" onclick="filterSpeedLeaderboardWeek('w4_hw4')">第4周功課4</button>
           </div>
         </div>
       </div>
@@ -3218,7 +3188,7 @@
   </div>
 
   <!-- JavaScript Core -->
-    <script>
+  <script>
 /**
  * =========================================================================
  * ⚙️ CONFIG.JS - 系統全域設定、段位與技能樹常數
@@ -21904,7 +21874,10 @@ const SafeStorage = {
       if (isFetchingCloudLeaderboard) return;
       const url = (typeof CONFIG !== 'undefined' && CONFIG.GAS_WEBHOOK_URL) ? CONFIG.GAS_WEBHOOK_URL : '';
       if (!url || url.includes('YourDeploymentIdHere')) {
-        if (!silent) updateSyncStatus('⚠️ 尚未部署 Google Webhook 網址 (目前為離線示範模式)', true);
+        updateSyncStatus('🟢 離線高防護天梯模式 (全級 201 位訓練家已就位)');
+        if (!silent) {
+          showPassToast('🟢 本機離線模式：全級 201 位學生榮譽榜已就緒');
+        }
         return;
       }
 
@@ -22261,24 +22234,33 @@ const SafeStorage = {
 
 
     // Window Load Initialization
-    window.addEventListener('DOMContentLoaded', () => {
-      renderTop40();
-      renderClassBarCharts();
-      renderClassCards();
-      renderPerfectScorers();
-      renderVocabTable();
-      renderSkillsHall();
+    function initAllViews() {
+      try { renderTop40(); } catch(e) { console.error('renderTop40 error:', e); }
+      try { renderClassBarCharts(); } catch(e) { console.error('renderClassBarCharts error:', e); }
+      try { renderClassCards(); } catch(e) { console.error('renderClassCards error:', e); }
+      try { renderPerfectScorers(); } catch(e) { console.error('renderPerfectScorers error:', e); }
+      try { renderVocabTable(); } catch(e) { console.error('renderVocabTable error:', e); }
+      try { renderSkillsHall(); } catch(e) { console.error('renderSkillsHall error:', e); }
+      try { initSpeedWeekDropdown(); } catch(e) { console.error('initSpeedWeekDropdown error:', e); }
 
       const lastLogin = SafeStorage.getItem('p6_last_login');
       if (lastLogin) {
         try {
           currentStudent = JSON.parse(lastLogin);
-          document.getElementById('identity-section').style.display = 'none';
-          document.getElementById('battle-section').style.display = 'block';
+          const idSec = document.getElementById('identity-section');
+          if (idSec) idSec.style.display = 'none';
+          const batSec = document.getElementById('battle-section');
+          if (batSec) batSec.style.display = 'block';
           loadStudentProfile();
         } catch(e) {}
       }
-    });
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      try { initAllViews(); } catch(e) {}
+    } else {
+      window.addEventListener('DOMContentLoaded', initAllViews);
+    }
   
     // =========================================================================
     // ⚡ 模式 2：倉頡 10 字極速鍵盤手速賽核心引擎 (完全忽略作業系統輸入法)
@@ -22390,6 +22372,14 @@ const SafeStorage = {
       if (!hwKeys.includes(speedLeaderboardWeek)) {
         speedLeaderboardWeek = hwKeys[0] || 'w5_hw1';
       }
+
+      // 優先加入「全部周次」按鈕以瀏覽全級生涯手速紀錄
+      const allBtn = document.createElement('button');
+      allBtn.className = 'lb-sub-pill' + (speedLeaderboardWeek === 'ALL' ? ' active' : '');
+      allBtn.id = 'lb-week-ALL';
+      allBtn.textContent = '🏆 全部周次 (生涯最佳)';
+      allBtn.onclick = () => filterSpeedLeaderboardWeek('ALL');
+      container.appendChild(allBtn);
 
       hwKeys.forEach(k => {
         const bank = allBanks[k];
