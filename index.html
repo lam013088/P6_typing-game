@@ -2661,7 +2661,7 @@
               <span>⚔️</span> 模式 1：連體字全碼突破 <span class="mode-badge-pill">1~4碼連擊</span>
             </button>
             <button id="mode-tab-speed" class="mode-tab-btn" onclick="setGameMode('speed')">
-              <span>⚡</span> 模式 2：倉頡極速手速賽 <span class="mode-badge-pill">10字/20字 秒數天梯</span>
+              <span>⚡</span> 模式 2：倉頡極速手速賽 <span class="mode-badge-pill">10字 極速秒數天梯</span>
             </button>
             <button id="mode-tab-special" class="mode-tab-btn" onclick="setGameMode('special')">
               <span>🔮</span> 模式 3：難字與複合字特訓 <span class="mode-badge-pill">X難字/複合</span>
@@ -2734,8 +2734,7 @@
                 <div style="text-align: left;">
                   <label style="display: block; font-size: 11.5px; font-weight: 800; color: #94A3B8; margin-bottom: 4px;">🎯 競速題量</label>
                   <select id="speed-word-count-select" onchange="onSpeedSettingChange()" style="background: #1E293B; color: #F8FAFC; border: 1.5px solid #475569; padding: 7px 14px; border-radius: 10px; font-size: 13px; font-weight: 800; cursor: pointer;">
-                    <option value="10" selected>⚡ 10 字極速挑戰 (核心短跑)</option>
-                    <option value="20">🔥 20 字極速挑戰 (全面耐力)</option>
+                    <option value="10" selected>⚡ 10 字極速挑戰 (標準衝刺)</option>
                   </select>
                 </div>
 
@@ -3107,11 +3106,7 @@
       
       <!-- ⚡ 手速榜專用子導航：題量與周次篩選器 (只在切換到手速榜時顯示) -->
       <div id="speed-lb-sub-filters" style="display: none; margin-bottom: 10px;">
-        <div class="speed-lb-filter-row">
-          <span style="font-size: 12px; font-weight: 800; color: #475569;">🎯 競速題量：</span>
-          <button class="lb-sub-pill active" id="lb-wc-10" onclick="filterSpeedLeaderboardWordCount(10)">⚡ 10 字手速榜</button>
-          <button class="lb-sub-pill" id="lb-wc-20" onclick="filterSpeedLeaderboardWordCount(20)">🔥 20 字手速榜</button>
-        </div>
+
         <div class="speed-lb-filter-row">
           <span style="font-size: 12px; font-weight: 800; color: #475569;">📅 周次功課：</span>
           <div id="speed-lb-week-buttons" style="display:inline-flex; gap:6px; flex-wrap:wrap;">
@@ -21849,7 +21844,9 @@ const SafeStorage = {
     function filterLeaderboard(cls) {
       currentLeaderboardFilter = cls;
       document.querySelectorAll('.lb-filter-btn').forEach(b => {
-        b.classList.toggle('active', b.textContent.includes(cls) || (cls === 'ALL' && b.textContent === '全級總榜'));
+        const isAll = (cls === 'ALL' && b.textContent.includes('全級總榜'));
+        const isClass = (cls !== 'ALL' && b.textContent.includes(cls));
+        b.classList.toggle('active', isAll || isClass);
       });
       renderLeaderboardTable();
     }
@@ -22920,33 +22917,23 @@ const SafeStorage = {
       renderLeaderboardTable();
     }
 
-    // 題量子篩選器
-    function filterSpeedLeaderboardWordCount(wc) {
-      speedLeaderboardWordCount = wc;
-      document.querySelectorAll('#speed-lb-sub-filters .lb-sub-pill[id^="lb-wc-"]').forEach(p => {
-        p.classList.toggle('active', p.id === `lb-wc-${wc}`);
-      });
-      renderSpeedLeaderboardTable();
-    }
-
-    // 周次子篩選器
+    // 周次子篩選器 (支援切換全部周次或指定周次功課)
     function filterSpeedLeaderboardWeek(weekKey) {
       speedLeaderboardWeek = weekKey;
+      document.querySelectorAll('#speed-lb-week-buttons .lb-sub-pill').forEach(btn => {
+        const isMatch = (btn.id === `lb-week-${weekKey}`) || (weekKey === 'ALL' && btn.id === 'lb-week-ALL');
+        btn.classList.toggle('active', isMatch);
+      });
       const select = document.getElementById('speed-lb-week-select');
       if (select && select.value !== weekKey) {
         select.value = weekKey;
       }
-      if (typeof fetchCloudLeaderboard === 'function') {
-        fetchCloudLeaderboard(true);
-      }
       renderSpeedLeaderboardTable();
     }
 
-
-
     // 獨立手速天梯榜渲染函數 (秒數升序 ASC · 擊鍵準確率二次加權罰時已計入)
     function renderSpeedLeaderboardTable() {
-      // 1. 替換表頭為純10字秒數制各項指標
+      // 1. 替換表頭為純10字秒數制各項指標 (11欄)
       const thead = document.querySelector('#modal-leaderboard thead tr');
       if (thead) {
         thead.innerHTML = `
@@ -22969,8 +22956,8 @@ const SafeStorage = {
       if (scoreLabel) scoreLabel.textContent = '10字等效總耗時';
       if (rankLabel) rankLabel.textContent = (currentLeaderboardFilter === 'ALL') ? '全級手速名次' : '班內手速名次';
 
-      const bankObj = MODE2_WEEKLY_BANKS[speedLeaderboardWeek];
-      const wkTitle = bankObj ? bankObj.title : (speedLeaderboardWeek === 'ALL' ? '全部周次' : speedLeaderboardWeek);
+      const bankObj = (typeof MODE2_WEEKLY_BANKS === 'object' && MODE2_WEEKLY_BANKS) ? MODE2_WEEKLY_BANKS[speedLeaderboardWeek] : null;
+      const wkTitle = bankObj ? bankObj.title : (speedLeaderboardWeek === 'ALL' ? '全部周次 (生涯最佳)' : speedLeaderboardWeek);
 
       const allSpeedMap = {};
 
@@ -22980,21 +22967,35 @@ const SafeStorage = {
           let hasRec = false;
           let timeVal = 9999.0;
 
-          if (item.weekly_speed && item.weekly_speed[speedLeaderboardWeek]) {
-            timeVal = item.weekly_speed[speedLeaderboardWeek];
+          if (item.weekly_speed && typeof item.weekly_speed[speedLeaderboardWeek] === 'number' && item.weekly_speed[speedLeaderboardWeek] > 0) {
+            timeVal = Number(item.weekly_speed[speedLeaderboardWeek]);
             hasRec = true;
-          } else if (speedLeaderboardWeek === 'ALL' && item.best10) {
-            timeVal = item.best10;
-            hasRec = true;
+          } else if (speedLeaderboardWeek === 'ALL') {
+            let best = 9999.0;
+            if (typeof item.best10 === 'number' && item.best10 > 0 && item.best10 < 900) {
+              best = item.best10;
+            }
+            if (item.weekly_speed && typeof item.weekly_speed === 'object') {
+              Object.values(item.weekly_speed).forEach(v => {
+                const numV = Number(v);
+                if (!isNaN(numV) && numV > 0 && numV < best) {
+                  best = numV;
+                }
+              });
+            }
+            if (best < 900) {
+              timeVal = best;
+              hasRec = true;
+            }
           }
 
-          const cpmVal = hasRec ? Math.round(10 / (timeVal / 60)) : 0;
+          const cpmVal = (hasRec && timeVal > 0) ? Math.round(10 / (timeVal / 60)) : 0;
           const tierVal = hasRec ? getSpeedTier(timeVal, 10) : '--';
 
           allSpeedMap[`${item.cls}_${item.num}`] = {
             cls: item.cls,
             num: item.num,
-            name: `${item.cls} ${(item.num < 10 ? '0' : '') + item.num}號`,
+            name: item.name || `${item.cls} ${(item.num < 10 ? '0' : '') + item.num}號`,
             bestTime: timeVal,
             rawTime: timeVal,
             cpm: cpmVal,
@@ -23011,7 +23012,6 @@ const SafeStorage = {
       const allKeys = SafeStorage.getAllKeys ? SafeStorage.getAllKeys() : [];
       allKeys.forEach(key => {
         if (key.startsWith('p6_speed_')) {
-          if (!/^p6_speed_[A-Za-z0-9]+_\d{1,2}_10_\w+$/.test(key)) return;
           const parts = key.replace('p6_speed_', '').split('_');
           const cls = String(parts[0] || '').trim().toUpperCase();
           const num = parseInt(parts[1], 10);
@@ -23019,7 +23019,7 @@ const SafeStorage = {
           const recWc = parts[2] ? parseInt(parts[2], 10) : 10;
           const recWk = parts.slice(3).join('_') || 'w5_hw1';
 
-          if (recWc !== 10) return; // 鎖定純10字
+          if (recWc !== 10) return; // 六年級鎖定純10字
           if (speedLeaderboardWeek !== 'ALL' && recWk !== speedLeaderboardWeek) return;
 
           try {
@@ -23027,7 +23027,7 @@ const SafeStorage = {
             if (parsed && typeof parsed.bestTime === 'number' && parsed.bestTime > 0 && parsed.bestTime < 900) {
               const mapKey = `${cls}_${num}`;
               const time = parsed.bestTime;
-              const raw = parsed.rawTime || time;
+              const raw = (typeof parsed.rawTime === 'number') ? parsed.rawTime : time;
               const acc = (typeof parsed.accuracy === 'number') ? parsed.accuracy : 100;
               const cpm = parsed.cpm || Math.round(10 / (time / 60));
               const penalty = parsed.accPenalty || 0;
@@ -23052,7 +23052,7 @@ const SafeStorage = {
         }
       });
 
-      // 3. 從雲端即時手速榜 (GAS doGet) 合併該周次功課跨電腦成績
+      // 3. 從雲端即時手速榜合併跨電腦成績
       if (DATA.cloud_speed_records) {
         let cloudList = [];
         if (Array.isArray(DATA.cloud_speed_records)) {
@@ -23089,7 +23089,7 @@ const SafeStorage = {
       }
 
       // 4. 嚴格過濾：未參與本項手速遊戲者直接不入榜！
-      const speedList = Object.values(allSpeedMap).filter(s => s.hasRecord && s.bestTime < 900);
+      const speedList = Object.values(allSpeedMap).filter(s => s.hasRecord && typeof s.bestTime === 'number' && s.bestTime < 900);
       speedList.sort((a, b) => {
         if (a.bestTime !== b.bestTime) return a.bestTime - b.bestTime;
         return b.accuracy - a.accuracy;
@@ -23103,35 +23103,46 @@ const SafeStorage = {
         classGroups[c].forEach((item, idx) => item.classRank = idx + 1);
       });
 
-      // 5. 更新頂部我的個人戰報
+      // 5. 更新頂部我的個人戰報 (防呆容錯，杜絕 NaN 與 toFixed TypeError)
       if (currentStudent) {
         const myKey = `${currentStudent.cls}_${currentStudent.num}`;
         const myEntry = allSpeedMap[myKey];
-        document.getElementById('lb-my-name').textContent = `${currentStudent.cls} ${(currentStudent.num < 10 ? '0' : '') + currentStudent.num}號`;
-        
-        if (myEntry && myEntry.hasRecord) {
-          document.getElementById('lb-my-title').textContent = `分類：10字賽 · ${wkTitle} ｜ 字速：${myEntry.cpm} 字/分`;
-          document.getElementById('lb-my-score').textContent = `${myEntry.bestTime.toFixed(2)} 秒 (準確率 ${myEntry.accuracy}%)`;
-          document.getElementById('lb-my-badge').textContent = '⚡';
-          if (currentLeaderboardFilter === 'ALL') {
-            document.getElementById('lb-my-rank').innerHTML = `<span style="color:#B45309;font-weight:900;">全級手速第 ${myEntry.overallRank} 名 (共 ${speedList.length} 人上榜)</span>`;
-          } else {
-            const classTotal = (classGroups[currentLeaderboardFilter] || []).length;
-            document.getElementById('lb-my-rank').innerHTML = `<span style="color:#2563EB;font-weight:900;">${currentLeaderboardFilter} 班內手速第 ${myEntry.classRank} 名 (共 ${classTotal} 人上榜)</span>`;
+        const myNameEl = document.getElementById('lb-my-name');
+        if (myNameEl) myNameEl.textContent = `${currentStudent.cls} ${(currentStudent.num < 10 ? '0' : '') + currentStudent.num}號`;
+
+        const myTitleEl = document.getElementById('lb-my-title');
+        const myScoreEl = document.getElementById('lb-my-score');
+        const myBadgeEl = document.getElementById('lb-my-badge');
+        const myRankEl = document.getElementById('lb-my-rank');
+
+        if (myEntry && myEntry.hasRecord && typeof myEntry.bestTime === 'number' && myEntry.bestTime < 900) {
+          const displayCpm = myEntry.cpm || Math.round(10 / (myEntry.bestTime / 60));
+          if (myTitleEl) myTitleEl.textContent = `分類：10字賽 · ${wkTitle} ｜ 字速：${displayCpm} 字/分`;
+          if (myScoreEl) myScoreEl.textContent = `${myEntry.bestTime.toFixed(2)} 秒 (準確率 ${myEntry.accuracy || 100}%)`;
+          if (myBadgeEl) myBadgeEl.textContent = '⚡';
+          if (myRankEl) {
+            if (currentLeaderboardFilter === 'ALL') {
+              myRankEl.innerHTML = `<span style="color:#B45309;font-weight:900;">全級手速第 ${myEntry.overallRank} 名 (共 ${speedList.length} 人上榜)</span>`;
+            } else {
+              const classTotal = (classGroups[currentLeaderboardFilter] || []).length;
+              myRankEl.innerHTML = `<span style="color:#2563EB;font-weight:900;">${currentLeaderboardFilter} 班內手速第 ${myEntry.classRank} 名 (共 ${classTotal} 人上榜)</span>`;
+            }
           }
         } else {
-          document.getElementById('lb-my-title').textContent = `分類：10字賽 · ${wkTitle}`;
-          document.getElementById('lb-my-score').textContent = '-- 秒';
-          document.getElementById('lb-my-badge').textContent = '⏱️';
-          document.getElementById('lb-my-rank').textContent = '未參加本周次手速挑戰 (未入榜)';
+          if (myTitleEl) myTitleEl.textContent = `分類：10字賽 · ${wkTitle}`;
+          if (myScoreEl) myScoreEl.textContent = '-- 秒';
+          if (myBadgeEl) myBadgeEl.textContent = '⏱️';
+          if (myRankEl) myRankEl.innerHTML = '<span style="color:#64748B;">未參加本周次手速挑戰 (未入榜)</span>';
         }
       }
 
-      // 6. 渲染表格
+      // 6. 渲染表格 (11欄)
       const isClassFilter = currentLeaderboardFilter !== 'ALL';
       const displayList = isClassFilter ? (classGroups[currentLeaderboardFilter] || []) : speedList;
 
       const tbody = document.getElementById('leaderboard-tbody');
+      if (!tbody) return;
+
       if (displayList.length === 0) {
         tbody.innerHTML = `
           <tr>
@@ -23146,33 +23157,34 @@ const SafeStorage = {
       let rowsHtml = displayList.map(s => {
         const rankNum = isClassFilter ? s.classRank : s.overallRank;
         let medal = `${rankNum}`;
-        if (rankNum === 1) medal = '<span class="emoji-icon">🥇</span> 1';
-        else if (rankNum === 2) medal = '<span class="emoji-icon">🥈</span> 2';
-        else if (rankNum === 3) medal = '<span class="emoji-icon">🥉</span> 3';
+        if (rankNum === 1) medal = '🥇 1';
+        else if (rankNum === 2) medal = '🥈 2';
+        else if (rankNum === 3) medal = '🥉 3';
 
         const isMe = currentStudent && s.cls === currentStudent.cls && s.num === currentStudent.num;
-        const rowBank = MODE2_WEEKLY_BANKS[s.weekKey || speedLeaderboardWeek];
-        const rowWkTitle = rowBank ? rowBank.title : (s.weekKey || speedLeaderboardWeek);
+        const rowBank = (typeof MODE2_WEEKLY_BANKS === 'object' && MODE2_WEEKLY_BANKS) ? MODE2_WEEKLY_BANKS[s.weekKey || speedLeaderboardWeek] : null;
+        const rowWkTitle = rowBank ? rowBank.title : (s.weekKey === 'ALL' || speedLeaderboardWeek === 'ALL' ? '生涯最佳' : (s.weekKey || speedLeaderboardWeek));
+        const tierName = (typeof s.tier === 'object' && s.tier) ? (s.tier.name || s.tier.badge || '--') : String(s.tier || '--');
 
         return `
           <tr style="${isMe ? 'background: #EFF6FF; font-weight: bold; border-left: 4px solid #2563EB;' : ''}">
-            <td style="padding: 7px; text-align: center; font-weight: 900; color: ${rankNum <= 3 ? '#B45309' : '#1E293B'};">${medal}</td>
-            <td style="padding: 7px; text-align: center;"><span class="st-poke-tag" style="background:#DBEAFE;color:#1E40AF;font-weight:800;">${s.cls}</span></td>
-            <td style="padding: 7px; text-align: center; font-weight: 700;">${(s.num < 10 ? '0' : '') + s.num}號</td>
-            <td style="padding: 7px; text-align: center; font-weight: 800;">${s.name} ${isMe ? '⭐(我)' : ''}</td>
-            <td style="padding: 7px; text-align: center;"><span style="color:#2563EB;font-weight:800;font-size:12px;">${rowWkTitle}</span></td>
-            <td style="padding: 7px; text-align: center; font-weight: 900; color: #0284C7; font-size: 14.5px;">⏱️ ${s.bestTime.toFixed(2)}s</td>
-            <td style="padding: 7px; text-align: center; color: #64748B; font-size: 12px;">${s.rawTime.toFixed(2)}s</td>
-            <td style="padding: 7px; text-align: center; font-weight: 800; color: ${s.accuracy >= 95 ? '#059669' : (s.accuracy >= 80 ? '#2563EB' : '#DC2626')};">${s.accuracy}%</td>
-            <td style="padding: 7px; text-align: center; color: ${s.accPenalty > 0 ? '#EF4444' : '#059669'}; font-weight: 700; font-size: 12px;">${s.accPenalty > 0 ? '+' : ''}${s.accPenalty.toFixed(2)}s</td>
-            <td style="padding: 7px; text-align: center; font-weight: 800; color: #D97706;">${s.cpm} 字/分</td>
-            <td style="padding: 7px; text-align: center; font-size: 11px; font-weight: 800; color: #7C3AED;">${s.tier}</td>
+            <td style="padding: 8px 6px; text-align: center; font-weight: 900; color: ${rankNum <= 3 ? '#B45309' : '#1E293B'};"><span class="emoji-icon">${medal}</span></td>
+            <td style="padding: 8px 6px; text-align: center;"><span class="st-poke-tag" style="background:#DBEAFE;color:#1E40AF;font-weight:800;">${s.cls}</span></td>
+            <td style="padding: 8px 6px; text-align: center; font-weight: 700;">${(s.num < 10 ? '0' : '') + s.num}號</td>
+            <td style="padding: 8px 6px; text-align: center; font-weight: 800;">${s.name} ${isMe ? '⭐(我)' : ''}</td>
+            <td style="padding: 8px 6px; text-align: center;"><span style="color:#2563EB;font-weight:800;font-size:12px;">${rowWkTitle}</span></td>
+            <td style="padding: 8px 6px; text-align: center; font-weight: 900; color: #0284C7; font-size: 14.5px;">⏱️ ${typeof s.bestTime === 'number' ? s.bestTime.toFixed(2) : s.bestTime}s</td>
+            <td style="padding: 8px 6px; text-align: center; color: #64748B; font-size: 12px;">${typeof s.rawTime === 'number' ? s.rawTime.toFixed(2) : s.rawTime}s</td>
+            <td style="padding: 8px 6px; text-align: center; font-weight: 800; color: ${s.accuracy >= 95 ? '#059669' : '#DC2626'};"><span class="emoji-icon">${s.accuracy}%</span></td>
+            <td style="padding: 8px 6px; text-align: center; color: #DC2626; font-size: 11.5px;">+${(s.accPenalty || 0).toFixed(2)}s</td>
+            <td style="padding: 8px 6px; text-align: center; font-weight: 800; color: #D97706;">${s.cpm} 字/分</td>
+            <td style="padding: 8px 6px; text-align: center;"><span class="speed-tier-badge">${tierName}</span></td>
           </tr>
         `;
       }).join('');
-
       tbody.innerHTML = rowsHtml;
     }
+
     // 頁面載入時依日期自動初始化手速字庫下拉選單與排行榜篩選器
     window.addEventListener('DOMContentLoaded', () => {
       initSpeedWeekDropdown();
