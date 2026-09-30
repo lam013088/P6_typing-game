@@ -10,7 +10,7 @@
 
 const CONFIG = {
   // ⚡ Google Webhook 端點 (支援跨電腦即時連動，留空或未設定時自動回退本機單機模式)
-  GAS_WEBHOOK_URL: 'https://script.google.com/macros/s/AKfycbxLXTFA5diMf8m4JeNXF3QJTlcaR3i_BK7HMXeHv8rYh-3RPpgeH42JISPNzsKaRi4/exec',
+  GAS_WEBHOOK_URL: 'https://script.google.com/macros/s/AKfycbw1bh2zut7m9i5pRCHMmGv54QeDVaaz03K_K5_CQv5tDkbPJu_h6sGQv81pq-ydy6pS/exec',
   // 隱私保護模式：GitHub 公開版強制隱藏姓名，僅展示「班別 學號號」
   GITHUB_PRIVACY_MODE: true,
   // 系統版本識別碼
