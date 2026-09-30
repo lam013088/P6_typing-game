@@ -417,7 +417,7 @@ const SafeStorage = {
       const podiumArea = document.getElementById('podium-area');
       podiumArea.innerHTML = `
         <div class="podium-step podium-2">
-          <div class="crown-banner">🥈</div>
+          <div class="crown-banner"><span class="emoji-icon">🥈</span></div>
           <img class="podium-pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" alt="小火龍" title="小火龍 (Charmander) 🔥" onerror="handlePodiumImgError(this, '🔥')">
           <div class="podium-name">${top3[1].name}</div>
           <div class="podium-class">${top3[1].cls} (${top3[1].num}號) · 小火龍之火</div>
@@ -425,7 +425,7 @@ const SafeStorage = {
           <div class="podium-time">⏱️ ${top3[1].date.replace('2026-', '')}</div>
         </div>
         <div class="podium-step podium-1">
-          <div class="crown-banner">👑</div>
+          <div class="crown-banner"><span class="emoji-icon">👑</span></div>
           <img class="podium-pokemon-img" style="width:88px; height:88px;" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="皮卡丘" title="皮卡丘 (Pikachu) ⚡" onerror="handlePodiumImgError(this, '⚡')">
           <div class="podium-name">${top3[0].name}</div>
           <div class="podium-class">${top3[0].cls} (${top3[0].num}號) · 皮卡丘雷霆</div>
@@ -433,7 +433,7 @@ const SafeStorage = {
           <div class="podium-time">⏱️ ${top3[0].date.replace('2026-', '')}</div>
         </div>
         <div class="podium-step podium-3">
-          <div class="crown-banner">🥉</div>
+          <div class="crown-banner"><span class="emoji-icon">🥉</span></div>
           <img class="podium-pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="妙蛙種子" title="妙蛙種子 (Bulbasaur) 🍃" onerror="handlePodiumImgError(this, '🍃')">
           <div class="podium-name">${top3[2].name}</div>
           <div class="podium-class">${top3[2].cls} (${top3[2].num}號) · 妙蛙飛葉</div>
@@ -494,17 +494,17 @@ const SafeStorage = {
 
         // 各班前 10 名榮譽榜：前 3 名配置冠軍、亞軍、季軍專屬流光閃爍特效
         if (idx === 0) {
-          medal = '🥇 ';
+          medal = '<span class="emoji-icon">🥇</span> ';
           cardClass += ' rank-card-class-champion';
-          honorBadge = '<span class="badge-class-honor gold">👑 班級冠軍</span>';
+          honorBadge = '<span class="badge-class-honor gold"><span class="emoji-icon">👑</span> 班級冠軍</span>';
         } else if (idx === 1) {
-          medal = '🥈 ';
+          medal = '<span class="emoji-icon">🥈</span> ';
           cardClass += ' rank-card-class-runnerup';
-          honorBadge = '<span class="badge-class-honor silver">🥈 班級亞軍</span>';
+          honorBadge = '<span class="badge-class-honor silver"><span class="emoji-icon">🥈</span> 班級亞軍</span>';
         } else if (idx === 2) {
-          medal = '🥉 ';
+          medal = '<span class="emoji-icon">🥉</span> ';
           cardClass += ' rank-card-class-third';
-          honorBadge = '<span class="badge-class-honor bronze">🥉 班級季軍</span>';
+          honorBadge = '<span class="badge-class-honor bronze"><span class="emoji-icon">🥉</span> 班級季軍</span>';
         }
 
         return `
@@ -2666,9 +2666,9 @@ const SafeStorage = {
       let rowsHtml = displayList.map(s => {
         const rankNum = isClassFilter ? s.classRank : s.overallRank;
         let medal = `${rankNum}`;
-        if (rankNum === 1) medal = '🥇 1';
-        else if (rankNum === 2) medal = '🥈 2';
-        else if (rankNum === 3) medal = '🥉 3';
+        if (rankNum === 1) medal = '<span class="emoji-icon">🥇</span> 1';
+        else if (rankNum === 2) medal = '<span class="emoji-icon">🥈</span> 2';
+        else if (rankNum === 3) medal = '<span class="emoji-icon">🥉</span> 3';
 
         const isMe = currentStudent && s.cls === currentStudent.cls && s.num === currentStudent.num;
         const rowBank = MODE2_WEEKLY_BANKS[s.weekKey || speedLeaderboardWeek];
