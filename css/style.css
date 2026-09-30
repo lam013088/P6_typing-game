@@ -17,7 +17,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: "PingFang TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei", "微軟正黑體", "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
     }
 
     body {
@@ -2358,3 +2358,25 @@
       border-color: #0369A1;
       box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35);
     }
+
+/* 🛡️ 徹底防禦符號豆腐塊（正方形）：強制 Emoji 獨立使用彩色表情符號字型並解除粗體攔截 */
+.emoji-icon, .crown-banner, .crown-banner span, .trainer-badge-icon, #lb-my-badge {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", sans-serif !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.st-name .emoji-icon {
+  font-size: 16px;
+  vertical-align: -2px;
+  margin-right: 3px;
+}
+
+.badge-class-honor .emoji-icon {
+  font-size: 12px;
+  vertical-align: -1px;
+  margin-right: 2px;
+}
