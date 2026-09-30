@@ -780,7 +780,7 @@ const SafeStorage = {
           }
         }
 
-        const options = [];
+        let options = [];
         currentQuiz.codes.forEach((c, idx) => {
           options.push({ code: c, isCorrect: true, stepIdx: idx, orbId: `corr-${idx}` });
         });
@@ -847,7 +847,7 @@ const SafeStorage = {
           }
         }
 
-        const options = [];
+        let options = [];
         currentQuiz.prefix_codes.forEach((c, idx) => {
           options.push({ code: c, part: 'prefix', partIdx: idx, isCorrect: true, orbId: `pre-${idx}` });
         });
@@ -899,7 +899,7 @@ const SafeStorage = {
           }
         }
 
-        const options = [];
+        let options = [];
         currentQuiz.codes.forEach((c, idx) => {
           options.push({ code: c, isCorrect: true, stepIdx: idx, orbId: `spec-${idx}` });
         });
