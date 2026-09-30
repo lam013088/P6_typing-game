@@ -47,6 +47,18 @@ const SafeStorage = {
 
     // State Variables
     let activeTab = 'top40';
+    let currentLeaderboardType = 'combat';
+    let currentLeaderboardFilter = 'ALL';
+    let speedLeaderboardWeek = 'w5_hw1';
+    let speedLeaderboardWordCount = 10;
+    let currentSpeedWeek = 'w5_hw1';
+    let currentSpeedWordCount = 10;
+    let isSpeedPracticeMode = false;
+    let speedLeaderboardWeek = 'w5_hw1';
+    let speedLeaderboardWordCount = 10;
+    let currentSpeedWeek = 'w5_hw1';
+    let currentSpeedWordCount = 10;
+    let isSpeedPracticeMode = false;
     let currentClass = 'P6A';
     let currentStudent = null;       // { cls, num, name }
     let activeSkills = [];           // 當前已解鎖技能清單
@@ -1391,6 +1403,9 @@ const SafeStorage = {
           // 2. 🛡️ 方案 A 核心：動態由雲端載入本週及全部正式題庫 (GitHub 完全不公開)
           if (data.weeklyBanks && typeof data.weeklyBanks === 'object' && Object.keys(data.weeklyBanks).length > 0) {
             window.MODE2_WEEKLY_BANKS = data.weeklyBanks;
+            if (typeof initSpeedWeekDropdown === 'function') {
+              try { initSpeedWeekDropdown(); } catch(e) {}
+            }
             // 自動校準鍵位
             Object.values(window.MODE2_WEEKLY_BANKS).forEach(b => {
               if (b && Array.isArray(b.words)) {
@@ -1444,6 +1459,23 @@ const SafeStorage = {
       } finally {
         isFetchingCloudLeaderboard = false;
       }
+    }
+
+    
+    // 🛡️ 格式化勳章稱號 (防範數字代碼或異常格式，保證 100% 呈現標準圖文勳章)
+    function getFormattedBadgeTitle(item) {
+      if (!item) return '🥉【新手訓練家】';
+      let titleStr = item.badge || item.title;
+      // 若為純數字 (例如被誤寫為 5) 或缺少【】括號，依分數動態重新評定
+      if (!titleStr || !isNaN(titleStr) || titleStr === '5' || !String(titleStr).includes('【')) {
+        const score = (typeof item.score === 'number') ? item.score : (parseInt(item.grandTotal, 10) || 0);
+        if (typeof evalTierAndSkills === 'function') {
+          const { currentTier } = evalTierAndSkills(score);
+          return `${currentTier.badge}【${currentTier.title}】`;
+        }
+        return '🥉【新手訓練家】';
+      }
+      return String(titleStr);
     }
 
     function renderLeaderboardTable() {
@@ -1513,7 +1545,7 @@ const SafeStorage = {
                   name: `${cls} ${(num < 10 ? '0' : '') + num}號`,
                   score: localScore,
                   kills: Math.max(localKills, cur ? cur.kills : 0),
-                  title: currentTier.title
+                  title: `${currentTier.badge}【${currentTier.title}】`, badge: `${currentTier.badge}【${currentTier.title}】`
                 };
               }
             }
@@ -1593,7 +1625,7 @@ const SafeStorage = {
             <td style="padding: 7px; text-align: center;">${s.cls}</td>
             <td style="padding: 7px; text-align: center;">${(s.num < 10 ? '0' : '') + s.num}號</td>
             <td style="padding: 7px; text-align: center; font-weight: 800;">${s.name} ${isMe ? '⭐(我)' : ''}</td>
-            <td style="padding: 7px; text-align: center; font-size: 11px;">${s.title}</td>
+            <td style="padding: 7px; text-align: center; font-size: 11px;">${getFormattedBadgeTitle(s)}</td>
             <td style="padding: 7px; text-align: center; font-weight: 900; color: #D97706;">${s.score.toLocaleString()}</td>
             <td style="padding: 7px; text-align: center;">${s.kills} 隻</td>
           </tr>
@@ -1738,24 +1770,61 @@ const SafeStorage = {
     }
 
     function initSpeedWeekDropdown() {
-      const activeWk = getActiveSpeedWeek();
       const select = document.getElementById('speed-ready-week-select');
       if (!select) return;
 
       select.innerHTML = '';
-      const hwKeys = [1, 2, 3, 4].map(idx => `${activeWk}_hw${idx}`);
-      hwKeys.forEach((k, idx) => {
-        const bank = MODE2_WEEKLY_BANKS[k];
-        if (bank) {
+      const activeWk = getActiveSpeedWeek();
+      const allBanks = (typeof MODE2_WEEKLY_BANKS === 'object' && MODE2_WEEKLY_BANKS) ? MODE2_WEEKLY_BANKS : {};
+      const allKeys = Object.keys(allBanks);
+
+      if (allKeys.length === 0) {
+        allBanks['demo_practice'] = {
+          key: 'demo_practice',
+          title: '【基礎練習】精選常用字根速成/倉頡特訓',
+          words: [
+            { char: "明", codes: ["日", "月"], keys: ["A", "B"], full: "日月 (AB)" },
+            { char: "鬼", codes: ["竹", "戈"], keys: ["H", "I"], full: "竹戈 (HI)" },
+            { char: "車", codes: ["十", "田", "十"], keys: ["J", "W", "J"], full: "十田十 (JWJ)" },
+            { char: "東", codes: ["木", "田"], keys: ["D", "W"], full: "木田 (DW)" },
+            { char: "門", codes: ["日", "弓"], keys: ["A", "N"], full: "日弓 (AN)" }
+          ]
+        };
+        allKeys.push('demo_practice');
+      }
+
+      // 排序：當前進行中週次排最前 (w5_hw1..4)，其餘按週次降序排列
+      const sortedKeys = allKeys.sort((a, b) => {
+        const isAActive = a.startsWith(activeWk);
+        const isBActive = b.startsWith(activeWk);
+        if (isAActive && !isBActive) return -1;
+        if (!isAActive && isBActive) return 1;
+        return b.localeCompare(a);
+      });
+
+      let defaultKey = null;
+      sortedKeys.forEach((k) => {
+        const bank = allBanks[k];
+        if (bank && Array.isArray(bank.words) && bank.words.length > 0) {
           const opt = document.createElement('option');
           opt.value = k;
-          opt.textContent = bank.title; // 顯示為「第4周功課1」等
-          if (idx === 0) opt.selected = true;
+          const isThisWeek = k.startsWith(activeWk);
+          opt.textContent = (isThisWeek ? '🔥 ' : '📚 ') + (bank.title || k);
+          if (!defaultKey || (isThisWeek && !defaultKey.startsWith(activeWk))) {
+            defaultKey = k;
+          }
           select.appendChild(opt);
         }
       });
 
-      currentSpeedWeek = select.value || `${activeWk}_hw1`;
+      if (defaultKey) {
+        select.value = defaultKey;
+        currentSpeedWeek = defaultKey;
+      } else if (select.options.length > 0) {
+        select.selectedIndex = 0;
+        currentSpeedWeek = select.value;
+      }
+
       updateSpeedLeaderboardButtons(activeWk);
     }
 
@@ -1764,100 +1833,28 @@ const SafeStorage = {
       if (!container) return;
       container.innerHTML = '';
 
-      const hwKeys = [1, 2, 3, 4].map(idx => `${activeWk}_hw${idx}`);
+      const allBanks = (typeof MODE2_WEEKLY_BANKS === 'object' && MODE2_WEEKLY_BANKS) ? MODE2_WEEKLY_BANKS : {};
+      let hwKeys = [1, 2, 3, 4].map(idx => `${activeWk}_hw${idx}`);
+      // 若當前週次無題庫，展示所有可用題庫按鈕
+      if (!hwKeys.some(k => allBanks[k])) {
+        hwKeys = Object.keys(allBanks);
+      }
+
       if (!hwKeys.includes(speedLeaderboardWeek)) {
-        speedLeaderboardWeek = hwKeys[0];
+        speedLeaderboardWeek = hwKeys[0] || 'w5_hw1';
       }
 
       hwKeys.forEach(k => {
-        const bank = MODE2_WEEKLY_BANKS[k];
+        const bank = allBanks[k];
         const btn = document.createElement('button');
         btn.className = 'lb-sub-pill' + (k === speedLeaderboardWeek ? ' active' : '');
         btn.id = `lb-week-${k}`;
-        btn.textContent = bank ? bank.title : k; // 顯示為「第4周功課1」等
+        btn.textContent = bank ? bank.title : k;
         btn.onclick = () => filterSpeedLeaderboardWeek(k);
         container.appendChild(btn);
       });
     }
 
-    let currentSpeedWeek = 'w3';
-    let currentSpeedWordCount = 10; // 10 或 20
-    let isSpeedPracticeMode = false;
-    let speedWordList = [];
-    let speedWordIdx = 0;
-    let speedInputCodes = [];
-    let speedStartTime = null;
-    let speedTimerInterval = null;
-    let speedPenaltySeconds = 0.0;
-    let speedMistakes = 0;
-    let speedTotalKeys = 0;
-    let speedCorrectKeys = 0;
-    let speedHintTimer = null;
-    let speedActive = false;
-    let speedWordReadyForSpace = false; // 鍵盤打完該字後，等待按空白鍵才進下一關
-
-    // 手速排行榜專用獨立篩選器
-    let currentLeaderboardType = 'score'; // 'score' | 'speed'
-    let speedLeaderboardWordCount = 10;   // 10 | 20
-    let speedLeaderboardWeek = 'w3';      // 'w3' | 'w2' | 'w4' | 'w5' | 'ALL'
-
-    // 🎯 核心演算法：等效競賽總耗時計算公式 (秒數制 · 擊鍵準確率二次方加權罰時)
-    function calculateEffectiveSpeedTime(rawTime, mistakes, accuracy, wordCount) {
-      // 1. 即時按錯鍵罰時：每次按錯加計 +0.3 秒
-      const keyPenalty = mistakes * 0.3;
-      
-      // 2. 擊鍵準確率二次方加權罰時：
-      // 基準因子：10字基準為 15 秒，20字基準為 30 秒 (即每題 1.5 秒基準)
-      const baseFactor = (wordCount === 20) ? 30.0 : 15.0;
-      const accRatio = Math.max(0, Math.min(100, accuracy)) / 100;
-      // 依 (1 - (Acc/100)^2) 計算，準確率越低罰時急劇增加，懲罰盲目亂敲
-      const accPenalty = Math.round(baseFactor * (1 - Math.pow(accRatio, 2)) * 100) / 100;
-      
-      // 3. 零失誤神手獎勵 (100% 準確率)
-      const bonus = (accuracy >= 100) ? ((wordCount === 20) ? 2.0 : 1.0) : 0.0;
-      
-      // 4. 等效競賽總耗時 (秒)
-      const effectiveTime = parseFloat((rawTime + keyPenalty + accPenalty - bonus).toFixed(2));
-      
-      return {
-        keyPenalty: parseFloat(keyPenalty.toFixed(2)),
-        accPenalty: parseFloat(accPenalty.toFixed(2)),
-        bonus: parseFloat(bonus.toFixed(2)),
-        effectiveTime: Math.max(1.0, effectiveTime)
-      };
-    }
-
-    // 榮譽手速段位計算 (依題量與等效秒數評判)
-    function onSpeedSettingChange() {
-      const wcSelect = document.getElementById('speed-word-count-select');
-      const wkSelect = document.getElementById('speed-ready-week-select');
-      if (wcSelect) currentSpeedWordCount = parseInt(wcSelect.value, 10) || 10;
-      if (wkSelect) currentSpeedWeek = wkSelect.value || 'w3';
-    }
-
-    // 雙模式共存切換 (選項 3：競技排位 vs 練習提示)
-    function toggleSpeedPracticeMode() {
-      isSpeedPracticeMode = !isSpeedPracticeMode;
-      const btn = document.getElementById('speed-mode-toggle-btn');
-      if (btn) {
-        if (isSpeedPracticeMode) {
-          btn.innerHTML = '💡 練習模式 (全程字根可見)';
-          btn.style.color = '#34D399';
-          btn.style.borderColor = '#10B981';
-          btn.style.background = '#0F172A';
-        } else {
-          btn.innerHTML = '⚔️ 競技排位賽 (停頓3秒提燈)';
-          btn.style.color = '#FDE047';
-          btn.style.borderColor = '#FACC15';
-          btn.style.background = '#0F172A';
-        }
-      }
-      if (speedActive) {
-        renderSpeedTargetWord();
-      }
-    }
-
-    // 返回備戰大廳
     function returnToSpeedReadyStage() {
       const mainStage = document.getElementById('speed-main-stage');
       const finishBox = document.getElementById('speed-finish-box');
