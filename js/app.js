@@ -87,8 +87,13 @@ const SafeStorage = {
     let isKiosk = false;
     let kioskInterval = null;
 
-    // 題目佇列 (確保每輪5關隨機抽取且不重複)
+    // 題目佇列與跨輪防重複歷史紀錄 (保證每輪5關隨機且跨輪絕不連續重複)
     let modeQuizQueues = {
+      connected: [],
+      split: [],
+      special: []
+    };
+    let modeQuizHistory = {
       connected: [],
       split: [],
       special: []
@@ -97,12 +102,42 @@ const SafeStorage = {
     function getNextQuiz(mode) {
       if (!modeQuizQueues[mode] || modeQuizQueues[mode].length === 0) {
         let pool = [];
-        if (mode === 'connected') pool = [...DATA.connected_words];
-        else if (mode === 'split') pool = [...DATA.split_words];
-        else if (mode === 'special') pool = [...DATA.special_words];
-        modeQuizQueues[mode] = pool.sort(() => 0.5 - Math.random());
+        if (mode === 'connected') pool = [...(DATA.connected_words || [])];
+        else if (mode === 'split') pool = [...(DATA.split_words || [])];
+        else if (mode === 'special') pool = [...(DATA.special_words || [])];
+
+        // 使用 Fisher-Yates 隨機均勻洗牌演算法
+        let shuffled = (typeof fisherYatesShuffle === 'function')
+          ? fisherYatesShuffle(pool)
+          : [...pool].sort(() => Math.random() - 0.5);
+
+        // 跨輪次防重複機制：剛洗完牌時，若前幾道題恰好在上一輪最後 5 題中出現過，將其沉底延後抽取
+        const recent = modeQuizHistory[mode] || [];
+        if (recent.length > 0 && shuffled.length > 5) {
+          const fresh = [];
+          const delayed = [];
+          shuffled.forEach(item => {
+            if (recent.slice(-5).includes(item.char)) {
+              delayed.push(item);
+            } else {
+              fresh.push(item);
+            }
+          });
+          shuffled = fresh.concat(delayed);
+        }
+
+        modeQuizQueues[mode] = shuffled;
       }
-      return modeQuizQueues[mode].pop();
+
+      const quiz = modeQuizQueues[mode].pop();
+      if (quiz) {
+        if (!modeQuizHistory[mode]) modeQuizHistory[mode] = [];
+        modeQuizHistory[mode].push(quiz.char);
+        if (modeQuizHistory[mode].length > 20) {
+          modeQuizHistory[mode].shift();
+        }
+      }
+      return quiz;
     }
 
     // Confetti Engine
@@ -759,7 +794,7 @@ const SafeStorage = {
       sessionScore = 0;
       sessionCorrectCount = 0;
       comboCount = 0;
-      modeQuizQueues[currentGameMode] = [];
+      // 保留未出過的題目繼續出題，實現多輪連續不重複；待完整題庫抽盡後才自動觸發新一輪洗牌
       currentQuiz = null;
 
       document.getElementById('session-summary-box').style.display = 'none';
