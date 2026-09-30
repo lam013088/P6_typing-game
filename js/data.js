@@ -6676,18 +6676,20 @@ const MODE2_WEEKLY_BANKS = {
         "char": "殼",
         "codes": [
           "土",
+          "弓",
           "竹",
-          "竹",
-          "弓"
+          "弓",
+          "水"
         ],
         "keys": [
           "G",
+          "N",
           "H",
-          "H",
-          "N"
+          "N",
+          "E"
         ],
-        "full": "土竹竹弓 (GHHN)",
-        "secret": "殼：土竹竹弓 (GHHN)"
+        "full": "土弓竹弓水 (GNHNE)",
+        "secret": "殼：土弓竹弓水 (GNHNE)"
       },
       {
         "char": "間",
@@ -6709,30 +6711,34 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "火",
           "火",
+          "月",
           "木"
         ],
         "keys": [
           "F",
           "F",
+          "B",
           "D"
         ],
-        "full": "火火木 (FFD)",
-        "secret": "榮：火火木 (FFD)"
+        "full": "火火月木 (FFBD)",
+        "secret": "榮：火火月木 (FFBD)"
       },
       {
         "char": "赤",
         "codes": [
           "土",
-          "難",
+          "中",
+          "弓",
           "金"
         ],
         "keys": [
           "G",
-          "X",
+          "L",
+          "N",
           "C"
         ],
-        "full": "土難金 (GXC)",
-        "secret": "赤：土難金 (GXC)"
+        "full": "土中弓金 (GLNC)",
+        "secret": "赤：土中弓金 (GLNC)"
       },
       {
         "char": "景",
@@ -6929,15 +6935,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "木",
           "廿",
+          "一",
           "金"
         ],
         "keys": [
           "D",
           "T",
+          "M",
           "C"
         ],
-        "full": "木廿金 (DTC)",
-        "secret": "橫：木廿金 (DTC)"
+        "full": "木廿一金 (DTMC)",
+        "secret": "橫：木廿一金 (DTMC)"
       },
       {
         "char": "淨",
@@ -7013,16 +7021,18 @@ const MODE2_WEEKLY_BANKS = {
           "水",
           "竹",
           "弓",
+          "田",
           "火"
         ],
         "keys": [
           "E",
           "H",
           "N",
+          "W",
           "F"
         ],
-        "full": "水竹弓火 (EHNF)",
-        "secret": "鯊：水竹弓火 (EHNF)"
+        "full": "水竹弓田火 (EHNWF)",
+        "secret": "鯊：水竹弓田火 (EHNWF)"
       },
       {
         "char": "渡",
@@ -7063,34 +7073,34 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "水",
           "十",
+          "口",
           "月"
         ],
         "keys": [
           "E",
           "J",
+          "R",
           "B"
         ],
-        "full": "水十月 (EJB)",
-        "secret": "湖：水十月 (EJB)"
+        "full": "水十口月 (EJRB)",
+        "secret": "湖：水十口月 (EJRB)"
       },
       {
         "char": "雞",
         "codes": [
           "月",
-          "女",
-          "竹",
-          "日",
-          "火"
+          "大",
+          "人",
+          "土"
         ],
         "keys": [
           "B",
-          "V",
-          "H",
-          "A",
-          "F"
+          "K",
+          "O",
+          "G"
         ],
-        "full": "月女竹日火 (BVHAF)",
-        "secret": "雞：月女竹日火 (BVHAF)"
+        "full": "月大人土 (BKOG)",
+        "secret": "雞：月大人土 (BKOG)"
       },
       {
         "char": "滑",
@@ -7114,15 +7124,15 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "月",
           "月",
-          "人"
+          "月"
         ],
         "keys": [
           "B",
           "B",
-          "O"
+          "B"
         ],
-        "full": "月月人 (BBO)",
-        "secret": "骨：月月人 (BBO)"
+        "full": "月月月 (BBB)",
+        "secret": "骨：月月月 (BBB)"
       },
       {
         "char": "柱",
@@ -7203,17 +7213,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "水",
           "弓",
-          "戈",
+          "人",
           "水"
         ],
         "keys": [
           "E",
           "N",
-          "I",
+          "O",
           "E"
         ],
-        "full": "水弓戈水 (ENIE)",
-        "secret": "潑：水弓戈水 (ENIE)"
+        "full": "水弓人水 (ENOE)",
+        "secret": "潑：水弓人水 (ENOE)"
       },
       {
         "char": "澡",
@@ -7263,17 +7273,19 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "月",
           "人",
-          "戈",
+          "一",
+          "一",
           "火"
         ],
         "keys": [
           "B",
           "O",
-          "I",
+          "M",
+          "M",
           "F"
         ],
-        "full": "月人戈火 (BOIF)",
-        "secret": "祭：月人戈火 (BOIF)"
+        "full": "月人一一火 (BOMMF)",
+        "secret": "祭：月人一一火 (BOMMF)"
       },
       {
         "char": "林",
@@ -7372,19 +7384,21 @@ const MODE2_WEEKLY_BANKS = {
       {
         "char": "糕",
         "codes": [
-          "一",
+          "火",
+          "木",
           "廿",
           "土",
           "火"
         ],
         "keys": [
-          "M",
+          "F",
+          "D",
           "T",
           "G",
           "F"
         ],
-        "full": "一廿土火 (MTGF)",
-        "secret": "糕：一廿土火 (MTGF)"
+        "full": "火木廿土火 (FDTGF)",
+        "secret": "糕：火木廿土火 (FDTGF)"
       },
       {
         "char": "杜",
@@ -7438,15 +7452,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "木",
           "竹",
-          "日"
+          "日",
+          "月"
         ],
         "keys": [
           "D",
           "H",
-          "A"
+          "A",
+          "B"
         ],
-        "full": "木竹日 (DHA)",
-        "secret": "棉：木竹日 (DHA)"
+        "full": "木竹日月 (DHAB)",
+        "secret": "棉：木竹日月 (DHAB)"
       },
       {
         "char": "樣",
@@ -7501,18 +7517,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "錄",
         "codes": [
           "金",
-          "女",
           "弓",
+          "女",
           "水"
         ],
         "keys": [
           "C",
-          "V",
           "N",
+          "V",
           "E"
         ],
-        "full": "金女弓水 (CVNE)",
-        "secret": "錄：金女弓水 (CVNE)"
+        "full": "金弓女水 (CNVE)",
+        "secret": "錄：金弓女水 (CNVE)"
       },
       {
         "char": "森",
@@ -7579,15 +7595,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "木",
           "廿",
+          "一",
           "金"
         ],
         "keys": [
           "D",
           "T",
+          "M",
           "C"
         ],
-        "full": "木廿金 (DTC)",
-        "secret": "棋：木廿金 (DTC)"
+        "full": "木廿一金 (DTMC)",
+        "secret": "棋：木廿一金 (DTMC)"
       },
       {
         "char": "柏",
@@ -7694,18 +7712,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "鼓",
         "codes": [
           "土",
-          "水",
+          "廿",
           "十",
           "水"
         ],
         "keys": [
           "G",
-          "E",
+          "T",
           "J",
           "E"
         ],
-        "full": "土水十水 (GEJE)",
-        "secret": "鼓：土水十水 (GEJE)"
+        "full": "土廿十水 (GTJE)",
+        "secret": "鼓：土廿十水 (GTJE)"
       }
     ]
   },
@@ -7738,18 +7756,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "的",
         "codes": [
           "竹",
-          "戈",
           "日",
+          "心",
           "戈"
         ],
         "keys": [
           "H",
-          "I",
           "A",
+          "P",
           "I"
         ],
-        "full": "竹戈日戈 (HIAI)",
-        "secret": "的：竹戈日戈 (HIAI)"
+        "full": "竹日心戈 (HAPI)",
+        "secret": "的：竹日心戈 (HAPI)"
       },
       {
         "char": "更",
@@ -7925,15 +7943,17 @@ const MODE2_WEEKLY_BANKS = {
       {
         "char": "丟",
         "codes": [
+          "竹",
           "土",
           "戈"
         ],
         "keys": [
+          "H",
           "G",
           "I"
         ],
-        "full": "土戈 (GI)",
-        "secret": "丟：土戈 (GI)"
+        "full": "竹土戈 (HGI)",
+        "secret": "丟：竹土戈 (HGI)"
       },
       {
         "char": "鬼",
@@ -8017,17 +8037,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "一",
           "火",
-          "火",
+          "月",
           "大"
         ],
         "keys": [
           "M",
           "F",
-          "F",
+          "B",
           "K"
         ],
-        "full": "一火火大 (MFFK)",
-        "secret": "廠：一火火大 (MFFK)"
+        "full": "一火月大 (MFBK)",
+        "secret": "廠：一火月大 (MFBK)"
       },
       {
         "char": "郎",
@@ -8050,33 +8070,35 @@ const MODE2_WEEKLY_BANKS = {
         "char": "等",
         "codes": [
           "竹",
-          "木",
           "土",
+          "木",
           "戈"
         ],
         "keys": [
           "H",
-          "D",
           "G",
+          "D",
           "I"
         ],
-        "full": "竹木土戈 (HDGI)",
-        "secret": "等：竹木土戈 (HDGI)"
+        "full": "竹土木戈 (HGDI)",
+        "secret": "等：竹土木戈 (HGDI)"
       },
       {
         "char": "甜",
         "codes": [
           "竹",
-          "十",
-          "廿"
+          "口",
+          "廿",
+          "一"
         ],
         "keys": [
           "H",
-          "J",
-          "T"
+          "R",
+          "T",
+          "M"
         ],
-        "full": "竹十廿 (HJT)",
-        "secret": "甜：竹十廿 (HJT)"
+        "full": "竹口廿一 (HRTM)",
+        "secret": "甜：竹口廿一 (HRTM)"
       },
       {
         "char": "五",
@@ -8099,18 +8121,18 @@ const MODE2_WEEKLY_BANKS = {
           "一",
           "土",
           "人",
-          "一",
+          "戈",
           "弓"
         ],
         "keys": [
           "M",
           "G",
           "O",
-          "M",
+          "I",
           "N"
         ],
-        "full": "一土人一弓 (MGOMN)",
-        "secret": "琴：一土人一弓 (MGOMN)"
+        "full": "一土人戈弓 (MGOIN)",
+        "secret": "琴：一土人戈弓 (MGOIN)"
       },
       {
         "char": "序",
@@ -8214,16 +8236,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "兔",
         "codes": [
           "弓",
-          "日",
+          "山",
           "戈"
         ],
         "keys": [
           "N",
-          "A",
+          "U",
           "I"
         ],
-        "full": "弓日戈 (NAI)",
-        "secret": "兔：弓日戈 (NAI)"
+        "full": "弓山戈 (NUI)",
+        "secret": "兔：弓山戈 (NUI)"
       },
       {
         "char": "都",
@@ -8335,16 +8357,18 @@ const MODE2_WEEKLY_BANKS = {
           "一",
           "口",
           "一",
-          "木"
+          "中",
+          "大"
         ],
         "keys": [
           "M",
           "R",
           "M",
-          "D"
+          "L",
+          "K"
         ],
-        "full": "一口一木 (MRMD)",
-        "secret": "硬：一口一木 (MRMD)"
+        "full": "一口一中大 (MRMLK)",
+        "secret": "硬：一口一中大 (MRMLK)"
       },
       {
         "char": "鼻",
@@ -8352,16 +8376,18 @@ const MODE2_WEEKLY_BANKS = {
           "竹",
           "山",
           "田",
+          "一",
           "中"
         ],
         "keys": [
           "H",
           "U",
           "W",
+          "M",
           "L"
         ],
-        "full": "竹山田中 (HUWL)",
-        "secret": "鼻：竹山田中 (HUWL)"
+        "full": "竹山田一中 (HUWML)",
+        "secret": "鼻：竹山田一中 (HUWML)"
       },
       {
         "char": "九",
@@ -8411,17 +8437,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "一",
           "月",
-          "中",
-          "水"
+          "尸",
+          "一"
         ],
         "keys": [
           "M",
           "B",
-          "L",
-          "E"
+          "S",
+          "M"
         ],
-        "full": "一月中水 (MBLE)",
-        "secret": "雪：一月中水 (MBLE)"
+        "full": "一月尸一 (MBSM)",
+        "secret": "雪：一月尸一 (MBSM)"
       },
       {
         "char": "我",
@@ -8540,16 +8566,18 @@ const MODE2_WEEKLY_BANKS = {
           "竹",
           "手",
           "土",
-          "木"
+          "木",
+          "戈"
         ],
         "keys": [
           "H",
           "Q",
           "G",
-          "D"
+          "D",
+          "I"
         ],
-        "full": "竹手土木 (HQGD)",
-        "secret": "特：竹手土木 (HQGD)"
+        "full": "竹手土木戈 (HQGDI)",
+        "secret": "特：竹手土木戈 (HQGDI)"
       },
       {
         "char": "舟",
@@ -8609,15 +8637,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "人",
-          "木"
+          "木",
+          "戈"
         ],
         "keys": [
           "H",
           "O",
-          "D"
+          "D",
+          "I"
         ],
-        "full": "竹人木 (HOD)",
-        "secret": "符：竹人木 (HOD)"
+        "full": "竹人木戈 (HODI)",
+        "secret": "符：竹人木戈 (HODI)"
       },
       {
         "char": "得",
@@ -8625,16 +8655,18 @@ const MODE2_WEEKLY_BANKS = {
           "竹",
           "人",
           "日",
+          "木",
           "戈"
         ],
         "keys": [
           "H",
           "O",
           "A",
+          "D",
           "I"
         ],
-        "full": "竹人日戈 (HOAI)",
-        "secret": "得：竹人日戈 (HOAI)"
+        "full": "竹人日木戈 (HOADI)",
+        "secret": "得：竹人日木戈 (HOADI)"
       },
       {
         "char": "二",
@@ -8680,32 +8712,34 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "十",
           "廿",
-          "山"
+          "月",
+          "戈"
         ],
         "keys": [
           "J",
           "T",
-          "U"
+          "B",
+          "I"
         ],
-        "full": "十廿山 (JTU)",
-        "secret": "寬：十廿山 (JTU)"
+        "full": "十廿月戈 (JTBI)",
+        "secret": "寬：十廿月戈 (JTBI)"
       },
       {
         "char": "郵",
         "codes": [
+          "竹",
           "一",
-          "木",
           "弓",
           "中"
         ],
         "keys": [
+          "H",
           "M",
-          "D",
           "N",
           "L"
         ],
-        "full": "一木弓中 (MDNL)",
-        "secret": "郵：一木弓中 (MDNL)"
+        "full": "竹一弓中 (HMNL)",
+        "secret": "郵：竹一弓中 (HMNL)"
       },
       {
         "char": "干",
@@ -8725,17 +8759,19 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "弓",
+          "竹",
           "中",
           "戈"
         ],
         "keys": [
           "H",
           "N",
+          "H",
           "L",
           "I"
         ],
-        "full": "竹弓中戈 (HNLI)",
-        "secret": "風：竹弓中戈 (HNLI)"
+        "full": "竹弓竹中戈 (HNHLI)",
+        "secret": "風：竹弓竹中戈 (HNHLI)"
       },
       {
         "char": "術",
@@ -8761,30 +8797,34 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "弓",
+          "中",
           "竹"
         ],
         "keys": [
           "H",
           "N",
+          "L",
           "H"
         ],
-        "full": "竹弓竹 (HNH)",
-        "secret": "第：竹弓竹 (HNH)"
+        "full": "竹弓中竹 (HNLH)",
+        "secret": "第：竹弓中竹 (HNLH)"
       },
       {
         "char": "亞",
         "codes": [
           "一",
           "中",
-          "廿"
+          "中",
+          "一"
         ],
         "keys": [
           "M",
           "L",
-          "T"
+          "L",
+          "M"
         ],
-        "full": "一中廿 (MLT)",
-        "secret": "亞：一中廿 (MLT)"
+        "full": "一中中一 (MLLM)",
+        "secret": "亞：一中中一 (MLLM)"
       },
       {
         "char": "凡",
@@ -8865,17 +8905,15 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "土",
           "戈",
-          "戈",
           "火"
         ],
         "keys": [
           "G",
           "I",
-          "I",
           "F"
         ],
-        "full": "土戈戈火 (GIIF)",
-        "secret": "熱：土戈戈火 (GIIF)"
+        "full": "土戈火 (GIF)",
+        "secret": "熱：土戈火 (GIF)"
       },
       {
         "char": "糧",
@@ -8884,17 +8922,17 @@ const MODE2_WEEKLY_BANKS = {
           "木",
           "日",
           "一",
-          "女"
+          "土"
         ],
         "keys": [
           "F",
           "D",
           "A",
           "M",
-          "V"
+          "G"
         ],
-        "full": "火木日一女 (FDAMV)",
-        "secret": "糧：火木日一女 (FDAMV)"
+        "full": "火木日一土 (FDAMG)",
+        "secret": "糧：火木日一土 (FDAMG)"
       },
       {
         "char": "炎",
@@ -8932,16 +8970,16 @@ const MODE2_WEEKLY_BANKS = {
           "水",
           "手",
           "竹",
-          "手"
+          "火"
         ],
         "keys": [
           "E",
           "Q",
           "H",
-          "Q"
+          "F"
         ],
-        "full": "水手竹手 (EQHQ)",
-        "secret": "潔：水手竹手 (EQHQ)"
+        "full": "水手竹火 (EQHF)",
+        "secret": "潔：水手竹火 (EQHF)"
       },
       {
         "char": "杯",
@@ -9046,18 +9084,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "象",
         "codes": [
           "弓",
-          "尸",
-          "水",
+          "日",
+          "心",
           "人"
         ],
         "keys": [
           "N",
-          "S",
-          "E",
+          "A",
+          "P",
           "O"
         ],
-        "full": "弓尸水人 (NSEO)",
-        "secret": "象：弓尸水人 (NSEO)"
+        "full": "弓日心人 (NAPO)",
+        "secret": "象：弓日心人 (NAPO)"
       },
       {
         "char": "用",
@@ -9108,16 +9146,14 @@ const MODE2_WEEKLY_BANKS = {
         "char": "炙",
         "codes": [
           "月",
-          "水",
           "火"
         ],
         "keys": [
           "B",
-          "E",
           "F"
         ],
-        "full": "月水火 (BEF)",
-        "secret": "炙：月水火 (BEF)"
+        "full": "月火 (BF)",
+        "secret": "炙：月火 (BF)"
       },
       {
         "char": "只",
@@ -9257,17 +9293,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "木",
           "一",
-          "月",
+          "口",
           "手"
         ],
         "keys": [
           "D",
           "M",
-          "B",
+          "R",
           "Q"
         ],
-        "full": "木一月手 (DMBQ)",
-        "secret": "韋：木一月手 (DMBQ)"
+        "full": "木一口手 (DMRQ)",
+        "secret": "韋：木一口手 (DMRQ)"
       },
       {
         "char": "汝",
@@ -9383,15 +9419,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "日",
+          "卜",
           "火"
         ],
         "keys": [
           "H",
           "A",
+          "Y",
           "F"
         ],
-        "full": "竹日火 (HAF)",
-        "secret": "鳥：竹日火 (HAF)"
+        "full": "竹日卜火 (HAYF)",
+        "secret": "鳥：竹日卜火 (HAYF)"
       },
       {
         "char": "烈",
@@ -9508,18 +9546,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "壞",
         "codes": [
           "土",
-          "土",
-          "口",
+          "卜",
+          "田",
           "女"
         ],
         "keys": [
           "G",
-          "G",
-          "R",
+          "Y",
+          "W",
           "V"
         ],
-        "full": "土土口女 (GGRV)",
-        "secret": "壞：土土口女 (GGRV)"
+        "full": "土卜田女 (GYWV)",
+        "secret": "壞：土卜田女 (GYWV)"
       },
       {
         "char": "壯",
@@ -9540,16 +9578,14 @@ const MODE2_WEEKLY_BANKS = {
         "char": "壬",
         "codes": [
           "竹",
-          "一",
           "土"
         ],
         "keys": [
           "H",
-          "M",
           "G"
         ],
-        "full": "竹一土 (HMG)",
-        "secret": "壬：竹一土 (HMG)"
+        "full": "竹土 (HG)",
+        "secret": "壬：竹土 (HG)"
       },
       {
         "char": "淦",
@@ -9625,17 +9661,15 @@ const MODE2_WEEKLY_BANKS = {
       {
         "char": "杰",
         "codes": [
-          "弓",
           "木",
           "火"
         ],
         "keys": [
-          "N",
           "D",
           "F"
         ],
-        "full": "弓木火 (NDF)",
-        "secret": "杰：弓木火 (NDF)"
+        "full": "木火 (DF)",
+        "secret": "杰：木火 (DF)"
       },
       {
         "char": "唱",
@@ -9687,15 +9721,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "火",
           "火",
-          "月"
+          "月",
+          "火"
         ],
         "keys": [
           "F",
           "F",
-          "B"
+          "B",
+          "F"
         ],
-        "full": "火火月 (FFB)",
-        "secret": "熒：火火月 (FFB)"
+        "full": "火火月火 (FFBF)",
+        "secret": "熒：火火月火 (FFBF)"
       },
       {
         "char": "軍",
@@ -9747,32 +9783,32 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "水",
           "一",
-          "尸",
           "木"
         ],
         "keys": [
           "E",
           "M",
-          "S",
           "D"
         ],
-        "full": "水一尸木 (EMSD)",
-        "secret": "汙：水一尸木 (EMSD)"
+        "full": "水一木 (EMD)",
+        "secret": "汙：水一木 (EMD)"
       },
       {
         "char": "桑",
         "codes": [
           "水",
           "水",
+          "水",
           "木"
         ],
         "keys": [
           "E",
           "E",
+          "E",
           "D"
         ],
-        "full": "水水木 (EED)",
-        "secret": "桑：水水木 (EED)"
+        "full": "水水水木 (EEED)",
+        "secret": "桑：水水水木 (EEED)"
       },
       {
         "char": "冉",
@@ -9839,15 +9875,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "月",
           "金",
+          "一",
           "十"
         ],
         "keys": [
           "B",
           "C",
+          "M",
           "J"
         ],
-        "full": "月金十 (BCJ)",
-        "secret": "罕：月金十 (BCJ)"
+        "full": "月金一十 (BCMJ)",
+        "secret": "罕：月金一十 (BCMJ)"
       },
       {
         "char": "沁",
@@ -9951,16 +9989,18 @@ const MODE2_WEEKLY_BANKS = {
           "竹",
           "人",
           "山",
+          "山",
           "大"
         ],
         "keys": [
           "H",
           "O",
           "U",
+          "U",
           "K"
         ],
-        "full": "竹人山大 (HOUK)",
-        "secret": "微：竹人山大 (HOUK)"
+        "full": "竹人山山大 (HOUUK)",
+        "secret": "微：竹人山山大 (HOUUK)"
       },
       {
         "char": "川",
@@ -9998,33 +10038,31 @@ const MODE2_WEEKLY_BANKS = {
         "char": "租",
         "codes": [
           "竹",
-          "人",
+          "木",
           "月",
           "一"
         ],
         "keys": [
           "H",
-          "O",
+          "D",
           "B",
           "M"
         ],
-        "full": "竹人月一 (HOBM)",
-        "secret": "租：竹人月一 (HOBM)"
+        "full": "竹木月一 (HDBM)",
+        "secret": "租：竹木月一 (HDBM)"
       },
       {
         "char": "戊",
         "codes": [
           "戈",
-          "大",
-          "尸"
+          "竹"
         ],
         "keys": [
           "I",
-          "K",
-          "S"
+          "H"
         ],
-        "full": "戈大尸 (IKS)",
-        "secret": "戊：戈大尸 (IKS)"
+        "full": "戈竹 (IH)",
+        "secret": "戊：戈竹 (IH)"
       },
       {
         "char": "拜",
@@ -10047,35 +10085,35 @@ const MODE2_WEEKLY_BANKS = {
         "char": "牧",
         "codes": [
           "竹",
-          "尸",
+          "手",
           "人",
           "大"
         ],
         "keys": [
           "H",
-          "S",
+          "Q",
           "O",
           "K"
         ],
-        "full": "竹尸人大 (HSOK)",
-        "secret": "牧：竹尸人大 (HSOK)"
+        "full": "竹手人大 (HQOK)",
+        "secret": "牧：竹手人大 (HQOK)"
       },
       {
         "char": "強",
         "codes": [
           "弓",
           "戈",
-          "口",
+          "中",
           "戈"
         ],
         "keys": [
           "N",
           "I",
-          "R",
+          "L",
           "I"
         ],
-        "full": "弓戈口戈 (NIRI)",
-        "secret": "強：弓戈口戈 (NIRI)"
+        "full": "弓戈中戈 (NILI)",
+        "secret": "強：弓戈中戈 (NILI)"
       },
       {
         "char": "鬥",
@@ -10095,66 +10133,72 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "尸",
+          "竹",
+          "一",
           "中"
         ],
         "keys": [
           "H",
           "S",
+          "H",
+          "M",
           "L"
         ],
-        "full": "竹尸中 (HSL)",
-        "secret": "所：竹尸中 (HSL)"
+        "full": "竹尸竹一中 (HSHML)",
+        "secret": "所：竹尸竹一中 (HSHML)"
       },
       {
         "char": "翻",
         "codes": [
           "竹",
-          "木",
           "田",
-          "尸"
+          "尸",
+          "一",
+          "一"
         ],
         "keys": [
           "H",
-          "D",
           "W",
-          "S"
+          "S",
+          "M",
+          "M"
         ],
-        "full": "竹木田尸 (HDWS)",
-        "secret": "翻：竹木田尸 (HDWS)"
+        "full": "竹田尸一一 (HWSMM)",
+        "secret": "翻：竹田尸一一 (HWSMM)"
       },
       {
         "char": "麥",
         "codes": [
           "十",
           "人",
-          "水"
+          "弓",
+          "戈"
         ],
         "keys": [
           "J",
           "O",
-          "E"
+          "N",
+          "I"
         ],
-        "full": "十人水 (JOE)",
-        "secret": "麥：十人水 (JOE)"
+        "full": "十人弓戈 (JONI)",
+        "secret": "麥：十人弓戈 (JONI)"
       },
       {
         "char": "數",
         "codes": [
-          "火",
-          "木",
+          "中",
           "女",
           "人",
           "大"
         ],
         "keys": [
-          "F",
-          "D",
+          "L",
           "V",
           "O",
           "K"
         ],
-        "full": "火木女人大 (FDVOK)",
-        "secret": "數：火木女人大 (FDVOK)"
+        "full": "中女人大 (LVOK)",
+        "secret": "數：中女人大 (LVOK)"
       },
       {
         "char": "斤",
@@ -10192,52 +10236,54 @@ const MODE2_WEEKLY_BANKS = {
         "char": "參",
         "codes": [
           "戈",
-          "大",
-          "一",
+          "戈",
+          "戈",
           "竹"
         ],
         "keys": [
           "I",
-          "K",
-          "M",
+          "I",
+          "I",
           "H"
         ],
-        "full": "戈大一竹 (IKMH)",
-        "secret": "參：戈大一竹 (IKMH)"
+        "full": "戈戈戈竹 (IIIH)",
+        "secret": "參：戈戈戈竹 (IIIH)"
       },
       {
         "char": "物",
         "codes": [
           "竹",
-          "竹",
           "手",
+          "心",
+          "竹",
           "竹"
         ],
         "keys": [
           "H",
-          "H",
           "Q",
+          "P",
+          "H",
           "H"
         ],
-        "full": "竹竹手竹 (HHQH)",
-        "secret": "物：竹竹手竹 (HHQH)"
+        "full": "竹手心竹竹 (HQPHH)",
+        "secret": "物：竹手心竹竹 (HQPHH)"
       },
       {
         "char": "厭",
         "codes": [
           "一",
-          "一",
+          "日",
           "月",
           "大"
         ],
         "keys": [
           "M",
-          "M",
+          "A",
           "B",
           "K"
         ],
-        "full": "一一月大 (MMBK)",
-        "secret": "厭：一一月大 (MMBK)"
+        "full": "一日月大 (MABK)",
+        "secret": "厭：一日月大 (MABK)"
       },
       {
         "char": "底",
@@ -10292,48 +10338,48 @@ const MODE2_WEEKLY_BANKS = {
         "char": "筷",
         "codes": [
           "竹",
-          "人",
-          "大",
-          "木"
+          "心",
+          "木",
+          "大"
         ],
         "keys": [
           "H",
-          "O",
-          "K",
-          "D"
+          "P",
+          "D",
+          "K"
         ],
-        "full": "竹人大木 (HOKD)",
-        "secret": "筷：竹人大木 (HOKD)"
+        "full": "竹心木大 (HPDK)",
+        "secret": "筷：竹心木大 (HPDK)"
       },
       {
         "char": "丈",
         "codes": [
           "十",
-          "水"
+          "大"
         ],
         "keys": [
           "J",
-          "E"
+          "K"
         ],
-        "full": "十水 (JE)",
-        "secret": "丈：十水 (JE)"
+        "full": "十大 (JK)",
+        "secret": "丈：十大 (JK)"
       },
       {
         "char": "府",
         "codes": [
           "戈",
           "人",
-          "戈",
+          "木",
           "戈"
         ],
         "keys": [
           "I",
           "O",
-          "I",
+          "D",
           "I"
         ],
-        "full": "戈人戈戈 (IOII)",
-        "secret": "府：戈人戈戈 (IOII)"
+        "full": "戈人木戈 (IODI)",
+        "secret": "府：戈人木戈 (IODI)"
       },
       {
         "char": "車",
@@ -10375,16 +10421,18 @@ const MODE2_WEEKLY_BANKS = {
           "十",
           "金",
           "一",
+          "女",
           "竹"
         ],
         "keys": [
           "J",
           "C",
           "M",
+          "V",
           "H"
         ],
-        "full": "十金一竹 (JCMH)",
-        "secret": "穿：十金一竹 (JCMH)"
+        "full": "十金一女竹 (JCMVH)",
+        "secret": "穿：十金一女竹 (JCMVH)"
       },
       {
         "char": "窗",
@@ -10392,33 +10440,37 @@ const MODE2_WEEKLY_BANKS = {
           "十",
           "金",
           "竹",
-          "田"
+          "田",
+          "大"
         ],
         "keys": [
           "J",
           "C",
           "H",
-          "W"
+          "W",
+          "K"
         ],
-        "full": "十金竹田 (JCHW)",
-        "secret": "窗：十金竹田 (JCHW)"
+        "full": "十金竹田大 (JCHWK)",
+        "secret": "窗：十金竹田大 (JCHWK)"
       },
       {
         "char": "較",
         "codes": [
-          "卜",
+          "十",
           "十",
           "卜",
+          "金",
           "大"
         ],
         "keys": [
-          "Y",
+          "J",
           "J",
           "Y",
+          "C",
           "K"
         ],
-        "full": "卜十卜大 (YJYK)",
-        "secret": "較：卜十卜大 (YJYK)"
+        "full": "十十卜金大 (JJYCK)",
+        "secret": "較：十十卜金大 (JJYCK)"
       },
       {
         "char": "守",
@@ -10469,18 +10521,20 @@ const MODE2_WEEKLY_BANKS = {
         "char": "麵",
         "codes": [
           "十",
-          "人",
+          "弓",
           "一",
-          "田"
+          "田",
+          "中"
         ],
         "keys": [
           "J",
-          "O",
+          "N",
           "M",
-          "W"
+          "W",
+          "L"
         ],
-        "full": "十人一田 (JOMW)",
-        "secret": "麵：十人一田 (JOMW)"
+        "full": "十弓一田中 (JNMWL)",
+        "secret": "麵：十弓一田中 (JNMWL)"
       }
     ]
   },
@@ -10498,18 +10552,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "州",
         "codes": [
           "戈",
-          "弓",
+          "中",
           "戈",
           "中"
         ],
         "keys": [
           "I",
-          "N",
+          "L",
           "I",
           "L"
         ],
-        "full": "戈弓戈中 (INIL)",
-        "secret": "州：戈弓戈中 (INIL)"
+        "full": "戈中戈中 (ILIL)",
+        "secret": "州：戈中戈中 (ILIL)"
       },
       {
         "char": "蜜",
@@ -10549,20 +10603,20 @@ const MODE2_WEEKLY_BANKS = {
         "char": "飄",
         "codes": [
           "一",
-          "田",
+          "火",
           "竹",
-          "土",
+          "弓",
           "戈"
         ],
         "keys": [
           "M",
-          "W",
+          "F",
           "H",
-          "G",
+          "N",
           "I"
         ],
-        "full": "一田竹土戈 (MWHGI)",
-        "secret": "飄：一田竹土戈 (MWHGI)"
+        "full": "一火竹弓戈 (MFHNI)",
+        "secret": "飄：一火竹弓戈 (MFHNI)"
       },
       {
         "char": "犬",
@@ -10583,16 +10637,18 @@ const MODE2_WEEKLY_BANKS = {
           "大",
           "竹",
           "人",
-          "弓"
+          "弓",
+          "大"
         ],
         "keys": [
           "K",
           "H",
           "O",
-          "N"
+          "N",
+          "K"
         ],
-        "full": "大竹人弓 (KHON)",
-        "secret": "猴：大竹人弓 (KHON)"
+        "full": "大竹人弓大 (KHONK)",
+        "secret": "猴：大竹人弓大 (KHONK)"
       },
       {
         "char": "需",
@@ -10600,18 +10656,18 @@ const MODE2_WEEKLY_BANKS = {
           "一",
           "月",
           "一",
-          "中",
-          "月"
+          "月",
+          "中"
         ],
         "keys": [
           "M",
           "B",
           "M",
-          "L",
-          "B"
+          "B",
+          "L"
         ],
-        "full": "一月一中月 (MBMLB)",
-        "secret": "需：一月一中月 (MBMLB)"
+        "full": "一月一月中 (MBMBL)",
+        "secret": "需：一月一月中 (MBMBL)"
       },
       {
         "char": "而",
@@ -10650,17 +10706,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "戈",
           "木",
-          "竹",
+          "女",
           "戈"
         ],
         "keys": [
           "I",
           "D",
-          "H",
+          "V",
           "I"
         ],
-        "full": "戈木竹戈 (IDHI)",
-        "secret": "麼：戈木竹戈 (IDHI)"
+        "full": "戈木女戈 (IDVI)",
+        "secret": "麼：戈木女戈 (IDVI)"
       },
       {
         "char": "蜂",
@@ -10706,18 +10762,18 @@ const MODE2_WEEKLY_BANKS = {
           "十",
           "十",
           "十",
-          "弓",
+          "戈",
           "戈"
         ],
         "keys": [
           "J",
           "J",
           "J",
-          "N",
+          "I",
           "I"
         ],
-        "full": "十十十弓戈 (JJJNI)",
-        "secret": "轉：十十十弓戈 (JJJNI)"
+        "full": "十十十戈戈 (JJJII)",
+        "secret": "轉：十十十戈戈 (JJJII)"
       },
       {
         "char": "初",
@@ -10738,18 +10794,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "節",
         "codes": [
           "竹",
-          "廿",
-          "尸",
+          "日",
+          "戈",
           "中"
         ],
         "keys": [
           "H",
-          "T",
-          "S",
+          "A",
+          "I",
           "L"
         ],
-        "full": "竹廿尸中 (HTSL)",
-        "secret": "節：竹廿尸中 (HTSL)"
+        "full": "竹日戈中 (HAIL)",
+        "secret": "節：竹日戈中 (HAIL)"
       },
       {
         "char": "陽",
@@ -10757,16 +10813,18 @@ const MODE2_WEEKLY_BANKS = {
           "弓",
           "中",
           "日",
+          "一",
           "竹"
         ],
         "keys": [
           "N",
           "L",
           "A",
+          "M",
           "H"
         ],
-        "full": "弓中日竹 (NLAH)",
-        "secret": "陽：弓中日竹 (NLAH)"
+        "full": "弓中日一竹 (NLAMH)",
+        "secret": "陽：弓中日一竹 (NLAMH)"
       },
       {
         "char": "士",
@@ -10828,18 +10886,20 @@ const MODE2_WEEKLY_BANKS = {
         "char": "翅",
         "codes": [
           "十",
-          "人",
+          "水",
+          "尸",
           "一",
-          "口"
+          "一"
         ],
         "keys": [
           "J",
-          "O",
+          "E",
+          "S",
           "M",
-          "R"
+          "M"
         ],
-        "full": "十人一口 (JOMR)",
-        "secret": "翅：十人一口 (JOMR)"
+        "full": "十水尸一一 (JESMM)",
+        "secret": "翅：十水尸一一 (JESMM)"
       },
       {
         "char": "申",
@@ -10985,17 +11045,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "十",
-          "卜",
+          "廿",
           "一"
         ],
         "keys": [
           "H",
           "J",
-          "Y",
+          "T",
           "M"
         ],
-        "full": "竹十卜一 (HJYM)",
-        "secret": "垂：竹十卜一 (HJYM)"
+        "full": "竹十廿一 (HJTM)",
+        "secret": "垂：竹十廿一 (HJTM)"
       },
       {
         "char": "武",
@@ -11078,15 +11138,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "弓",
           "日",
+          "竹",
           "山"
         ],
         "keys": [
           "N",
           "A",
+          "H",
           "U"
         ],
-        "full": "弓日山 (NAU)",
-        "secret": "免：弓日山 (NAU)"
+        "full": "弓日竹山 (NAHU)",
+        "secret": "免：弓日竹山 (NAHU)"
       },
       {
         "char": "雨",
@@ -11192,20 +11254,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "馬",
         "codes": [
           "尸",
-          "火",
+          "手",
           "尸",
-          "人",
           "火"
         ],
         "keys": [
           "S",
-          "F",
+          "Q",
           "S",
-          "O",
           "F"
         ],
-        "full": "尸火尸人火 (SFSOF)",
-        "secret": "馬：尸火尸人火 (SFSOF)"
+        "full": "尸手尸火 (SQSF)",
+        "secret": "馬：尸手尸火 (SQSF)"
       },
       {
         "char": "兌",
@@ -11271,16 +11331,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "先",
         "codes": [
           "竹",
-          "山",
-          "土"
+          "土",
+          "竹",
+          "山"
         ],
         "keys": [
           "H",
-          "U",
-          "G"
+          "G",
+          "H",
+          "U"
         ],
-        "full": "竹山土 (HUG)",
-        "secret": "先：竹山土 (HUG)"
+        "full": "竹土竹山 (HGHU)",
+        "secret": "先：竹土竹山 (HGHU)"
       },
       {
         "char": "臣",
@@ -11319,15 +11381,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "一",
           "一",
+          "一",
           "女"
         ],
         "keys": [
           "M",
           "M",
+          "M",
           "V"
         ],
-        "full": "一一女 (MMV)",
-        "secret": "辰：一一女 (MMV)"
+        "full": "一一一女 (MMMV)",
+        "secret": "辰：一一一女 (MMMV)"
       },
       {
         "char": "其",
@@ -11349,17 +11413,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "十",
-          "卜",
+          "廿",
           "一"
         ],
         "keys": [
           "H",
           "J",
-          "Y",
+          "T",
           "M"
         ],
-        "full": "竹十卜一 (HJYM)",
-        "secret": "垂：竹十卜一 (HJYM)"
+        "full": "竹十廿一 (HJTM)",
+        "secret": "垂：竹十廿一 (HJTM)"
       },
       {
         "char": "乘",
@@ -11564,30 +11628,28 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "弓",
           "月",
-          "土",
-          "手"
+          "土"
         ],
         "keys": [
           "N",
           "B",
-          "G",
-          "Q"
+          "G"
         ],
-        "full": "弓月土手 (NBGQ)",
-        "secret": "角：弓月土手 (NBGQ)"
+        "full": "弓月土 (NBG)",
+        "secret": "角：弓月土 (NBG)"
       },
       {
         "char": "丈",
         "codes": [
           "十",
-          "水"
+          "大"
         ],
         "keys": [
           "J",
-          "E"
+          "K"
         ],
-        "full": "十水 (JE)",
-        "secret": "丈：十水 (JE)"
+        "full": "十大 (JK)",
+        "secret": "丈：十大 (JK)"
       },
       {
         "char": "夫",
@@ -11720,30 +11782,30 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "廿",
           "田",
-          "月",
-          "中"
+          "中",
+          "月"
         ],
         "keys": [
           "T",
           "W",
-          "B",
-          "L"
+          "L",
+          "B"
         ],
-        "full": "廿田月中 (TWBL)",
-        "secret": "萬：廿田月中 (TWBL)"
+        "full": "廿田中月 (TWLB)",
+        "secret": "萬：廿田中月 (TWLB)"
       },
       {
         "char": "丈",
         "codes": [
           "十",
-          "水"
+          "大"
         ],
         "keys": [
           "J",
-          "E"
+          "K"
         ],
-        "full": "十水 (JE)",
-        "secret": "丈：十水 (JE)"
+        "full": "十大 (JK)",
+        "secret": "丈：十大 (JK)"
       },
       {
         "char": "力",
@@ -11883,30 +11945,30 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "火",
-          "戈"
+          "木"
         ],
         "keys": [
           "H",
           "F",
-          "I"
+          "D"
         ],
-        "full": "竹火戈 (HFI)",
-        "secret": "乎：竹火戈 (HFI)"
+        "full": "竹火木 (HFD)",
+        "secret": "乎：竹火木 (HFD)"
       },
       {
         "char": "缶",
         "codes": [
-          "竹",
           "人",
-          "十"
+          "十",
+          "山"
         ],
         "keys": [
-          "H",
           "O",
-          "J"
+          "J",
+          "U"
         ],
-        "full": "竹人十 (HOJ)",
-        "secret": "缶：竹人十 (HOJ)"
+        "full": "人十山 (OJU)",
+        "secret": "缶：人十山 (OJU)"
       },
       {
         "char": "也",
@@ -11982,47 +12044,49 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "卜",
           "人",
-          "大",
-          "口"
+          "弓",
+          "大"
         ],
         "keys": [
           "Y",
           "O",
-          "K",
-          "R"
+          "N",
+          "K"
         ],
-        "full": "卜人大口 (YOKR)",
-        "secret": "夜：卜人大口 (YOKR)"
+        "full": "卜人弓大 (YONK)",
+        "secret": "夜：卜人弓大 (YONK)"
       },
       {
         "char": "匆",
         "codes": [
           "心",
-          "戈",
+          "大",
           "大"
         ],
         "keys": [
           "P",
-          "I",
+          "K",
           "K"
         ],
-        "full": "心戈大 (PIK)",
-        "secret": "匆：心戈大 (PIK)"
+        "full": "心大大 (PKK)",
+        "secret": "匆：心大大 (PKK)"
       },
       {
         "char": "囪",
         "codes": [
           "竹",
           "田",
+          "大",
           "大"
         ],
         "keys": [
           "H",
           "W",
+          "K",
           "K"
         ],
-        "full": "竹田大 (HWK)",
-        "secret": "囪：竹田大 (HWK)"
+        "full": "竹田大大 (HWKK)",
+        "secret": "囪：竹田大大 (HWKK)"
       },
       {
         "char": "由",
@@ -12151,15 +12215,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "大",
           "中",
+          "田",
           "山"
         ],
         "keys": [
           "K",
           "L",
+          "W",
           "U"
         ],
-        "full": "大中山 (KLU)",
-        "secret": "奄：大中山 (KLU)"
+        "full": "大中田山 (KLWU)",
+        "secret": "奄：大中田山 (KLWU)"
       },
       {
         "char": "淹",
@@ -12229,18 +12295,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "婁",
         "codes": [
           "中",
-          "中",
+          "田",
           "中",
           "女"
         ],
         "keys": [
           "L",
-          "L",
+          "W",
           "L",
           "V"
         ],
-        "full": "中中中女 (LLLV)",
-        "secret": "婁：中中中女 (LLLV)"
+        "full": "中田中女 (LWLV)",
+        "secret": "婁：中田中女 (LWLV)"
       },
       {
         "char": "縷",
@@ -12295,20 +12361,20 @@ const MODE2_WEEKLY_BANKS = {
         "char": "師",
         "codes": [
           "竹",
-          "中",
+          "口",
           "一",
           "中",
           "月"
         ],
         "keys": [
           "H",
-          "L",
+          "R",
           "M",
           "L",
           "B"
         ],
-        "full": "竹中一中月 (HLMLB)",
-        "secret": "師：竹中一中月 (HLMLB)"
+        "full": "竹口一中月 (HRMLB)",
+        "secret": "師：竹口一中月 (HRMLB)"
       },
       {
         "char": "永",
@@ -12341,14 +12407,14 @@ const MODE2_WEEKLY_BANKS = {
         "char": "羊",
         "codes": [
           "廿",
-          "土"
+          "手"
         ],
         "keys": [
           "T",
-          "G"
+          "Q"
         ],
-        "full": "廿土 (TG)",
-        "secret": "羊：廿土 (TG)"
+        "full": "廿手 (TQ)",
+        "secret": "羊：廿手 (TQ)"
       },
       {
         "char": "牢",
@@ -12395,14 +12461,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "扳",
         "codes": [
           "手",
+          "竹",
           "水"
         ],
         "keys": [
           "Q",
+          "H",
           "E"
         ],
-        "full": "手水 (QE)",
-        "secret": "扳：手水 (QE)"
+        "full": "手竹水 (QHE)",
+        "secret": "扳：手竹水 (QHE)"
       },
       {
         "char": "展",
@@ -12539,16 +12607,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "泵",
         "codes": [
           "一",
-          "水",
-          "口"
+          "口",
+          "水"
         ],
         "keys": [
           "M",
-          "E",
-          "R"
+          "R",
+          "E"
         ],
-        "full": "一水口 (MER)",
-        "secret": "泵：一水口 (MER)"
+        "full": "一口水 (MRE)",
+        "secret": "泵：一口水 (MRE)"
       },
       {
         "char": "屁",
@@ -12647,32 +12715,36 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "十",
           "金",
-          "卜",
+          "竹",
           "尸"
         ],
         "keys": [
           "J",
           "C",
-          "Y",
+          "H",
           "S"
         ],
-        "full": "十金卜尸 (JCYS)",
-        "secret": "窄：十金卜尸 (JCYS)"
+        "full": "十金竹尸 (JCHS)",
+        "secret": "窄：十金竹尸 (JCHS)"
       },
       {
         "char": "帚",
         "codes": [
           "尸",
-          "水",
+          "一",
+          "月",
+          "中",
           "月"
         ],
         "keys": [
           "S",
-          "E",
+          "M",
+          "B",
+          "L",
           "B"
         ],
-        "full": "尸水月 (SEB)",
-        "secret": "帚：尸水月 (SEB)"
+        "full": "尸一月中月 (SMBLB)",
+        "secret": "帚：尸一月中月 (SMBLB)"
       },
       {
         "char": "巨",
@@ -12790,18 +12862,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "逆",
         "codes": [
           "卜",
-          "山",
           "廿",
           "山"
         ],
         "keys": [
           "Y",
-          "U",
           "T",
           "U"
         ],
-        "full": "卜山廿山 (YUTU)",
-        "secret": "逆：卜山廿山 (YUTU)"
+        "full": "卜廿山 (YTU)",
+        "secret": "逆：卜廿山 (YTU)"
       },
       {
         "char": "以",
@@ -12821,17 +12891,17 @@ const MODE2_WEEKLY_BANKS = {
       {
         "char": "妄",
         "codes": [
+          "卜",
           "女",
-          "竹",
           "女"
         ],
         "keys": [
+          "Y",
           "V",
-          "H",
           "V"
         ],
-        "full": "女竹女 (VHV)",
-        "secret": "妄：女竹女 (VHV)"
+        "full": "卜女女 (YVV)",
+        "secret": "妄：卜女女 (YVV)"
       },
       {
         "char": "方",
@@ -13183,18 +13253,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "柬",
         "codes": [
           "木",
-          "竹",
           "田",
           "火"
         ],
         "keys": [
           "D",
-          "H",
           "W",
           "F"
         ],
-        "full": "木竹田火 (DHWF)",
-        "secret": "柬：木竹田火 (DHWF)"
+        "full": "木田火 (DWF)",
+        "secret": "柬：木田火 (DWF)"
       },
       {
         "char": "鍊",
@@ -13266,18 +13334,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "脊",
         "codes": [
           "火",
-          "月",
-          "口",
+          "金",
           "月"
         ],
         "keys": [
           "F",
-          "B",
-          "R",
+          "C",
           "B"
         ],
-        "full": "火月口月 (FBRB)",
-        "secret": "脊：火月口月 (FBRB)"
+        "full": "火金月 (FCB)",
+        "secret": "脊：火金月 (FCB)"
       },
       {
         "char": "夾",
@@ -13412,17 +13478,19 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "卜",
           "木",
-          "竹",
+          "月",
+          "山",
           "山"
         ],
         "keys": [
           "Y",
           "D",
-          "H",
+          "B",
+          "U",
           "U"
         ],
-        "full": "卜木竹山 (YDHU)",
-        "secret": "親：卜木竹山 (YDHU)"
+        "full": "卜木月山山 (YDBUU)",
+        "secret": "親：卜木月山山 (YDBUU)"
       },
       {
         "char": "看",
@@ -13480,38 +13548,36 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "弓",
           "中",
-          "一",
-          "尸",
+          "廿",
+          "心",
           "人"
         ],
         "keys": [
           "N",
           "L",
-          "M",
-          "S",
+          "T",
+          "P",
           "O"
         ],
-        "full": "弓中一尸人 (NLMSO)",
-        "secret": "隊：弓中一尸人 (NLMSO)"
+        "full": "弓中廿心人 (NLTPO)",
+        "secret": "隊：弓中廿心人 (NLTPO)"
       },
       {
         "char": "維",
         "codes": [
           "女",
           "火",
-          "女",
           "人",
           "土"
         ],
         "keys": [
           "V",
           "F",
-          "V",
           "O",
           "G"
         ],
-        "full": "女火女人土 (VFVOG)",
-        "secret": "維：女火女人土 (VFVOG)"
+        "full": "女火人土 (VFOG)",
+        "secret": "維：女火人土 (VFOG)"
       },
       {
         "char": "覺",
@@ -13519,18 +13585,18 @@ const MODE2_WEEKLY_BANKS = {
           "竹",
           "月",
           "月",
-          "人",
+          "山",
           "山"
         ],
         "keys": [
           "H",
           "B",
           "B",
-          "O",
+          "U",
           "U"
         ],
-        "full": "竹月月人山 (HBBOU)",
-        "secret": "覺：竹月月人山 (HBBOU)"
+        "full": "竹月月山山 (HBBUU)",
+        "secret": "覺：竹月月山山 (HBBUU)"
       },
       {
         "char": "附",
@@ -13574,16 +13640,20 @@ const MODE2_WEEKLY_BANKS = {
         "char": "郊",
         "codes": [
           "卜",
+          "金",
           "大",
-          "弓"
+          "弓",
+          "中"
         ],
         "keys": [
           "Y",
+          "C",
           "K",
-          "N"
+          "N",
+          "L"
         ],
-        "full": "卜大弓 (YKN)",
-        "secret": "郊：卜大弓 (YKN)"
+        "full": "卜金大弓中 (YCKNL)",
+        "secret": "郊：卜金大弓中 (YCKNL)"
       }
     ]
   },
@@ -13843,18 +13913,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "柬",
         "codes": [
           "木",
-          "竹",
           "田",
           "火"
         ],
         "keys": [
           "D",
-          "H",
           "W",
           "F"
         ],
-        "full": "木竹田火 (DHWF)",
-        "secret": "柬：木竹田火 (DHWF)"
+        "full": "木田火 (DWF)",
+        "secret": "柬：木田火 (DWF)"
       },
       {
         "char": "鍊",
@@ -13926,18 +13994,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "脊",
         "codes": [
           "火",
-          "月",
-          "口",
+          "金",
           "月"
         ],
         "keys": [
           "F",
-          "B",
-          "R",
+          "C",
           "B"
         ],
-        "full": "火月口月 (FBRB)",
-        "secret": "脊：火月口月 (FBRB)"
+        "full": "火金月 (FCB)",
+        "secret": "脊：火金月 (FCB)"
       },
       {
         "char": "夾",
@@ -14006,19 +14072,19 @@ const MODE2_WEEKLY_BANKS = {
       {
         "char": "寫",
         "codes": [
-          "月",
+          "十",
+          "竹",
           "難",
-          "卜",
           "火"
         ],
         "keys": [
-          "B",
+          "J",
+          "H",
           "X",
-          "Y",
           "F"
         ],
-        "full": "月難卜火 (BXYF)",
-        "secret": "寫：月難卜火 (BXYF)"
+        "full": "十竹難火 (JHXF)",
+        "secret": "寫：十竹難火 (JHXF)"
       },
       {
         "char": "兒",
@@ -14042,15 +14108,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "女",
           "中",
-          "難"
+          "難",
+          "竹"
         ],
         "keys": [
           "V",
           "L",
-          "X"
+          "X",
+          "H"
         ],
-        "full": "女中難 (VLX)",
-        "secret": "姊：女中難 (VLX)"
+        "full": "女中難竹 (VLXH)",
+        "secret": "姊：女中難竹 (VLXH)"
       },
       {
         "char": "鹿",
@@ -14103,16 +14171,16 @@ const MODE2_WEEKLY_BANKS = {
           "手",
           "竹",
           "十",
-          "中"
+          "難"
         ],
         "keys": [
           "Q",
           "H",
           "J",
-          "L"
+          "X"
         ],
-        "full": "手竹十中 (QHJL)",
-        "secret": "插：手竹十中 (QHJL)"
+        "full": "手竹十難 (QHJX)",
+        "secret": "插：手竹十難 (QHJX)"
       },
       {
         "char": "嫂",
@@ -14151,17 +14219,19 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "木",
+          "月",
           "竹",
           "難"
         ],
         "keys": [
           "H",
           "D",
+          "B",
           "H",
           "X"
         ],
-        "full": "竹木竹難 (HDHX)",
-        "secret": "稻：竹木竹難 (HDHX)"
+        "full": "竹木月竹難 (HDBHX)",
+        "secret": "稻：竹木月竹難 (HDBHX)"
       },
       {
         "char": "興",
@@ -14185,17 +14255,15 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "手",
           "卜",
-          "難",
-          "中"
+          "難"
         ],
         "keys": [
           "Q",
           "Y",
-          "X",
-          "L"
+          "X"
         ],
-        "full": "手卜難中 (QYXL)",
-        "secret": "擠：手卜難中 (QYXL)"
+        "full": "手卜難 (QYX)",
+        "secret": "擠：手卜難 (QYX)"
       },
       {
         "char": "舊",
@@ -14218,16 +14286,18 @@ const MODE2_WEEKLY_BANKS = {
           "女",
           "火",
           "口",
-          "難"
+          "難",
+          "山"
         ],
         "keys": [
           "V",
           "F",
           "R",
-          "X"
+          "X",
+          "U"
         ],
-        "full": "女火口難 (VFRX)",
-        "secret": "繩：女火口難 (VFRX)"
+        "full": "女火口難山 (VFRXU)",
+        "secret": "繩：女火口難山 (VFRXU)"
       },
       {
         "char": "蠅",
@@ -14268,17 +14338,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "月",
           "火",
-          "火",
-          "手"
+          "手",
+          "尸"
         ],
         "keys": [
           "B",
           "F",
-          "F",
-          "Q"
+          "Q",
+          "S"
         ],
-        "full": "月火火手 (BFFQ)",
-        "secret": "勝：月火火手 (BFFQ)"
+        "full": "月火手尸 (BFQS)",
+        "secret": "勝：月火手尸 (BFQS)"
       },
       {
         "char": "問",
@@ -14317,15 +14387,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "大",
           "戈",
+          "人",
           "土"
         ],
         "keys": [
           "K",
           "I",
+          "O",
           "G"
         ],
-        "full": "大戈土 (KIG)",
-        "secret": "雄：大戈土 (KIG)"
+        "full": "大戈人土 (KIOG)",
+        "secret": "雄：大戈人土 (KIOG)"
       },
       {
         "char": "進",
@@ -14457,47 +14529,51 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "廿",
           "戈",
-          "中",
+          "難",
           "火"
         ],
         "keys": [
           "T",
           "I",
-          "L",
+          "X",
           "F"
         ],
-        "full": "廿戈中火 (TILF)",
-        "secret": "薦：廿戈中火 (TILF)"
+        "full": "廿戈難火 (TIXF)",
+        "secret": "薦：廿戈難火 (TIXF)"
       },
       {
         "char": "姊",
         "codes": [
           "女",
           "中",
-          "難"
+          "難",
+          "竹"
         ],
         "keys": [
           "V",
           "L",
-          "X"
+          "X",
+          "H"
         ],
-        "full": "女中難 (VLX)",
-        "secret": "姊：女中難 (VLX)"
+        "full": "女中難竹 (VLXH)",
+        "secret": "姊：女中難竹 (VLXH)"
       },
       {
         "char": "淵",
         "codes": [
           "水",
+          "中",
           "難",
-          "十"
+          "中"
         ],
         "keys": [
           "E",
+          "L",
           "X",
-          "J"
+          "L"
         ],
-        "full": "水難十 (EXJ)",
-        "secret": "淵：水難十 (EXJ)"
+        "full": "水中難中 (ELXL)",
+        "secret": "淵：水中難中 (ELXL)"
       },
       {
         "char": "肅",
@@ -14516,16 +14592,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "鏽",
         "codes": [
           "金",
-          "難",
-          "中"
+          "中",
+          "難"
         ],
         "keys": [
           "C",
-          "X",
-          "L"
+          "L",
+          "X"
         ],
-        "full": "金難中 (CXL)",
-        "secret": "鏽：金難中 (CXL)"
+        "full": "金中難 (CLX)",
+        "secret": "鏽：金中難 (CLX)"
       },
       {
         "char": "繩",
@@ -14533,16 +14609,18 @@ const MODE2_WEEKLY_BANKS = {
           "女",
           "火",
           "口",
-          "難"
+          "難",
+          "山"
         ],
         "keys": [
           "V",
           "F",
           "R",
-          "X"
+          "X",
+          "U"
         ],
-        "full": "女火口難 (VFRX)",
-        "secret": "繩：女火口難 (VFRX)"
+        "full": "女火口難山 (VFRXU)",
+        "secret": "繩：女火口難山 (VFRXU)"
       },
       {
         "char": "蠅",
@@ -14789,18 +14867,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "簫",
         "codes": [
           "竹",
-          "廿",
           "中",
           "難"
         ],
         "keys": [
           "H",
-          "T",
           "L",
           "X"
         ],
-        "full": "竹廿中難 (HTLX)",
-        "secret": "簫：竹廿中難 (HTLX)"
+        "full": "竹中難 (HLX)",
+        "secret": "簫：竹中難 (HLX)"
       },
       {
         "char": "霽",
@@ -14837,17 +14913,15 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "手",
           "卜",
-          "難",
-          "中"
+          "難"
         ],
         "keys": [
           "Q",
           "Y",
-          "X",
-          "L"
+          "X"
         ],
-        "full": "手卜難中 (QYXL)",
-        "secret": "擠：手卜難中 (QYXL)"
+        "full": "手卜難 (QYX)",
+        "secret": "擠：手卜難 (QYX)"
       },
       {
         "char": "劑",
@@ -14871,34 +14945,30 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "卜",
           "難",
-          "卜",
-          "金"
+          "火"
         ],
         "keys": [
           "Y",
           "X",
-          "Y",
-          "C"
+          "F"
         ],
-        "full": "卜難卜金 (YXYC)",
-        "secret": "齋：卜難卜金 (YXYC)"
+        "full": "卜難火 (YXF)",
+        "secret": "齋：卜難火 (YXF)"
       },
       {
         "char": "濟",
         "codes": [
           "水",
           "卜",
-          "難",
-          "中"
+          "難"
         ],
         "keys": [
           "E",
           "Y",
-          "X",
-          "L"
+          "X"
         ],
-        "full": "水卜難中 (EYXL)",
-        "secret": "濟：水卜難中 (EYXL)"
+        "full": "水卜難 (EYX)",
+        "secret": "濟：水卜難 (EYX)"
       },
       {
         "char": "盥",
@@ -14953,67 +15023,75 @@ const MODE2_WEEKLY_BANKS = {
         "char": "樁",
         "codes": [
           "木",
-          "土",
-          "金"
+          "手",
+          "大",
+          "難"
         ],
         "keys": [
           "D",
-          "G",
-          "C"
+          "Q",
+          "K",
+          "X"
         ],
-        "full": "木土金 (DGC)",
-        "secret": "樁：木土金 (DGC)"
+        "full": "木手大難 (DQKX)",
+        "secret": "樁：木手大難 (DQKX)"
       },
       {
         "char": "鼠",
         "codes": [
           "竹",
           "難",
-          "竹",
+          "女",
+          "卜",
           "女"
         ],
         "keys": [
           "H",
           "X",
-          "H",
+          "V",
+          "Y",
           "V"
         ],
-        "full": "竹難竹女 (HXHV)",
-        "secret": "鼠：竹難竹女 (HXHV)"
+        "full": "竹難女卜女 (HXVYV)",
+        "secret": "鼠：竹難女卜女 (HXVYV)"
       },
       {
         "char": "稻",
         "codes": [
           "竹",
           "木",
+          "月",
           "竹",
           "難"
         ],
         "keys": [
           "H",
           "D",
+          "B",
           "H",
           "X"
         ],
-        "full": "竹木竹難 (HDHX)",
-        "secret": "稻：竹木竹難 (HDHX)"
+        "full": "竹木月竹難 (HDBHX)",
+        "secret": "稻：竹木月竹難 (HDBHX)"
       },
       {
         "char": "諂",
         "codes": [
           "卜",
           "口",
+          "弓",
           "竹",
           "難"
         ],
         "keys": [
           "Y",
           "R",
+          "N",
           "H",
           "X"
         ],
-        "full": "卜口竹難 (YRHX)",
-        "secret": "諂：卜口竹難 (YRHX)"
+        "full": "卜口弓竹難 (YRNHX)",
+        "secret": "諂：卜口弓竹難 (YRNHX)"
       },
       {
         "char": "插",
@@ -15021,16 +15099,16 @@ const MODE2_WEEKLY_BANKS = {
           "手",
           "竹",
           "十",
-          "中"
+          "難"
         ],
         "keys": [
           "Q",
           "H",
           "J",
-          "L"
+          "X"
         ],
-        "full": "手竹十中 (QHJL)",
-        "secret": "插：手竹十中 (QHJL)"
+        "full": "手竹十難 (QHJX)",
+        "secret": "插：手竹十難 (QHJX)"
       },
       {
         "char": "焰",
@@ -15052,19 +15130,19 @@ const MODE2_WEEKLY_BANKS = {
       {
         "char": "寫",
         "codes": [
-          "月",
+          "十",
+          "竹",
           "難",
-          "卜",
           "火"
         ],
         "keys": [
-          "B",
+          "J",
+          "H",
           "X",
-          "Y",
           "F"
         ],
-        "full": "月難卜火 (BXYF)",
-        "secret": "寫：月難卜火 (BXYF)"
+        "full": "十竹難火 (JHXF)",
+        "secret": "寫：十竹難火 (JHXF)"
       },
       {
         "char": "舂",
@@ -15086,15 +15164,19 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "難",
+          "十",
+          "田",
           "金"
         ],
         "keys": [
           "H",
           "X",
+          "J",
+          "W",
           "C"
         ],
-        "full": "竹難金 (HXC)",
-        "secret": "輿：竹難金 (HXC)"
+        "full": "竹難十田金 (HXJWC)",
+        "secret": "輿：竹難十田金 (HXJWC)"
       }
     ]
   },
@@ -15167,16 +15249,18 @@ const MODE2_WEEKLY_BANKS = {
           "一",
           "月",
           "廿",
-          "十"
+          "十",
+          "月"
         ],
         "keys": [
           "M",
           "B",
           "T",
-          "J"
+          "J",
+          "B"
         ],
-        "full": "一月廿十 (MBTJ)",
-        "secret": "霸：一月廿十 (MBTJ)"
+        "full": "一月廿十月 (MBTJB)",
+        "secret": "霸：一月廿十月 (MBTJB)"
       },
       {
         "char": "靈",
@@ -15185,34 +15269,34 @@ const MODE2_WEEKLY_BANKS = {
           "月",
           "口",
           "口",
-          "人"
+          "一"
         ],
         "keys": [
           "M",
           "B",
           "R",
           "R",
-          "O"
+          "M"
         ],
-        "full": "一月口口人 (MBRRO)",
-        "secret": "靈：一月口口人 (MBRRO)"
+        "full": "一月口口一 (MBRRM)",
+        "secret": "靈：一月口口一 (MBRRM)"
       },
       {
         "char": "浙",
         "codes": [
           "水",
+          "手",
           "竹",
-          "一",
           "中"
         ],
         "keys": [
           "E",
+          "Q",
           "H",
-          "M",
           "L"
         ],
-        "full": "水竹一中 (EHML)",
-        "secret": "浙：水竹一中 (EHML)"
+        "full": "水手竹中 (EQHL)",
+        "secret": "浙：水手竹中 (EQHL)"
       },
       {
         "char": "概",
@@ -15236,15 +15320,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "土",
           "戈",
+          "大",
           "尸"
         ],
         "keys": [
           "G",
           "I",
+          "K",
           "S"
         ],
-        "full": "土戈尸 (GIS)",
-        "secret": "勢：土戈尸 (GIS)"
+        "full": "土戈大尸 (GIKS)",
+        "secret": "勢：土戈大尸 (GIKS)"
       },
       {
         "char": "甫",
@@ -15280,20 +15366,20 @@ const MODE2_WEEKLY_BANKS = {
         "char": "甥",
         "codes": [
           "竹",
-          "尸",
-          "竹",
-          "手",
-          "一"
+          "一",
+          "田",
+          "大",
+          "尸"
         ],
         "keys": [
           "H",
-          "S",
-          "H",
-          "Q",
-          "M"
+          "M",
+          "W",
+          "K",
+          "S"
         ],
-        "full": "竹尸竹手一 (HSHQM)",
-        "secret": "甥：竹尸竹手一 (HSHQM)"
+        "full": "竹一田大尸 (HMWKS)",
+        "secret": "甥：竹一田大尸 (HMWKS)"
       },
       {
         "char": "盈",
@@ -15315,21 +15401,21 @@ const MODE2_WEEKLY_BANKS = {
       {
         "char": "颺",
         "codes": [
-          "日",
+          "竹",
           "弓",
           "日",
           "一",
           "竹"
         ],
         "keys": [
-          "A",
+          "H",
           "N",
           "A",
           "M",
           "H"
         ],
-        "full": "日弓日一竹 (ANAMH)",
-        "secret": "颺：日弓日一竹 (ANAMH)"
+        "full": "竹弓日一竹 (HNAMH)",
+        "secret": "颺：竹弓日一竹 (HNAMH)"
       },
       {
         "char": "稿",
@@ -15386,35 +15472,33 @@ const MODE2_WEEKLY_BANKS = {
         "char": "柬",
         "codes": [
           "木",
-          "竹",
           "田",
           "火"
         ],
         "keys": [
           "D",
-          "H",
           "W",
           "F"
         ],
-        "full": "木竹田火 (DHWF)",
-        "secret": "柬：木竹田火 (DHWF)"
+        "full": "木田火 (DWF)",
+        "secret": "柬：木田火 (DWF)"
       },
       {
         "char": "勝",
         "codes": [
           "月",
           "火",
-          "火",
-          "手"
+          "手",
+          "尸"
         ],
         "keys": [
           "B",
           "F",
-          "F",
-          "Q"
+          "Q",
+          "S"
         ],
-        "full": "月火火手 (BFFQ)",
-        "secret": "勝：月火火手 (BFFQ)"
+        "full": "月火手尸 (BFQS)",
+        "secret": "勝：月火手尸 (BFQS)"
       },
       {
         "char": "魑",
@@ -15440,49 +15524,55 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "日",
+          "卜",
+          "竹",
           "女"
         ],
         "keys": [
           "H",
           "A",
+          "Y",
+          "H",
           "V"
         ],
-        "full": "竹日女 (HAV)",
-        "secret": "裊：竹日女 (HAV)"
+        "full": "竹日卜竹女 (HAYHV)",
+        "secret": "裊：竹日卜竹女 (HAYHV)"
       },
       {
         "char": "髮",
         "codes": [
           "尸",
           "竹",
-          "金",
+          "戈",
           "大",
-          "水"
+          "大"
         ],
         "keys": [
           "S",
           "H",
-          "C",
+          "I",
           "K",
-          "E"
+          "K"
         ],
-        "full": "尸竹金大水 (SHCKE)",
-        "secret": "髮：尸竹金大水 (SHCKE)"
+        "full": "尸竹戈大大 (SHIKK)",
+        "secret": "髮：尸竹戈大大 (SHIKK)"
       },
       {
         "char": "雄",
         "codes": [
           "大",
           "戈",
+          "人",
           "土"
         ],
         "keys": [
           "K",
           "I",
+          "O",
           "G"
         ],
-        "full": "大戈土 (KIG)",
-        "secret": "雄：大戈土 (KIG)"
+        "full": "大戈人土 (KIOG)",
+        "secret": "雄：大戈人土 (KIOG)"
       },
       {
         "char": "嫌",
@@ -15542,15 +15632,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "十",
           "廿",
+          "月",
           "金"
         ],
         "keys": [
           "J",
           "T",
+          "B",
           "C"
         ],
-        "full": "十廿金 (JTC)",
-        "secret": "賽：十廿金 (JTC)"
+        "full": "十廿月金 (JTBC)",
+        "secret": "賽：十廿月金 (JTBC)"
       },
       {
         "char": "轟",
@@ -15593,32 +15685,36 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "人",
           "中",
+          "人",
           "木"
         ],
         "keys": [
           "O",
           "L",
+          "O",
           "D"
         ],
-        "full": "人中木 (OLD)",
-        "secret": "條：人中木 (OLD)"
+        "full": "人中人木 (OLOD)",
+        "secret": "條：人中人木 (OLOD)"
       },
       {
         "char": "翻",
         "codes": [
           "竹",
-          "木",
           "田",
-          "尸"
+          "尸",
+          "一",
+          "一"
         ],
         "keys": [
           "H",
-          "D",
           "W",
-          "S"
+          "S",
+          "M",
+          "M"
         ],
-        "full": "竹木田尸 (HDWS)",
-        "secret": "翻：竹木田尸 (HDWS)"
+        "full": "竹田尸一一 (HWSMM)",
+        "secret": "翻：竹田尸一一 (HWSMM)"
       },
       {
         "char": "到",
@@ -15708,17 +15804,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "人",
           "口",
-          "尸",
+          "卜",
           "水"
         ],
         "keys": [
           "O",
           "R",
-          "S",
+          "Y",
           "E"
         ],
-        "full": "人口尸水 (ORSE)",
-        "secret": "假：人口尸水 (ORSE)"
+        "full": "人口卜水 (ORYE)",
+        "secret": "假：人口卜水 (ORYE)"
       },
       {
         "char": "游",
@@ -15742,19 +15838,19 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "口",
           "一",
-          "山",
-          "戈",
-          "一"
+          "中",
+          "一",
+          "人"
         ],
         "keys": [
           "R",
           "M",
-          "U",
-          "I",
-          "M"
+          "L",
+          "M",
+          "O"
         ],
-        "full": "口一山戈一 (RMUIM)",
-        "secret": "跳：口一山戈一 (RMUIM)"
+        "full": "口一中一人 (RMLMO)",
+        "secret": "跳：口一中一人 (RMLMO)"
       },
       {
         "char": "蝴",
@@ -15813,33 +15909,35 @@ const MODE2_WEEKLY_BANKS = {
           "竹",
           "人",
           "山",
+          "土",
           "大"
         ],
         "keys": [
           "H",
           "O",
           "U",
+          "G",
           "K"
         ],
-        "full": "竹人山大 (HOUK)",
-        "secret": "徵：竹人山大 (HOUK)"
+        "full": "竹人山土大 (HOUGK)",
+        "secret": "徵：竹人山土大 (HOUGK)"
       },
       {
         "char": "制",
         "codes": [
           "竹",
-          "弓",
+          "月",
           "中",
           "弓"
         ],
         "keys": [
           "H",
-          "N",
+          "B",
           "L",
           "N"
         ],
-        "full": "竹弓中弓 (HNLN)",
-        "secret": "制：竹弓中弓 (HNLN)"
+        "full": "竹月中弓 (HBLN)",
+        "secret": "制：竹月中弓 (HBLN)"
       },
       {
         "char": "鄉",
@@ -15847,16 +15945,18 @@ const MODE2_WEEKLY_BANKS = {
           "女",
           "竹",
           "戈",
+          "戈",
           "中"
         ],
         "keys": [
           "V",
           "H",
           "I",
+          "I",
           "L"
         ],
-        "full": "女竹戈中 (VHIL)",
-        "secret": "鄉：女竹戈中 (VHIL)"
+        "full": "女竹戈戈中 (VHIIL)",
+        "secret": "鄉：女竹戈戈中 (VHIIL)"
       },
       {
         "char": "划",
@@ -15928,16 +16028,16 @@ const MODE2_WEEKLY_BANKS = {
           "卜",
           "竹",
           "女",
-          "弓"
+          "中"
         ],
         "keys": [
           "Y",
           "H",
           "V",
-          "N"
+          "L"
         ],
-        "full": "卜竹女弓 (YHVN)",
-        "secret": "迎：卜竹女弓 (YHVN)"
+        "full": "卜竹女中 (YHVL)",
+        "secret": "迎：卜竹女中 (YHVL)"
       }
     ]
   },
@@ -15968,14 +16068,14 @@ const MODE2_WEEKLY_BANKS = {
         "char": "羊",
         "codes": [
           "廿",
-          "土"
+          "手"
         ],
         "keys": [
           "T",
-          "G"
+          "Q"
         ],
-        "full": "廿土 (TG)",
-        "secret": "羊：廿土 (TG)"
+        "full": "廿手 (TQ)",
+        "secret": "羊：廿手 (TQ)"
       },
       {
         "char": "牢",
@@ -16035,17 +16135,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "廿",
           "田",
-          "月",
-          "中"
+          "中",
+          "月"
         ],
         "keys": [
           "T",
           "W",
-          "B",
-          "L"
+          "L",
+          "B"
         ],
-        "full": "廿田月中 (TWBL)",
-        "secret": "萬：廿田月中 (TWBL)"
+        "full": "廿田中月 (TWLB)",
+        "secret": "萬：廿田中月 (TWLB)"
       },
       {
         "char": "力",
@@ -16064,29 +16164,31 @@ const MODE2_WEEKLY_BANKS = {
         "char": "丈",
         "codes": [
           "十",
-          "水"
+          "大"
         ],
         "keys": [
           "J",
-          "E"
+          "K"
         ],
-        "full": "十水 (JE)",
-        "secret": "丈：十水 (JE)"
+        "full": "十大 (JK)",
+        "secret": "丈：十大 (JK)"
       },
       {
         "char": "步",
         "codes": [
           "卜",
           "中",
-          "木"
+          "一",
+          "竹"
         ],
         "keys": [
           "Y",
           "L",
-          "D"
+          "M",
+          "H"
         ],
-        "full": "卜中木 (YLD)",
-        "secret": "步：卜中木 (YLD)"
+        "full": "卜中一竹 (YLMH)",
+        "secret": "步：卜中一竹 (YLMH)"
       },
       {
         "char": "吏",
@@ -16122,16 +16224,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "巧",
         "codes": [
           "一",
+          "一",
           "女",
           "尸"
         ],
         "keys": [
           "M",
+          "M",
           "V",
           "S"
         ],
-        "full": "一女尸 (MVS)",
-        "secret": "巧：一女尸 (MVS)"
+        "full": "一一女尸 (MMVS)",
+        "secret": "巧：一一女尸 (MMVS)"
       },
       {
         "char": "功",
@@ -16261,18 +16365,18 @@ const MODE2_WEEKLY_BANKS = {
         "char": "圖",
         "codes": [
           "田",
-          "田",
+          "口",
           "卜",
-          "火"
+          "田"
         ],
         "keys": [
           "W",
-          "W",
+          "R",
           "Y",
-          "F"
+          "W"
         ],
-        "full": "田田卜火 (WWYF)",
-        "secret": "圖：田田卜火 (WWYF)"
+        "full": "田口卜田 (WRYW)",
+        "secret": "圖：田口卜田 (WRYW)"
       },
       {
         "char": "滴",
@@ -16280,33 +16384,35 @@ const MODE2_WEEKLY_BANKS = {
           "水",
           "卜",
           "金",
+          "口",
           "月"
         ],
         "keys": [
           "E",
           "Y",
           "C",
+          "R",
           "B"
         ],
-        "full": "水卜金月 (EYCB)",
-        "secret": "滴：水卜金月 (EYCB)"
+        "full": "水卜金口月 (EYCRB)",
+        "secret": "滴：水卜金口月 (EYCRB)"
       },
       {
         "char": "瓶",
         "codes": [
           "廿",
-          "十",
           "一",
-          "弓"
+          "一",
+          "女"
         ],
         "keys": [
           "T",
-          "J",
           "M",
-          "N"
+          "M",
+          "V"
         ],
-        "full": "廿十一弓 (TJMN)",
-        "secret": "瓶：廿十一弓 (TJMN)"
+        "full": "廿一一女 (TMMV)",
+        "secret": "瓶：廿一一女 (TMMV)"
       },
       {
         "char": "喝",
@@ -16346,20 +16452,20 @@ const MODE2_WEEKLY_BANKS = {
         "char": "齡",
         "codes": [
           "卜",
-          "金",
+          "山",
           "人",
           "戈",
           "戈"
         ],
         "keys": [
           "Y",
-          "C",
+          "U",
           "O",
           "I",
           "I"
         ],
-        "full": "卜金人戈戈 (YCOII)",
-        "secret": "齡：卜金人戈戈 (YCOII)"
+        "full": "卜山人戈戈 (YUOII)",
+        "secret": "齡：卜山人戈戈 (YUOII)"
       },
       {
         "char": "痛",
@@ -16384,50 +16490,54 @@ const MODE2_WEEKLY_BANKS = {
           "一",
           "月",
           "一",
-          "中",
-          "月"
+          "月",
+          "中"
         ],
         "keys": [
           "M",
           "B",
           "M",
-          "L",
-          "B"
+          "B",
+          "L"
         ],
-        "full": "一月一中月 (MBMLB)",
-        "secret": "需：一月一中月 (MBMLB)"
+        "full": "一月一月中 (MBMBL)",
+        "secret": "需：一月一月中 (MBMBL)"
       },
       {
         "char": "敵",
         "codes": [
           "卜",
-          "口",
+          "月",
           "人",
           "大"
         ],
         "keys": [
           "Y",
-          "R",
+          "B",
           "O",
           "K"
         ],
-        "full": "卜口人大 (YROK)",
-        "secret": "敵：卜口人大 (YROK)"
+        "full": "卜月人大 (YBOK)",
+        "secret": "敵：卜月人大 (YBOK)"
       },
       {
         "char": "總",
         "codes": [
+          "女",
+          "火",
           "竹",
-          "口",
+          "田",
           "心"
         ],
         "keys": [
+          "V",
+          "F",
           "H",
-          "R",
+          "W",
           "P"
         ],
-        "full": "竹口心 (HRP)",
-        "secret": "總：竹口心 (HRP)"
+        "full": "女火竹田心 (VFHWP)",
+        "secret": "總：女火竹田心 (VFHWP)"
       },
       {
         "char": "為",
@@ -16515,15 +16625,17 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "竹",
           "日",
+          "卜",
           "火"
         ],
         "keys": [
           "H",
           "A",
+          "Y",
           "F"
         ],
-        "full": "竹日火 (HAF)",
-        "secret": "鳥：竹日火 (HAF)"
+        "full": "竹日卜火 (HAYF)",
+        "secret": "鳥：竹日卜火 (HAYF)"
       },
       {
         "char": "央",
@@ -16709,32 +16821,36 @@ const MODE2_WEEKLY_BANKS = {
         "codes": [
           "人",
           "中",
+          "人",
           "木"
         ],
         "keys": [
           "O",
           "L",
+          "O",
           "D"
         ],
-        "full": "人中木 (OLD)",
-        "secret": "條：人中木 (OLD)"
+        "full": "人中人木 (OLOD)",
+        "secret": "條：人中人木 (OLOD)"
       },
       {
         "char": "翻",
         "codes": [
           "竹",
-          "木",
           "田",
-          "尸"
+          "尸",
+          "一",
+          "一"
         ],
         "keys": [
           "H",
-          "D",
           "W",
-          "S"
+          "S",
+          "M",
+          "M"
         ],
-        "full": "竹木田尸 (HDWS)",
-        "secret": "翻：竹木田尸 (HDWS)"
+        "full": "竹田尸一一 (HWSMM)",
+        "secret": "翻：竹田尸一一 (HWSMM)"
       },
       {
         "char": "地",
@@ -16754,3 +16870,7 @@ const MODE2_WEEKLY_BANKS = {
     ]
   }
 };
+
+if (typeof window !== "undefined") {
+  window.MODE2_WEEKLY_BANKS = MODE2_WEEKLY_BANKS;
+}
