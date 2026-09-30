@@ -2742,11 +2742,31 @@
                 <div style="text-align: left;">
                   <label style="display: block; font-size: 11.5px; font-weight: 800; color: #94A3B8; margin-bottom: 4px;">📅 周次字庫</label>
                   <select id="speed-ready-week-select" onchange="onSpeedSettingChange()" style="background: #1E293B; color: #F8FAFC; border: 1.5px solid #475569; padding: 7px 14px; border-radius: 10px; font-size: 13px; font-weight: 800; cursor: pointer;">
-              <option value="w4_hw1" selected>第4周功課1</option>
-              <option value="w4_hw2">第4周功課2</option>
-              <option value="w4_hw3">第4周功課3</option>
-              <option value="w4_hw4">第4周功課4</option>
-            </select>
+                    <optgroup label="🔥 第 5 周 倉頡手速字庫 (當前進行中)">
+                      <option value="w5_hw1" selected>第5周功課1 (難字X鍵全套精選特訓)</option>
+                      <option value="w5_hw2">第5周功課2 (九大複合字全套精選特訓)</option>
+                      <option value="w5_hw3">第5周功課3 (三代倉頡特殊字與多碼挑戰)</option>
+                      <option value="w5_hw4">第5周功課4 (小學升中全碼綜合魔王挑戰)</option>
+                    </optgroup>
+                    <optgroup label="📅 第 4 周 倉頡手速字庫 (溫故知新)">
+                      <option value="w4_hw1">第4周功課1</option>
+                      <option value="w4_hw2">第4周功課2</option>
+                      <option value="w4_hw3">第4周功課3</option>
+                      <option value="w4_hw4">第4周功課4</option>
+                    </optgroup>
+                    <optgroup label="📅 第 3 周 倉頡手速字庫 (溫故知新)">
+                      <option value="w3_hw1">第3周功課1</option>
+                      <option value="w3_hw2">第3周功課2</option>
+                      <option value="w3_hw3">第3周功課3</option>
+                      <option value="w3_hw4">第3周功課4</option>
+                    </optgroup>
+                    <optgroup label="📅 第 2 周 倉頡手速字庫 (溫故知新)">
+                      <option value="w2_hw1">第2周功課1</option>
+                      <option value="w2_hw2">第2周功課2</option>
+                      <option value="w2_hw3">第2周功課3</option>
+                      <option value="w2_hw4">第2周功課4</option>
+                    </optgroup>
+                  </select>
                 </div>
 
                 <!-- 模式切換 -->
@@ -3105,18 +3125,47 @@
 
       
       <!-- ⚡ 手速榜專用子導航：題量與周次篩選器 (只在切換到手速榜時顯示) -->
-      <div id="speed-lb-sub-filters" style="display: none; margin-bottom: 10px;">
-
-        <div class="speed-lb-filter-row">
-          <span style="font-size: 12px; font-weight: 800; color: #475569;">📅 周次功課：</span>
-          <div id="speed-lb-week-buttons" style="display:inline-flex; gap:6px; flex-wrap:wrap;">
-            <button class="lb-sub-pill active" id="lb-week-w4_hw1" onclick="filterSpeedLeaderboardWeek('w4_hw1')">第4周功課1</button>
-            <button class="lb-sub-pill" id="lb-week-w4_hw2" onclick="filterSpeedLeaderboardWeek('w4_hw2')">第4周功課2</button>
-            <button class="lb-sub-pill" id="lb-week-w4_hw3" onclick="filterSpeedLeaderboardWeek('w4_hw3')">第4周功課3</button>
-            <button class="lb-sub-pill" id="lb-week-w4_hw4" onclick="filterSpeedLeaderboardWeek('w4_hw4')">第4周功課4</button>
+            <!-- ⚡ 手速榜專用子導航：全周次功課下拉選單 (六年級純 10 字秒數天梯) -->
+      <div id="speed-lb-sub-filters" style="display: none; margin-bottom: 12px; background: #F8FAFC; border: 1.5px solid #CBD5E1; padding: 10px 14px; border-radius: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 13px; font-weight: 800; color: #1E3A8A;">📅 查閱周次手速天梯榜：</span>
+            <select id="speed-lb-week-select" onchange="filterSpeedLeaderboardWeek(this.value)" style="background: #FFFFFF; color: #0F172A; border: 2px solid #2563EB; padding: 7px 14px; border-radius: 8px; font-size: 13.5px; font-weight: 800; cursor: pointer; outline: none; box-shadow: 0 2px 4px rgba(37,99,235,0.1);">
+              <optgroup label="🏆 全期生涯總覽">
+                <option value="ALL">🌟 全期 10 字個人最佳極速總榜 (生涯最佳)</option>
+              </optgroup>
+              <optgroup label="🔥 第 5 周 倉頡手速賽 (當前進行中)">
+                <option value="w5_hw1" selected>第5周功課1 (難字X鍵全套精選特訓)</option>
+                <option value="w5_hw2">第5周功課2 (九大複合字全套精選特訓)</option>
+                <option value="w5_hw3">第5周功課3 (三代倉頡特殊字與多碼挑戰)</option>
+                <option value="w5_hw4">第5周功課4 (小學升中全碼綜合魔王挑戰)</option>
+              </optgroup>
+              <optgroup label="📅 第 4 周 倉頡手速賽 (過往記錄)">
+                <option value="w4_hw1">第4周功課1</option>
+                <option value="w4_hw2">第4周功課2</option>
+                <option value="w4_hw3">第4周功課3</option>
+                <option value="w4_hw4">第4周功課4</option>
+              </optgroup>
+              <optgroup label="📅 第 3 周 倉頡手速賽 (過往記錄)">
+                <option value="w3_hw1">第3周功課1</option>
+                <option value="w3_hw2">第3周功課2</option>
+                <option value="w3_hw3">第3周功課3</option>
+                <option value="w3_hw4">第3周功課4</option>
+              </optgroup>
+              <optgroup label="📅 第 2 周 倉頡手速賽 (過往記錄)">
+                <option value="w2_hw1">第2周功課1</option>
+                <option value="w2_hw2">第2周功課2</option>
+                <option value="w2_hw3">第2周功課3</option>
+                <option value="w2_hw4">第2周功課4</option>
+              </optgroup>
+            </select>
+          </div>
+          <div style="font-size: 12px; font-weight: 700; color: #64748B;">
+            ⚡ 官方賽制：<strong style="color: #2563EB;">純 10 字秒數競爭</strong>
           </div>
         </div>
       </div>
+
 <div class="leaderboard-filter-tabs">
         <button class="lb-filter-btn active" onclick="filterLeaderboard('ALL')">全級總榜</button>
         <button class="lb-filter-btn" onclick="filterLeaderboard('P6A')">P6A 班</button>
@@ -17091,398 +17140,11 @@ const MODE2_WEEKLY_BANKS = {
     "week": "w5",
     "weekName": "第5周",
     "hwName": "功課1",
-    "title": "第5周功課1",
+    "title": "第5周功課1 (難字X鍵全套精選特訓)",
     "dateRange": "28/09/2026 12:00 AM - 04/10/2026 11:30 PM",
     "startDate": "2026-09-28T00:00:00+08:00",
     "endDate": "2026-10-04T23:30:00+08:00",
     "words": [
-      {
-        "char": "刺",
-        "codes": [
-          "木",
-          "月",
-          "中",
-          "弓"
-        ],
-        "keys": [
-          "D",
-          "B",
-          "L",
-          "N"
-        ],
-        "full": "木月中弓 (DBLN)",
-        "secret": "刺：木月中弓 (DBLN)"
-      },
-      {
-        "char": "夷",
-        "codes": [
-          "大",
-          "弓"
-        ],
-        "keys": [
-          "K",
-          "N"
-        ],
-        "full": "大弓 (KN)",
-        "secret": "夷：大弓 (KN)"
-      },
-      {
-        "char": "姨",
-        "codes": [
-          "女",
-          "大",
-          "弓"
-        ],
-        "keys": [
-          "V",
-          "K",
-          "N"
-        ],
-        "full": "女大弓 (VKN)",
-        "secret": "姨：女大弓 (VKN)"
-      },
-      {
-        "char": "痍",
-        "codes": [
-          "大",
-          "大",
-          "弓"
-        ],
-        "keys": [
-          "K",
-          "K",
-          "N"
-        ],
-        "full": "大大弓 (KKN)",
-        "secret": "痍：大大弓 (KKN)"
-      },
-      {
-        "char": "卷",
-        "codes": [
-          "火",
-          "手",
-          "尸",
-          "山"
-        ],
-        "keys": [
-          "F",
-          "Q",
-          "S",
-          "U"
-        ],
-        "full": "火手尸山 (FQSU)",
-        "secret": "卷：火手尸山 (FQSU)"
-      },
-      {
-        "char": "再",
-        "codes": [
-          "一",
-          "土",
-          "月"
-        ],
-        "keys": [
-          "M",
-          "G",
-          "B"
-        ],
-        "full": "一土月 (MGB)",
-        "secret": "再：一土月 (MGB)"
-      },
-      {
-        "char": "冉",
-        "codes": [
-          "土",
-          "月"
-        ],
-        "keys": [
-          "G",
-          "B"
-        ],
-        "full": "土月 (GB)",
-        "secret": "冉：土月 (GB)"
-      },
-      {
-        "char": "也",
-        "codes": [
-          "心",
-          "木"
-        ],
-        "keys": [
-          "P",
-          "D"
-        ],
-        "full": "心木 (PD)",
-        "secret": "也：心木 (PD)"
-      },
-      {
-        "char": "世",
-        "codes": [
-          "心",
-          "廿"
-        ],
-        "keys": [
-          "P",
-          "T"
-        ],
-        "full": "心廿 (PT)",
-        "secret": "世：心廿 (PT)"
-      },
-      {
-        "char": "葉",
-        "codes": [
-          "廿",
-          "心",
-          "廿",
-          "木"
-        ],
-        "keys": [
-          "T",
-          "P",
-          "T",
-          "D"
-        ],
-        "full": "廿心廿木 (TPTD)",
-        "secret": "葉：廿心廿木 (TPTD)"
-      },
-      {
-        "char": "泄",
-        "codes": [
-          "水",
-          "心",
-          "廿"
-        ],
-        "keys": [
-          "E",
-          "P",
-          "T"
-        ],
-        "full": "水心廿 (EPT)",
-        "secret": "泄：水心廿 (EPT)"
-      },
-      {
-        "char": "碟",
-        "codes": [
-          "一",
-          "口",
-          "心",
-          "廿",
-          "木"
-        ],
-        "keys": [
-          "M",
-          "R",
-          "P",
-          "T",
-          "D"
-        ],
-        "full": "一口心廿木 (MRPTD)",
-        "secret": "碟：一口心廿木 (MRPTD)"
-      },
-      {
-        "char": "東",
-        "codes": [
-          "木",
-          "田"
-        ],
-        "keys": [
-          "D",
-          "W"
-        ],
-        "full": "木田 (DW)",
-        "secret": "東：木田 (DW)"
-      },
-      {
-        "char": "來",
-        "codes": [
-          "木",
-          "人",
-          "人"
-        ],
-        "keys": [
-          "D",
-          "O",
-          "O"
-        ],
-        "full": "木人人 (DOO)",
-        "secret": "來：木人人 (DOO)"
-      },
-      {
-        "char": "睞",
-        "codes": [
-          "月",
-          "山",
-          "木",
-          "人",
-          "人"
-        ],
-        "keys": [
-          "B",
-          "U",
-          "D",
-          "O",
-          "O"
-        ],
-        "full": "月山木人人 (BUDOO)",
-        "secret": "睞：月山木人人 (BUDOO)"
-      },
-      {
-        "char": "束",
-        "codes": [
-          "木",
-          "中"
-        ],
-        "keys": [
-          "D",
-          "L"
-        ],
-        "full": "木中 (DL)",
-        "secret": "束：木中 (DL)"
-      },
-      {
-        "char": "柬",
-        "codes": [
-          "木",
-          "田",
-          "火"
-        ],
-        "keys": [
-          "D",
-          "W",
-          "F"
-        ],
-        "full": "木田火 (DWF)",
-        "secret": "柬：木田火 (DWF)"
-      },
-      {
-        "char": "鍊",
-        "codes": [
-          "金",
-          "木",
-          "田",
-          "火"
-        ],
-        "keys": [
-          "C",
-          "D",
-          "W",
-          "F"
-        ],
-        "full": "金木田火 (CDWF)",
-        "secret": "鍊：金木田火 (CDWF)"
-      },
-      {
-        "char": "煉",
-        "codes": [
-          "火",
-          "木",
-          "田",
-          "火"
-        ],
-        "keys": [
-          "F",
-          "D",
-          "W",
-          "F"
-        ],
-        "full": "火木田火 (FDWF)",
-        "secret": "煉：火木田火 (FDWF)"
-      },
-      {
-        "char": "爽",
-        "codes": [
-          "大",
-          "大",
-          "大",
-          "大"
-        ],
-        "keys": [
-          "K",
-          "K",
-          "K",
-          "K"
-        ],
-        "full": "大大大大 (KKKK)",
-        "secret": "爽：大大大大 (KKKK)"
-      },
-      {
-        "char": "拳",
-        "codes": [
-          "火",
-          "手",
-          "手"
-        ],
-        "keys": [
-          "F",
-          "Q",
-          "Q"
-        ],
-        "full": "火手手 (FQQ)",
-        "secret": "拳：火手手 (FQQ)"
-      },
-      {
-        "char": "脊",
-        "codes": [
-          "火",
-          "金",
-          "月"
-        ],
-        "keys": [
-          "F",
-          "C",
-          "B"
-        ],
-        "full": "火金月 (FCB)",
-        "secret": "脊：火金月 (FCB)"
-      },
-      {
-        "char": "夾",
-        "codes": [
-          "大",
-          "人",
-          "人"
-        ],
-        "keys": [
-          "K",
-          "O",
-          "O"
-        ],
-        "full": "大人人 (KOO)",
-        "secret": "夾：大人人 (KOO)"
-      },
-      {
-        "char": "俠",
-        "codes": [
-          "人",
-          "大",
-          "人",
-          "人"
-        ],
-        "keys": [
-          "O",
-          "K",
-          "O",
-          "O"
-        ],
-        "full": "人大人人 (OKOO)",
-        "secret": "俠：人大人人 (OKOO)"
-      },
-      {
-        "char": "峽",
-        "codes": [
-          "山",
-          "大",
-          "人",
-          "人"
-        ],
-        "keys": [
-          "U",
-          "K",
-          "O",
-          "O"
-        ],
-        "full": "山大人人 (UKOO)",
-        "secret": "峽：山大人人 (UKOO)"
-      },
       {
         "char": "身",
         "codes": [
@@ -17750,38 +17412,6 @@ const MODE2_WEEKLY_BANKS = {
         "secret": "蠅：中戈口難山 (LIRXU)"
       },
       {
-        "char": "來",
-        "codes": [
-          "木",
-          "人",
-          "人"
-        ],
-        "keys": [
-          "D",
-          "O",
-          "O"
-        ],
-        "full": "木人人 (DOO)",
-        "secret": "來：木人人 (DOO)"
-      },
-      {
-        "char": "卷",
-        "codes": [
-          "火",
-          "手",
-          "尸",
-          "山"
-        ],
-        "keys": [
-          "F",
-          "Q",
-          "S",
-          "U"
-        ],
-        "full": "火手尸山 (FQSU)",
-        "secret": "卷：火手尸山 (FQSU)"
-      },
-      {
         "char": "圈",
         "codes": [
           "田",
@@ -17897,6 +17527,451 @@ const MODE2_WEEKLY_BANKS = {
         ],
         "full": "戈火月山山 (IFBUU)",
         "secret": "視：戈火月山山 (IFBUU)"
+      },
+      {
+        "char": "肅",
+        "codes": [
+          "中",
+          "難"
+        ],
+        "keys": [
+          "L",
+          "X"
+        ],
+        "full": "中難 (LX)",
+        "secret": "肅：中難 (LX)"
+      },
+      {
+        "char": "龜",
+        "codes": [
+          "弓",
+          "難",
+          "山"
+        ],
+        "keys": [
+          "N",
+          "X",
+          "U"
+        ],
+        "full": "弓難山 (NXU)",
+        "secret": "龜：弓難山 (NXU)"
+      },
+      {
+        "char": "麓",
+        "codes": [
+          "木",
+          "木",
+          "戈",
+          "難",
+          "心"
+        ],
+        "keys": [
+          "D",
+          "D",
+          "I",
+          "X",
+          "P"
+        ],
+        "full": "木木戈難心 (DDIXP)",
+        "secret": "麓：木木戈難心 (DDIXP)"
+      },
+      {
+        "char": "薦",
+        "codes": [
+          "廿",
+          "戈",
+          "難",
+          "火"
+        ],
+        "keys": [
+          "T",
+          "I",
+          "X",
+          "F"
+        ],
+        "full": "廿戈難火 (TIXF)",
+        "secret": "薦：廿戈難火 (TIXF)"
+      },
+      {
+        "char": "淵",
+        "codes": [
+          "水",
+          "中",
+          "難",
+          "中"
+        ],
+        "keys": [
+          "E",
+          "L",
+          "X",
+          "L"
+        ],
+        "full": "水中難中 (ELXL)",
+        "secret": "淵：水中難中 (ELXL)"
+      },
+      {
+        "char": "鏽",
+        "codes": [
+          "金",
+          "中",
+          "難"
+        ],
+        "keys": [
+          "C",
+          "L",
+          "X"
+        ],
+        "full": "金中難 (CLX)",
+        "secret": "鏽：金中難 (CLX)"
+      },
+      {
+        "char": "兼",
+        "codes": [
+          "廿",
+          "難",
+          "金"
+        ],
+        "keys": [
+          "T",
+          "X",
+          "C"
+        ],
+        "full": "廿難金 (TXC)",
+        "secret": "兼：廿難金 (TXC)"
+      },
+      {
+        "char": "嫌",
+        "codes": [
+          "女",
+          "廿",
+          "難",
+          "金"
+        ],
+        "keys": [
+          "V",
+          "T",
+          "X",
+          "C"
+        ],
+        "full": "女廿難金 (VTXC)",
+        "secret": "嫌：女廿難金 (VTXC)"
+      },
+      {
+        "char": "賺",
+        "codes": [
+          "月",
+          "金",
+          "廿",
+          "難",
+          "金"
+        ],
+        "keys": [
+          "B",
+          "C",
+          "T",
+          "X",
+          "C"
+        ],
+        "full": "月金廿難金 (BCTXC)",
+        "secret": "賺：月金廿難金 (BCTXC)"
+      },
+      {
+        "char": "舀",
+        "codes": [
+          "月",
+          "竹",
+          "難"
+        ],
+        "keys": [
+          "B",
+          "H",
+          "X"
+        ],
+        "full": "月竹難 (BHX)",
+        "secret": "舀：月竹難 (BHX)"
+      },
+      {
+        "char": "臼",
+        "codes": [
+          "竹",
+          "難"
+        ],
+        "keys": [
+          "H",
+          "X"
+        ],
+        "full": "竹難 (HX)",
+        "secret": "臼：竹難 (HX)"
+      },
+      {
+        "char": "舅",
+        "codes": [
+          "竹",
+          "難",
+          "田",
+          "大",
+          "尸"
+        ],
+        "keys": [
+          "H",
+          "X",
+          "W",
+          "K",
+          "S"
+        ],
+        "full": "竹難田大尸 (HXWKS)",
+        "secret": "舅：竹難田大尸 (HXWKS)"
+      },
+      {
+        "char": "倪",
+        "codes": [
+          "人",
+          "竹",
+          "難",
+          "山"
+        ],
+        "keys": [
+          "O",
+          "H",
+          "X",
+          "U"
+        ],
+        "full": "人竹難山 (OHXU)",
+        "secret": "倪：人竹難山 (OHXU)"
+      },
+      {
+        "char": "臾",
+        "codes": [
+          "竹",
+          "難",
+          "人"
+        ],
+        "keys": [
+          "H",
+          "X",
+          "O"
+        ],
+        "full": "竹難人 (HXO)",
+        "secret": "臾：竹難人 (HXO)"
+      },
+      {
+        "char": "蕭",
+        "codes": [
+          "廿",
+          "中",
+          "難"
+        ],
+        "keys": [
+          "T",
+          "L",
+          "X"
+        ],
+        "full": "廿中難 (TLX)",
+        "secret": "蕭：廿中難 (TLX)"
+      },
+      {
+        "char": "簫",
+        "codes": [
+          "竹",
+          "中",
+          "難"
+        ],
+        "keys": [
+          "H",
+          "L",
+          "X"
+        ],
+        "full": "竹中難 (HLX)",
+        "secret": "簫：竹中難 (HLX)"
+      },
+      {
+        "char": "霽",
+        "codes": [
+          "一",
+          "月",
+          "卜",
+          "難"
+        ],
+        "keys": [
+          "M",
+          "B",
+          "Y",
+          "X"
+        ],
+        "full": "一月卜難 (MBYX)",
+        "secret": "霽：一月卜難 (MBYX)"
+      },
+      {
+        "char": "劑",
+        "codes": [
+          "卜",
+          "難",
+          "中",
+          "弓"
+        ],
+        "keys": [
+          "Y",
+          "X",
+          "L",
+          "N"
+        ],
+        "full": "卜難中弓 (YXLN)",
+        "secret": "劑：卜難中弓 (YXLN)"
+      },
+      {
+        "char": "齋",
+        "codes": [
+          "卜",
+          "難",
+          "火"
+        ],
+        "keys": [
+          "Y",
+          "X",
+          "F"
+        ],
+        "full": "卜難火 (YXF)",
+        "secret": "齋：卜難火 (YXF)"
+      },
+      {
+        "char": "濟",
+        "codes": [
+          "水",
+          "卜",
+          "難"
+        ],
+        "keys": [
+          "E",
+          "Y",
+          "X"
+        ],
+        "full": "水卜難 (EYX)",
+        "secret": "濟：水卜難 (EYX)"
+      },
+      {
+        "char": "盥",
+        "codes": [
+          "竹",
+          "難",
+          "月",
+          "廿"
+        ],
+        "keys": [
+          "H",
+          "X",
+          "B",
+          "T"
+        ],
+        "full": "竹難月廿 (HXBT)",
+        "secret": "盥：竹難月廿 (HXBT)"
+      },
+      {
+        "char": "搜",
+        "codes": [
+          "手",
+          "竹",
+          "難",
+          "水"
+        ],
+        "keys": [
+          "Q",
+          "H",
+          "X",
+          "E"
+        ],
+        "full": "手竹難水 (QHXE)",
+        "secret": "搜：手竹難水 (QHXE)"
+      },
+      {
+        "char": "樁",
+        "codes": [
+          "木",
+          "手",
+          "大",
+          "難"
+        ],
+        "keys": [
+          "D",
+          "Q",
+          "K",
+          "X"
+        ],
+        "full": "木手大難 (DQKX)",
+        "secret": "樁：木手大難 (DQKX)"
+      },
+      {
+        "char": "鼠",
+        "codes": [
+          "竹",
+          "難",
+          "女",
+          "卜",
+          "女"
+        ],
+        "keys": [
+          "H",
+          "X",
+          "V",
+          "Y",
+          "V"
+        ],
+        "full": "竹難女卜女 (HXVYV)",
+        "secret": "鼠：竹難女卜女 (HXVYV)"
+      },
+      {
+        "char": "諂",
+        "codes": [
+          "卜",
+          "口",
+          "弓",
+          "竹",
+          "難"
+        ],
+        "keys": [
+          "Y",
+          "R",
+          "N",
+          "H",
+          "X"
+        ],
+        "full": "卜口弓竹難 (YRNHX)",
+        "secret": "諂：卜口弓竹難 (YRNHX)"
+      },
+      {
+        "char": "焰",
+        "codes": [
+          "火",
+          "弓",
+          "竹",
+          "難"
+        ],
+        "keys": [
+          "F",
+          "N",
+          "H",
+          "X"
+        ],
+        "full": "火弓竹難 (FNHX)",
+        "secret": "焰：火弓竹難 (FNHX)"
+      },
+      {
+        "char": "翻",
+        "codes": [
+          "竹",
+          "田",
+          "尸",
+          "一",
+          "一"
+        ],
+        "keys": [
+          "H",
+          "W",
+          "S",
+          "M",
+          "M"
+        ],
+        "full": "竹田尸一一 (HWSMM)",
+        "secret": "翻：竹田尸一一 (HWSMM)"
       }
     ]
   },
@@ -17905,7 +17980,7 @@ const MODE2_WEEKLY_BANKS = {
     "week": "w5",
     "weekName": "第5周",
     "hwName": "功課2",
-    "title": "第5周功課2",
+    "title": "第5周功課2 (九大複合字全套精選特訓)",
     "dateRange": "28/09/2026 12:00 AM - 04/10/2026 11:30 PM",
     "startDate": "2026-09-28T00:00:00+08:00",
     "endDate": "2026-10-04T23:30:00+08:00",
@@ -18735,7 +18810,7 @@ const MODE2_WEEKLY_BANKS = {
     "week": "w5",
     "weekName": "第5周",
     "hwName": "功課3",
-    "title": "第5周功課3",
+    "title": "第5周功課3 (三代倉頡特殊字與多碼挑戰)",
     "dateRange": "28/09/2026 12:00 AM - 04/10/2026 11:30 PM",
     "startDate": "2026-09-28T00:00:00+08:00",
     "endDate": "2026-10-04T23:30:00+08:00",
@@ -19615,7 +19690,7 @@ const MODE2_WEEKLY_BANKS = {
     "week": "w5",
     "weekName": "第5周",
     "hwName": "功課4",
-    "title": "第5周功課4",
+    "title": "第5周功課4 (小學升中全碼綜合魔王挑戰)",
     "dateRange": "28/09/2026 12:00 AM - 04/10/2026 11:30 PM",
     "startDate": "2026-09-28T00:00:00+08:00",
     "endDate": "2026-10-04T23:30:00+08:00",
@@ -22297,61 +22372,56 @@ const SafeStorage = {
 
     function initSpeedWeekDropdown() {
       const select = document.getElementById('speed-ready-week-select');
-      if (!select) return;
-
-      select.innerHTML = '';
       const activeWk = getActiveSpeedWeek();
       const allBanks = (typeof MODE2_WEEKLY_BANKS === 'object' && MODE2_WEEKLY_BANKS) ? MODE2_WEEKLY_BANKS : {};
-      const allKeys = Object.keys(allBanks);
 
-      if (allKeys.length === 0) {
-        allBanks['demo_practice'] = {
-          key: 'demo_practice',
-          title: '【基礎練習】精選常用字根速成/倉頡特訓',
-          words: [
-            { char: "明", codes: ["日", "月"], keys: ["A", "B"], full: "日月 (AB)" },
-            { char: "鬼", codes: ["竹", "戈"], keys: ["H", "I"], full: "竹戈 (HI)" },
-            { char: "車", codes: ["十", "田", "十"], keys: ["J", "W", "J"], full: "十田十 (JWJ)" },
-            { char: "東", codes: ["木", "田"], keys: ["D", "W"], full: "木田 (DW)" },
-            { char: "門", codes: ["日", "弓"], keys: ["A", "N"], full: "日弓 (AN)" }
-          ]
-        };
-        allKeys.push('demo_practice');
-      }
-
-      // 排序：當前進行中週次排最前 (w5_hw1..4)，其餘按週次降序排列
-      const sortedKeys = allKeys.sort((a, b) => {
-        const isAActive = a.startsWith(activeWk);
-        const isBActive = b.startsWith(activeWk);
-        if (isAActive && !isBActive) return -1;
-        if (!isAActive && isBActive) return 1;
-        return b.localeCompare(a);
-      });
-
-      let defaultKey = null;
-      sortedKeys.forEach((k) => {
-        const bank = allBanks[k];
-        if (bank && Array.isArray(bank.words) && bank.words.length > 0) {
-          const opt = document.createElement('option');
-          opt.value = k;
-          const isThisWeek = k.startsWith(activeWk);
-          opt.textContent = (isThisWeek ? '🔥 ' : '📚 ') + (bank.title || k);
-          if (!defaultKey || (isThisWeek && !defaultKey.startsWith(activeWk))) {
-            defaultKey = k;
+      if (select) {
+        // 如果靜態 HTML 已經定義了完整的 optgroup，則保留完整結構並選中當前週次
+        if (select.options && select.options.length > 0 && select.querySelector && select.querySelector('optgroup')) {
+          const targetVal = `${activeWk}_hw1`;
+          let matched = false;
+          for (let i = 0; i < select.options.length; i++) {
+            if (select.options[i].value === targetVal) {
+              select.selectedIndex = i;
+              currentSpeedWeek = targetVal;
+              matched = true;
+              break;
+            }
           }
-          select.appendChild(opt);
+          if (!matched && select.options.length > 0) {
+            currentSpeedWeek = select.value;
+          }
+        } else {
+          // 動態構建分組選單
+          select.innerHTML = '';
+          const weekOrder = ['w5', 'w4', 'w3', 'w2'];
+          weekOrder.forEach(wk => {
+            const isCur = (wk === activeWk);
+            const grp = document.createElement('optgroup');
+            grp.label = isCur ? `🔥 第 ${wk.slice(1)} 周 倉頡手速字庫 (當前進行中)` : `📅 第 ${wk.slice(1)} 周 倉頡手速字庫 (溫故知新)`;
+            for (let idx = 1; idx <= 4; idx++) {
+              const k = `${wk}_hw${idx}`;
+              const bank = allBanks[k];
+              if (bank) {
+                const opt = document.createElement('option');
+                opt.value = k;
+                opt.textContent = bank.title || k;
+                if (k === `${activeWk}_hw1`) opt.selected = true;
+                grp.appendChild(opt);
+              }
+            }
+            if (!grp.children || grp.children.length > 0) select.appendChild(grp);
+          });
+          currentSpeedWeek = select.value || `${activeWk}_hw1`;
         }
-      });
-
-      if (defaultKey) {
-        select.value = defaultKey;
-        currentSpeedWeek = defaultKey;
-      } else if (select.options.length > 0) {
-        select.selectedIndex = 0;
-        currentSpeedWeek = select.value;
       }
 
-      updateSpeedLeaderboardButtons(activeWk);
+      // 同步天梯榜周次選單狀態
+      const lbSelect = document.getElementById('speed-lb-week-select');
+      if (lbSelect) {
+        if (!speedLeaderboardWeek) speedLeaderboardWeek = `${activeWk}_hw1`;
+        lbSelect.value = speedLeaderboardWeek;
+      }
     }
 
     function updateSpeedLeaderboardButtons(activeWk) {
@@ -22920,10 +22990,6 @@ const SafeStorage = {
     // 周次子篩選器 (支援切換全部周次或指定周次功課)
     function filterSpeedLeaderboardWeek(weekKey) {
       speedLeaderboardWeek = weekKey;
-      document.querySelectorAll('#speed-lb-week-buttons .lb-sub-pill').forEach(btn => {
-        const isMatch = (btn.id === `lb-week-${weekKey}`) || (weekKey === 'ALL' && btn.id === 'lb-week-ALL');
-        btn.classList.toggle('active', isMatch);
-      });
       const select = document.getElementById('speed-lb-week-select');
       if (select && select.value !== weekKey) {
         select.value = weekKey;
