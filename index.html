@@ -2388,6 +2388,33 @@
   margin-right: 2px;
 }
 
+/* 📊 天梯榜空間極致緊湊優化 (擴大表格可視高度，減少捲軸下拉) */
+#modal-leaderboard .custom-modal-lg {
+  max-width: 920px !important;
+  padding: 16px 18px !important;
+}
+#modal-leaderboard .modal-header-flex {
+  padding: 2px 0 6px !important;
+  margin-bottom: 6px !important;
+}
+#modal-leaderboard .ref-table th {
+  padding: 7px 5px !important;
+  font-size: 12px !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+#modal-leaderboard .ref-table td {
+  padding: 6px 5px !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+#modal-leaderboard .lb-filter-btn {
+  padding: 4px 9px !important;
+  font-size: 11.5px !important;
+}
+
 </style>
 </head>
 <body>
@@ -3103,36 +3130,40 @@
         <button class="modal-close-btn" onclick="closeModal('modal-leaderboard')">✕</button>
       </div>
 
-      <div class="leaderboard-my-summary" id="lb-my-summary-card">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="font-size: 32px;" id="lb-my-badge">🥉</div>
-          <div>
-            <div style="font-weight: 900; font-size: 15px; color: #1E3A8A;" id="lb-my-name">尚未登錄身份</div>
-            <div style="font-size: 12.5px; color: #64748B;" id="lb-my-title">當前境界：🥉【新手訓練家】</div>
+      <div class="leaderboard-my-summary" id="lb-my-summary-card" style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 6px 14px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span style="font-size: 22px;" id="lb-my-badge">🥉</span>
+          <span style="font-weight: 900; font-size: 14px; color: #1E3A8A;" id="lb-my-name">尚未登錄身份</span>
+          <span style="color: #CBD5E1;">|</span>
+          <span style="font-size: 12px; color: #64748B;" id="lb-my-title">當前境界：🥉【新手訓練家】</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 12px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: baseline; gap: 4px;">
+            <span style="color: #64748B;" id="lb-my-score-label">累計得分:</span>
+            <span style="font-size: 14.5px; font-weight: 900; color: #2563EB;" id="lb-my-score">0 分</span>
+          </div>
+          <span style="color: #CBD5E1;">|</span>
+          <div style="display: flex; align-items: baseline; gap: 4px;">
+            <span style="color: #64748B;" id="lb-my-rank-label">排名:</span>
+            <span style="font-size: 12.5px; color: #059669; font-weight: 800;" id="lb-my-rank">尚無排名</span>
           </div>
         </div>
-        <div style="text-align: right;">
-          <div style="font-size: 11px; color: #64748B;" id="lb-my-score-label">累計討伐總分</div>
-          <div style="font-size: 22px; font-weight: 900; color: #2563EB;" id="lb-my-score">0 分</div>
-          <div style="font-size: 11px; color: #64748B;" id="lb-my-rank-label">全級討伐排名</div>
-          <div style="font-size: 12px; color: #059669; font-weight: 800;" id="lb-my-rank">尚無排名</div>
-        </div>
-      </div>
+      </div></div>
 
       
       <div class="lb-sub-nav-bar">
         <button id="lb-type-score" class="lb-sub-nav-btn active" onclick="switchLeaderboardType('score')">🏆 討伐累積總分榜</button>
-        <button id="lb-type-speed" class="lb-sub-nav-btn" onclick="switchLeaderboardType('speed')">⚡ 10字極速手速榜 (秒數升序)</button>
+        <button id="lb-type-speed" class="lb-sub-nav-btn" onclick="switchLeaderboardType('speed')">⚡ 10字極速手速榜</button>
       </div>
 
       
       <!-- ⚡ 手速榜專用子導航：題量與周次篩選器 (只在切換到手速榜時顯示) -->
             <!-- ⚡ 手速榜專用子導航：全周次功課下拉選單 (六年級純 10 字秒數天梯) -->
-      <div id="speed-lb-sub-filters" style="display: none; margin-bottom: 12px; background: #F8FAFC; border: 1.5px solid #CBD5E1; padding: 10px 14px; border-radius: 12px;">
+      <div id="speed-lb-sub-filters" style="display: none; margin-bottom: 8px; background: #F8FAFC; border: 1.5px solid #E2E8F0; padding: 6px 12px; border-radius: 8px;">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <span style="font-size: 13px; font-weight: 800; color: #1E3A8A;">📅 查閱周次手速天梯榜：</span>
-            <select id="speed-lb-week-select" onchange="filterSpeedLeaderboardWeek(this.value)" style="background: #FFFFFF; color: #0F172A; border: 2px solid #2563EB; padding: 7px 14px; border-radius: 8px; font-size: 13.5px; font-weight: 800; cursor: pointer; outline: none; box-shadow: 0 2px 4px rgba(37,99,235,0.1);">
+            <select id="speed-lb-week-select" onchange="filterSpeedLeaderboardWeek(this.value)" style="background: #FFFFFF; color: #0F172A; border: 2px solid #2563EB; padding: 4px 10px; border-radius: 6px; font-size: 12.5px; font-weight: 800; cursor: pointer; outline: none; box-shadow: 0 2px 4px rgba(37,99,235,0.1);">
               <optgroup label="🏆 全期生涯總覽">
                 <option value="ALL">🌟 全期 10 字個人最佳極速總榜 (生涯最佳)</option>
               </optgroup>
@@ -3178,7 +3209,7 @@
         <button class="lb-filter-btn" onclick="filterLeaderboard('P6F')">P6F 班</button>
       </div>
 
-      <div style="max-height: 400px; overflow-y: auto;">
+      <div style="max-height: 520px; min-height: 400px; overflow-y: auto; border: 1.5px solid #E2E8F0; border-radius: 10px;">
         <table class="ref-table">
           <thead>
             <tr>
@@ -22133,8 +22164,8 @@ const SafeStorage = {
 
       const scoreLabel = document.getElementById('lb-my-score-label');
       const rankLabel = document.getElementById('lb-my-rank-label');
-      if (scoreLabel) scoreLabel.textContent = '累計討伐總分';
-      if (rankLabel) rankLabel.textContent = (currentLeaderboardFilter === 'ALL') ? '全級討伐排名' : '班內討伐排名';
+      if (scoreLabel) scoreLabel.textContent = '累計總分:';
+      if (rankLabel) rankLabel.textContent = (currentLeaderboardFilter === 'ALL') ? '全級排名:' : '班內排名:';
 
       // 1. 雙軌智能合併：整合 Google 試算表最新真實數據與本地 localStorage
       const allMap = {};
@@ -23022,7 +23053,7 @@ const SafeStorage = {
 
       const modalTitle = document.getElementById('lb-modal-main-title');
       if (modalTitle) {
-        modalTitle.textContent = (type === 'speed') ? '⚡ 六年級寶可夢倉頡手速天梯榜 (秒數升序)' : '🏆 六年級寶可夢倉頡討伐龍虎榜';
+        modalTitle.textContent = (type === 'speed') ? '⚡ 六年級寶可夢倉頡手速天梯榜' : '🏆 六年級寶可夢倉頡討伐龍虎榜';
       }
 
       renderLeaderboardTable();
@@ -23060,8 +23091,8 @@ const SafeStorage = {
 
       const scoreLabel = document.getElementById('lb-my-score-label');
       const rankLabel = document.getElementById('lb-my-rank-label');
-      if (scoreLabel) scoreLabel.textContent = '10字等效總耗時';
-      if (rankLabel) rankLabel.textContent = (currentLeaderboardFilter === 'ALL') ? '全級手速名次' : '班內手速名次';
+      if (scoreLabel) scoreLabel.textContent = '等效耗時:';
+      if (rankLabel) rankLabel.textContent = (currentLeaderboardFilter === 'ALL') ? '全級名次:' : '班內名次:';
 
       const bankObj = (typeof MODE2_WEEKLY_BANKS === 'object' && MODE2_WEEKLY_BANKS) ? MODE2_WEEKLY_BANKS[speedLeaderboardWeek] : null;
       const wkTitle = bankObj ? bankObj.title : (speedLeaderboardWeek === 'ALL' ? '全部周次 (生涯最佳)' : speedLeaderboardWeek);
@@ -23225,14 +23256,14 @@ const SafeStorage = {
         if (myEntry && myEntry.hasRecord && typeof myEntry.bestTime === 'number' && myEntry.bestTime < 900) {
           const displayCpm = myEntry.cpm || Math.round(10 / (myEntry.bestTime / 60));
           if (myTitleEl) myTitleEl.textContent = `分類：10字賽 · ${wkTitle} ｜ 字速：${displayCpm} 字/分`;
-          if (myScoreEl) myScoreEl.textContent = `${myEntry.bestTime.toFixed(2)} 秒 (準確率 ${myEntry.accuracy || 100}%)`;
+          if (myScoreEl) myScoreEl.innerHTML = `<span style="color:#2563EB; font-weight:900; font-size:14.5px;">${myEntry.bestTime.toFixed(2)}s</span> <span style="color:#059669; font-weight:700; font-size:11.5px;">(${myEntry.accuracy || 100}%)</span>`;
           if (myBadgeEl) myBadgeEl.textContent = '⚡';
           if (myRankEl) {
             if (currentLeaderboardFilter === 'ALL') {
-              myRankEl.innerHTML = `<span style="color:#B45309;font-weight:900;">全級手速第 ${myEntry.overallRank} 名 (共 ${speedList.length} 人上榜)</span>`;
+              myRankEl.innerHTML = `<span style="color:#B45309;font-weight:900;">第 ${myEntry.overallRank} 名</span> <span style="color:#64748B; font-size:11px;">(共 ${speedList.length} 人)</span>`;
             } else {
               const classTotal = (classGroups[currentLeaderboardFilter] || []).length;
-              myRankEl.innerHTML = `<span style="color:#2563EB;font-weight:900;">${currentLeaderboardFilter} 班內手速第 ${myEntry.classRank} 名 (共 ${classTotal} 人上榜)</span>`;
+              myRankEl.innerHTML = `<span style="color:#2563EB;font-weight:900;">${currentLeaderboardFilter} 第 ${myEntry.classRank} 名</span> <span style="color:#64748B; font-size:11px;">(共 ${classTotal} 人)</span>`;
             }
           }
         } else {
