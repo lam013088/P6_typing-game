@@ -17,7 +17,7 @@ if (!window.CONFIG.GAS_WEBHOOK_URL || window.CONFIG.GAS_WEBHOOK_URL.includes('Yo
     }
   } catch(e) {}
   if (!window.CONFIG.GAS_WEBHOOK_URL || window.CONFIG.GAS_WEBHOOK_URL.includes('YourDeploymentIdHere')) {
-    window.CONFIG.GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyfD7gq5g4w3pS8T1z_YourDeploymentIdHere/exec';
+    window.CONFIG.GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxW0MXzXSPx5A4O3osfON96kGESZNAqQ7xiihp_RLKDc6VzXhYskOkUZGmw31Cu6jbL/exec';
   }
 }
 if (typeof window.CONFIG.GITHUB_PRIVACY_MODE === 'undefined') {
