@@ -1,12 +1,10 @@
 /**
  * =========================================================================
- * 📦 DATA.JS - 六年級倉頡打字【完整標準版 · 模組化架構】
- * 🛡️ 隱私安全與題庫動態開放保密承諾：
- *    1. 【Zero-PII 去識別化】：全級 201 位學生僅保留「班別 學號號」代碼，零個資外洩，保障開機秒開防白屏。
- *    2. 【未來題庫 100% 雲端保密】：本靜態檔僅保留「當前已開放週次」作為離線基準保底。
- *       未來各週手速賽的所有題庫一律只儲存在 Google Apps Script (GAS) 雲端 Webhook，
- *       依據真實日期時間（startDate）動態解鎖下發，學生翻看 GitHub 原始碼絕對無法提前獲知未來題目！
- *    3. 【完整訓練題庫】：收錄連體字31題、分體字12題、難字與複合字37題，全字庫權威校正。
+ * 📦 DATA.JS - 系統題庫與靜態基準資料庫
+ * 🤖 AI 迭代維護指南：
+ *    - 【每週新增手速賽題庫】：直接在 MODE2_WEEKLY_BANKS 物件中追加新週次 (例如 w6_hw1)
+ *    - 【更新榮譽榜/滿分榜】：直接更新 DATA.top40, DATA.perfect_students 等陣列
+ *    - DATA.benchmark_leaderboard 已完整收錄全級 201 位學生之試算表真實數據
  * =========================================================================
  */
 
@@ -18,7 +16,6 @@ const DATA = {
       "name": "P6A 01號",
       "score": 1386,
       "grandTotal": 1386,
-      "totalScore": 1386,
       "kills": 82,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
@@ -36,7 +33,6 @@ const DATA = {
       "name": "P6A 02號",
       "score": 606,
       "grandTotal": 606,
-      "totalScore": 606,
       "kills": 42,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -55,7 +51,6 @@ const DATA = {
       "name": "P6A 03號",
       "score": 530,
       "grandTotal": 530,
-      "totalScore": 530,
       "kills": 55,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
@@ -73,7 +68,6 @@ const DATA = {
       "name": "P6A 04號",
       "score": 708,
       "grandTotal": 708,
-      "totalScore": 708,
       "kills": 45,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
@@ -93,7 +87,6 @@ const DATA = {
       "name": "P6A 05號",
       "score": 590,
       "grandTotal": 590,
-      "totalScore": 590,
       "kills": 25,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -109,13 +102,12 @@ const DATA = {
       "name": "P6A 06號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -123,7 +115,6 @@ const DATA = {
       "name": "P6A 07號",
       "score": 1128,
       "grandTotal": 1128,
-      "totalScore": 1128,
       "kills": 54,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
@@ -139,7 +130,6 @@ const DATA = {
       "name": "P6A 08號",
       "score": 1841,
       "grandTotal": 1841,
-      "totalScore": 1841,
       "kills": 96,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
@@ -148,7 +138,7 @@ const DATA = {
         "w2_hw3": 13.0,
         "w3_hw1": 5.0
       },
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -156,13 +146,12 @@ const DATA = {
       "name": "P6A 09號",
       "score": 480,
       "grandTotal": 480,
-      "totalScore": 480,
       "kills": 28,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
       "last_time": "2026-09-29 15:30:51",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -170,13 +159,12 @@ const DATA = {
       "name": "P6A 10號",
       "score": 1826,
       "grandTotal": 1826,
-      "totalScore": 1826,
       "kills": 78,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-29 15:31:21",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -184,13 +172,12 @@ const DATA = {
       "name": "P6A 11號",
       "score": 4571,
       "grandTotal": 4571,
-      "totalScore": 4571,
       "kills": 177,
       "title": "🌟【無雙神域殿堂至尊】",
       "badge": "🌟【無雙神域殿堂至尊】",
       "last_time": "2026-09-29 15:32:03",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -198,13 +185,12 @@ const DATA = {
       "name": "P6A 12號",
       "score": 4162,
       "grandTotal": 4162,
-      "totalScore": 4162,
       "kills": 172,
       "title": "🌟【無雙神域殿堂至尊】",
       "badge": "🌟【無雙神域殿堂至尊】",
       "last_time": "2026-09-29 15:30:31",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -212,7 +198,6 @@ const DATA = {
       "name": "P6A 13號",
       "score": 324,
       "grandTotal": 324,
-      "totalScore": 324,
       "kills": 20,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -228,7 +213,6 @@ const DATA = {
       "name": "P6A 14號",
       "score": 1009,
       "grandTotal": 1009,
-      "totalScore": 1009,
       "kills": 46,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
@@ -244,7 +228,6 @@ const DATA = {
       "name": "P6A 15號",
       "score": 1059,
       "grandTotal": 1059,
-      "totalScore": 1059,
       "kills": 49,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -263,13 +246,12 @@ const DATA = {
       "name": "P6A 16號",
       "score": 1230,
       "grandTotal": 1230,
-      "totalScore": 1230,
       "kills": 83,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-29 15:29:57",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -277,13 +259,12 @@ const DATA = {
       "name": "P6A 17號",
       "score": 779,
       "grandTotal": 779,
-      "totalScore": 779,
       "kills": 54,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-29 15:29:36",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -291,7 +272,6 @@ const DATA = {
       "name": "P6A 18號",
       "score": 2183,
       "grandTotal": 2183,
-      "totalScore": 2183,
       "kills": 113,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
@@ -307,13 +287,12 @@ const DATA = {
       "name": "P6A 19號",
       "score": 1213,
       "grandTotal": 1213,
-      "totalScore": 1213,
       "kills": 68,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-29 15:31:09",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -321,13 +300,12 @@ const DATA = {
       "name": "P6A 20號",
       "score": 914,
       "grandTotal": 914,
-      "totalScore": 914,
       "kills": 49,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-29 15:30:21",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -335,7 +313,6 @@ const DATA = {
       "name": "P6A 21號",
       "score": 2763,
       "grandTotal": 2763,
-      "totalScore": 2763,
       "kills": 129,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
@@ -353,7 +330,6 @@ const DATA = {
       "name": "P6A 22號",
       "score": 1891,
       "grandTotal": 1891,
-      "totalScore": 1891,
       "kills": 103,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
@@ -362,7 +338,7 @@ const DATA = {
         "w2_hw3": 36.0,
         "w3_hw1": 5.0
       },
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -370,7 +346,6 @@ const DATA = {
       "name": "P6A 23號",
       "score": 1794,
       "grandTotal": 1794,
-      "totalScore": 1794,
       "kills": 88,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
@@ -379,7 +354,7 @@ const DATA = {
         "w2_hw3": 25.0,
         "w3_hw1": 5.0
       },
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -387,13 +362,12 @@ const DATA = {
       "name": "P6A 24號",
       "score": 468,
       "grandTotal": 468,
-      "totalScore": 468,
       "kills": 36,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
       "last_time": "2026-09-29 15:26:32",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -401,13 +375,12 @@ const DATA = {
       "name": "P6A 25號",
       "score": 1260,
       "grandTotal": 1260,
-      "totalScore": 1260,
       "kills": 87,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-29 15:31:03",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -415,13 +388,12 @@ const DATA = {
       "name": "P6A 26號",
       "score": 83,
       "grandTotal": 83,
-      "totalScore": 83,
       "kills": 6,
       "title": "🥈【字根見習生】",
       "badge": "🥈【字根見習生】",
       "last_time": "2026-09-29 15:15:03",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -429,13 +401,12 @@ const DATA = {
       "name": "P6A 27號",
       "score": 975,
       "grandTotal": 975,
-      "totalScore": 975,
       "kills": 55,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-29 15:29:21",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -443,13 +414,12 @@ const DATA = {
       "name": "P6A 28號",
       "score": 1072,
       "grandTotal": 1072,
-      "totalScore": 1072,
       "kills": 53,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-29 15:28:48",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -457,13 +427,12 @@ const DATA = {
       "name": "P6A 29號",
       "score": 2195,
       "grandTotal": 2195,
-      "totalScore": 2195,
       "kills": 114,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
       "last_time": "2026-09-29 15:30:48",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -471,13 +440,12 @@ const DATA = {
       "name": "P6A 30號",
       "score": 262,
       "grandTotal": 262,
-      "totalScore": 262,
       "kills": 20,
       "title": "🥇【鍵影遊俠】",
       "badge": "🥇【鍵影遊俠】",
       "last_time": "2026-09-29 15:30:09",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -485,13 +453,12 @@ const DATA = {
       "name": "P6A 31號",
       "score": 518,
       "grandTotal": 518,
-      "totalScore": 518,
       "kills": 32,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
       "last_time": "2026-09-29 15:30:19",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
@@ -499,7 +466,6 @@ const DATA = {
       "name": "P6A 32號",
       "score": 1490,
       "grandTotal": 1490,
-      "totalScore": 1490,
       "kills": 82,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
@@ -508,19 +474,18 @@ const DATA = {
         "w2_hw3": 25.0,
         "w3_hw1": 5.0
       },
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6A",
       "num": 33,
       "name": "P6A 33號",
-      "score": 7214,
-      "grandTotal": 7214,
-      "totalScore": 7214,
-      "kills": 327,
-      "title": "🌟【無雙神域殿堂至尊】",
-      "badge": "🌟【無雙神域殿堂至尊】",
-      "last_time": "2026-09-30 10:26:56",
+      "score": 7149,
+      "grandTotal": 7149,
+      "kills": 321,
+      "title": "👑【傳奇鍵王大師】",
+      "badge": "👑【傳奇鍵王大師】",
+      "last_time": "2026-09-29 17:44:06",
       "weekly_speed": {
         "w2_hw1": 33.61,
         "w2_hw3": 83.0,
@@ -528,7 +493,7 @@ const DATA = {
         "w6_hw1": 14.02,
         "w6_hw2": 53.86
       },
-      "best10": 21.6
+      "best10": 130.0
     },
     {
       "cls": "P6B",
@@ -536,13 +501,12 @@ const DATA = {
       "name": "P6B 01號",
       "score": 192,
       "grandTotal": 192,
-      "totalScore": 192,
       "kills": 12,
       "title": "🥇【鍵影遊俠】",
       "badge": "🥇【鍵影遊俠】",
       "last_time": "2026-09-24 9:12:42",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -550,13 +514,12 @@ const DATA = {
       "name": "P6B 02號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -564,13 +527,12 @@ const DATA = {
       "name": "P6B 03號",
       "score": 1047,
       "grandTotal": 1047,
-      "totalScore": 1047,
       "kills": 65,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-24 9:15:33",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -578,13 +540,12 @@ const DATA = {
       "name": "P6B 04號",
       "score": 2825,
       "grandTotal": 2825,
-      "totalScore": 2825,
       "kills": 120,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
       "last_time": "2026-09-24 9:39:38",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -592,7 +553,6 @@ const DATA = {
       "name": "P6B 05號",
       "score": 1574,
       "grandTotal": 1574,
-      "totalScore": 1574,
       "kills": 69,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
@@ -608,7 +568,6 @@ const DATA = {
       "name": "P6B 06號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
@@ -624,13 +583,12 @@ const DATA = {
       "name": "P6B 07號",
       "score": 1334,
       "grandTotal": 1334,
-      "totalScore": 1334,
       "kills": 66,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-24 9:16:15",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -638,7 +596,6 @@ const DATA = {
       "name": "P6B 08號",
       "score": 1638,
       "grandTotal": 1638,
-      "totalScore": 1638,
       "kills": 71,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
@@ -654,7 +611,6 @@ const DATA = {
       "name": "P6B 09號",
       "score": 1070,
       "grandTotal": 1070,
-      "totalScore": 1070,
       "kills": 52,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -670,13 +626,12 @@ const DATA = {
       "name": "P6B 10號",
       "score": 4877,
       "grandTotal": 4877,
-      "totalScore": 4877,
       "kills": 210,
       "title": "🌟【無雙神域殿堂至尊】",
       "badge": "🌟【無雙神域殿堂至尊】",
       "last_time": "2026-09-29 10:39:39",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -684,7 +639,6 @@ const DATA = {
       "name": "P6B 11號",
       "score": 294,
       "grandTotal": 294,
-      "totalScore": 294,
       "kills": 18,
       "title": "🥇【鍵影遊俠】",
       "badge": "🥇【鍵影遊俠】",
@@ -700,13 +654,12 @@ const DATA = {
       "name": "P6B 12號",
       "score": 570,
       "grandTotal": 570,
-      "totalScore": 570,
       "kills": 34,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
       "last_time": "2026-09-24 9:14:56",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -714,13 +667,12 @@ const DATA = {
       "name": "P6B 13號",
       "score": 205,
       "grandTotal": 205,
-      "totalScore": 205,
       "kills": 14,
       "title": "🥇【鍵影遊俠】",
       "badge": "🥇【鍵影遊俠】",
       "last_time": "2026-09-24 9:06:49",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -728,13 +680,12 @@ const DATA = {
       "name": "P6B 14號",
       "score": 661,
       "grandTotal": 661,
-      "totalScore": 661,
       "kills": 36,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
       "last_time": "2026-09-24 9:15:38",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -742,13 +693,12 @@ const DATA = {
       "name": "P6B 15號",
       "score": 2522,
       "grandTotal": 2522,
-      "totalScore": 2522,
       "kills": 115,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
       "last_time": "2026-09-24 9:52:38",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -756,7 +706,6 @@ const DATA = {
       "name": "P6B 16號",
       "score": 3712,
       "grandTotal": 3712,
-      "totalScore": 3712,
       "kills": 149,
       "title": "🌟【無雙神域殿堂至尊】",
       "badge": "🌟【無雙神域殿堂至尊】",
@@ -772,7 +721,6 @@ const DATA = {
       "name": "P6B 17號",
       "score": 851,
       "grandTotal": 851,
-      "totalScore": 851,
       "kills": 49,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -788,13 +736,12 @@ const DATA = {
       "name": "P6B 18號",
       "score": 1684,
       "grandTotal": 1684,
-      "totalScore": 1684,
       "kills": 78,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-24 9:35:25",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -802,7 +749,6 @@ const DATA = {
       "name": "P6B 19號",
       "score": 857,
       "grandTotal": 857,
-      "totalScore": 857,
       "kills": 42,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -818,13 +764,12 @@ const DATA = {
       "name": "P6B 20號",
       "score": 760,
       "grandTotal": 760,
-      "totalScore": 760,
       "kills": 52,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-24 9:17:44",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -832,13 +777,12 @@ const DATA = {
       "name": "P6B 21號",
       "score": 785,
       "grandTotal": 785,
-      "totalScore": 785,
       "kills": 45,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-24 9:15:56",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -846,13 +790,12 @@ const DATA = {
       "name": "P6B 22號",
       "score": 474,
       "grandTotal": 474,
-      "totalScore": 474,
       "kills": 25,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
       "last_time": "2026-09-24 9:15:36",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -860,13 +803,12 @@ const DATA = {
       "name": "P6B 23號",
       "score": 328,
       "grandTotal": 328,
-      "totalScore": 328,
       "kills": 18,
       "title": "🥇【鍵影遊俠】",
       "badge": "🥇【鍵影遊俠】",
       "last_time": "2026-09-24 9:15:21",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -874,13 +816,12 @@ const DATA = {
       "name": "P6B 24號",
       "score": 252,
       "grandTotal": 252,
-      "totalScore": 252,
       "kills": 14,
       "title": "🥇【鍵影遊俠】",
       "badge": "🥇【鍵影遊俠】",
       "last_time": "2026-09-24 9:15:20",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -888,13 +829,12 @@ const DATA = {
       "name": "P6B 25號",
       "score": 5696,
       "grandTotal": 5696,
-      "totalScore": 5696,
       "kills": 229,
       "title": "🌟【無雙神域殿堂至尊】",
       "badge": "🌟【無雙神域殿堂至尊】",
       "last_time": "2026-09-29 15:30:10",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -902,7 +842,6 @@ const DATA = {
       "name": "P6B 26號",
       "score": 856,
       "grandTotal": 856,
-      "totalScore": 856,
       "kills": 40,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -918,13 +857,12 @@ const DATA = {
       "name": "P6B 27號",
       "score": 1181,
       "grandTotal": 1181,
-      "totalScore": 1181,
       "kills": 66,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-24 9:32:27",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -932,13 +870,12 @@ const DATA = {
       "name": "P6B 28號",
       "score": 1742,
       "grandTotal": 1742,
-      "totalScore": 1742,
       "kills": 90,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-24 9:56:42",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -946,7 +883,6 @@ const DATA = {
       "name": "P6B 29號",
       "score": 879,
       "grandTotal": 879,
-      "totalScore": 879,
       "kills": 45,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -962,13 +898,12 @@ const DATA = {
       "name": "P6B 30號",
       "score": 1201,
       "grandTotal": 1201,
-      "totalScore": 1201,
       "kills": 56,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-24 9:39:47",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -976,13 +911,12 @@ const DATA = {
       "name": "P6B 31號",
       "score": 3533,
       "grandTotal": 3533,
-      "totalScore": 3533,
       "kills": 147,
       "title": "🌟【無雙神域殿堂至尊】",
       "badge": "🌟【無雙神域殿堂至尊】",
       "last_time": "2026-09-24 9:39:49",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6B",
@@ -990,7 +924,6 @@ const DATA = {
       "name": "P6B 32號",
       "score": 1140,
       "grandTotal": 1140,
-      "totalScore": 1140,
       "kills": 58,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -1006,13 +939,12 @@ const DATA = {
       "name": "P6B 33號",
       "score": 32,
       "grandTotal": 32,
-      "totalScore": 32,
       "kills": 2,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "2026-09-24 9:32:36",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1020,13 +952,12 @@ const DATA = {
       "name": "P6C 01號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1034,13 +965,12 @@ const DATA = {
       "name": "P6C 02號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1048,13 +978,12 @@ const DATA = {
       "name": "P6C 03號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1062,13 +991,12 @@ const DATA = {
       "name": "P6C 04號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1076,13 +1004,12 @@ const DATA = {
       "name": "P6C 05號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1090,13 +1017,12 @@ const DATA = {
       "name": "P6C 06號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1104,13 +1030,12 @@ const DATA = {
       "name": "P6C 07號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1118,13 +1043,12 @@ const DATA = {
       "name": "P6C 08號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1132,13 +1056,12 @@ const DATA = {
       "name": "P6C 09號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1146,13 +1069,12 @@ const DATA = {
       "name": "P6C 10號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1160,13 +1082,12 @@ const DATA = {
       "name": "P6C 11號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1174,13 +1095,12 @@ const DATA = {
       "name": "P6C 12號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1188,13 +1108,12 @@ const DATA = {
       "name": "P6C 13號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1202,13 +1121,12 @@ const DATA = {
       "name": "P6C 14號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1216,13 +1134,12 @@ const DATA = {
       "name": "P6C 15號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1230,13 +1147,12 @@ const DATA = {
       "name": "P6C 16號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1244,13 +1160,12 @@ const DATA = {
       "name": "P6C 17號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1258,13 +1173,12 @@ const DATA = {
       "name": "P6C 18號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1272,13 +1186,12 @@ const DATA = {
       "name": "P6C 19號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1286,13 +1199,12 @@ const DATA = {
       "name": "P6C 20號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1300,13 +1212,12 @@ const DATA = {
       "name": "P6C 21號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1314,13 +1225,12 @@ const DATA = {
       "name": "P6C 22號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1328,13 +1238,12 @@ const DATA = {
       "name": "P6C 23號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1342,13 +1251,12 @@ const DATA = {
       "name": "P6C 24號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1356,13 +1264,12 @@ const DATA = {
       "name": "P6C 25號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1370,13 +1277,12 @@ const DATA = {
       "name": "P6C 26號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1384,13 +1290,12 @@ const DATA = {
       "name": "P6C 27號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1398,13 +1303,12 @@ const DATA = {
       "name": "P6C 28號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1412,13 +1316,12 @@ const DATA = {
       "name": "P6C 29號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1426,13 +1329,12 @@ const DATA = {
       "name": "P6C 30號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1440,13 +1342,12 @@ const DATA = {
       "name": "P6C 31號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1454,13 +1355,12 @@ const DATA = {
       "name": "P6C 32號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1468,13 +1368,12 @@ const DATA = {
       "name": "P6C 33號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6C",
@@ -1482,29 +1381,25 @@ const DATA = {
       "name": "P6C 34號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
       "num": 1,
       "name": "P6D 01號",
-      "score": 1659,
-      "grandTotal": 1659,
-      "totalScore": 1659,
-      "kills": 109,
-      "title": "🥉【新手訓練家】",
-      "badge": "🥉【新手訓練家】",
+      "score": 1542,
+      "grandTotal": 1542,
+      "kills": 89,
+      "title": "⚡【疾風奧義宗師】",
+      "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-29 12:28:18",
-      "weekly_speed": {
-        "w6_hw4": 25.0
-      },
-      "best10": "--"
+      "weekly_speed": {},
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1512,7 +1407,6 @@ const DATA = {
       "name": "P6D 02號",
       "score": 3032,
       "grandTotal": 3032,
-      "totalScore": 3032,
       "kills": 154,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
@@ -1528,13 +1422,12 @@ const DATA = {
       "name": "P6D 03號",
       "score": 48,
       "grandTotal": 48,
-      "totalScore": 48,
       "kills": 4,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "2026-09-29 11:53:48",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1542,13 +1435,12 @@ const DATA = {
       "name": "P6D 04號",
       "score": 2892,
       "grandTotal": 2892,
-      "totalScore": 2892,
       "kills": 192,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
       "last_time": "2026-09-29 12:28:26",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1556,13 +1448,12 @@ const DATA = {
       "name": "P6D 05號",
       "score": 3229,
       "grandTotal": 3229,
-      "totalScore": 3229,
       "kills": 170,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
       "last_time": "2026-09-29 12:29:49",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1570,13 +1461,12 @@ const DATA = {
       "name": "P6D 06號",
       "score": 5256,
       "grandTotal": 5256,
-      "totalScore": 5256,
       "kills": 180,
       "title": "🌟【無雙神域殿堂至尊】",
       "badge": "🌟【無雙神域殿堂至尊】",
       "last_time": "2026-09-29 12:30:10",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1584,13 +1474,12 @@ const DATA = {
       "name": "P6D 07號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1598,13 +1487,12 @@ const DATA = {
       "name": "P6D 08號",
       "score": 874,
       "grandTotal": 874,
-      "totalScore": 874,
       "kills": 34,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-29 12:27:59",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1612,7 +1500,6 @@ const DATA = {
       "name": "P6D 09號",
       "score": 1748,
       "grandTotal": 1748,
-      "totalScore": 1748,
       "kills": 90,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -1621,7 +1508,7 @@ const DATA = {
         "w2_hw3": 27.0,
         "w3_hw1": 5.0
       },
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1629,13 +1516,12 @@ const DATA = {
       "name": "P6D 10號",
       "score": 3676,
       "grandTotal": 3676,
-      "totalScore": 3676,
       "kills": 125,
       "title": "🌟【無雙神域殿堂至尊】",
       "badge": "🌟【無雙神域殿堂至尊】",
       "last_time": "2026-09-29 12:27:56",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1643,13 +1529,12 @@ const DATA = {
       "name": "P6D 11號",
       "score": 863,
       "grandTotal": 863,
-      "totalScore": 863,
       "kills": 51,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-29 12:30:14",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1657,7 +1542,6 @@ const DATA = {
       "name": "P6D 12號",
       "score": 948,
       "grandTotal": 948,
-      "totalScore": 948,
       "kills": 51,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
@@ -1666,7 +1550,7 @@ const DATA = {
         "w2_hw3": 20.0,
         "w3_hw1": 4.0
       },
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1674,7 +1558,6 @@ const DATA = {
       "name": "P6D 13號",
       "score": 369,
       "grandTotal": 369,
-      "totalScore": 369,
       "kills": 23,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
@@ -1683,7 +1566,7 @@ const DATA = {
         "w2_hw3": 9.0,
         "w3_hw1": 3.0
       },
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1691,13 +1574,12 @@ const DATA = {
       "name": "P6D 14號",
       "score": 1315,
       "grandTotal": 1315,
-      "totalScore": 1315,
       "kills": 49,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-29 12:28:01",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1705,13 +1587,12 @@ const DATA = {
       "name": "P6D 15號",
       "score": 47,
       "grandTotal": 47,
-      "totalScore": 47,
       "kills": 4,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "2026-09-29 12:29:50",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1719,13 +1600,12 @@ const DATA = {
       "name": "P6D 16號",
       "score": 217,
       "grandTotal": 217,
-      "totalScore": 217,
       "kills": 7,
       "title": "🥇【鍵影遊俠】",
       "badge": "🥇【鍵影遊俠】",
       "last_time": "2026-09-29 12:27:57",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1733,13 +1613,12 @@ const DATA = {
       "name": "P6D 17號",
       "score": 30,
       "grandTotal": 30,
-      "totalScore": 30,
       "kills": 2,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "2026-09-29 11:50:14",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1747,13 +1626,12 @@ const DATA = {
       "name": "P6D 18號",
       "score": 818,
       "grandTotal": 818,
-      "totalScore": 818,
       "kills": 44,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-29 12:30:13",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1761,13 +1639,12 @@ const DATA = {
       "name": "P6D 19號",
       "score": 1292,
       "grandTotal": 1292,
-      "totalScore": 1292,
       "kills": 64,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-29 12:30:28",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1775,13 +1652,12 @@ const DATA = {
       "name": "P6D 20號",
       "score": 840,
       "grandTotal": 840,
-      "totalScore": 840,
       "kills": 56,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-29 12:30:30",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1789,13 +1665,12 @@ const DATA = {
       "name": "P6D 21號",
       "score": 239,
       "grandTotal": 239,
-      "totalScore": 239,
       "kills": 18,
       "title": "🥇【鍵影遊俠】",
       "badge": "🥇【鍵影遊俠】",
       "last_time": "2026-09-29 11:53:32",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1803,13 +1678,12 @@ const DATA = {
       "name": "P6D 22號",
       "score": 355,
       "grandTotal": 355,
-      "totalScore": 355,
       "kills": 19,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
       "last_time": "2026-09-29 12:25:10",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1817,7 +1691,6 @@ const DATA = {
       "name": "P6D 23號",
       "score": 3632,
       "grandTotal": 3632,
-      "totalScore": 3632,
       "kills": 96,
       "title": "🌟【無雙神域殿堂至尊】",
       "badge": "🌟【無雙神域殿堂至尊】",
@@ -1835,13 +1708,12 @@ const DATA = {
       "name": "P6D 24號",
       "score": 908,
       "grandTotal": 908,
-      "totalScore": 908,
       "kills": 59,
       "title": "🔥【魔王討伐大將】",
       "badge": "🔥【魔王討伐大將】",
       "last_time": "2026-09-29 12:29:43",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1849,7 +1721,6 @@ const DATA = {
       "name": "P6D 25號",
       "score": 1388,
       "grandTotal": 1388,
-      "totalScore": 1388,
       "kills": 72,
       "title": "🥇【鍵影遊俠】",
       "badge": "🥇【鍵影遊俠】",
@@ -1858,7 +1729,7 @@ const DATA = {
         "w2_hw3": 36.0,
         "w3_hw1": 5.0
       },
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1866,13 +1737,12 @@ const DATA = {
       "name": "P6D 26號",
       "score": 477,
       "grandTotal": 477,
-      "totalScore": 477,
       "kills": 8,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
       "last_time": "2026-09-29 12:28:03",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1880,13 +1750,12 @@ const DATA = {
       "name": "P6D 27號",
       "score": 488,
       "grandTotal": 488,
-      "totalScore": 488,
       "kills": 29,
       "title": "💎【倉頡道館館主】",
       "badge": "💎【倉頡道館館主】",
       "last_time": "2026-09-29 12:14:30",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1894,13 +1763,12 @@ const DATA = {
       "name": "P6D 28號",
       "score": 1242,
       "grandTotal": 1242,
-      "totalScore": 1242,
       "kills": 53,
       "title": "⚡【疾風奧義宗師】",
       "badge": "⚡【疾風奧義宗師】",
       "last_time": "2026-09-29 12:27:39",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1908,7 +1776,6 @@ const DATA = {
       "name": "P6D 29號",
       "score": 2135,
       "grandTotal": 2135,
-      "totalScore": 2135,
       "kills": 94,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
@@ -1917,7 +1784,7 @@ const DATA = {
         "w2_hw3": 20.0,
         "w3_hw1": 6.0
       },
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1925,13 +1792,12 @@ const DATA = {
       "name": "P6D 30號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1939,13 +1805,12 @@ const DATA = {
       "name": "P6D 31號",
       "score": 3702,
       "grandTotal": 3702,
-      "totalScore": 3702,
       "kills": 186,
       "title": "🌟【無雙神域殿堂至尊】",
       "badge": "🌟【無雙神域殿堂至尊】",
       "last_time": "2026-09-29 12:56:19",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1953,13 +1818,12 @@ const DATA = {
       "name": "P6D 32號",
       "score": 3355,
       "grandTotal": 3355,
-      "totalScore": 3355,
       "kills": 140,
       "title": "👑【傳奇鍵王大師】",
       "badge": "👑【傳奇鍵王大師】",
       "last_time": "2026-09-29 12:29:49",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1967,13 +1831,12 @@ const DATA = {
       "name": "P6D 33號",
       "score": 156,
       "grandTotal": 156,
-      "totalScore": 156,
       "kills": 10,
       "title": "🥇【鍵影遊俠】",
       "badge": "🥇【鍵影遊俠】",
       "last_time": "2026-09-29 12:26:47",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6D",
@@ -1981,13 +1844,12 @@ const DATA = {
       "name": "P6D 34號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -1995,13 +1857,12 @@ const DATA = {
       "name": "P6E 01號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2009,13 +1870,12 @@ const DATA = {
       "name": "P6E 02號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2023,13 +1883,12 @@ const DATA = {
       "name": "P6E 03號",
       "score": 44,
       "grandTotal": 44,
-      "totalScore": 44,
       "kills": 2,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "2026-09-23 17:18:17",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2037,13 +1896,12 @@ const DATA = {
       "name": "P6E 04號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2051,13 +1909,12 @@ const DATA = {
       "name": "P6E 05號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2065,13 +1922,12 @@ const DATA = {
       "name": "P6E 06號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2079,13 +1935,12 @@ const DATA = {
       "name": "P6E 07號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2093,13 +1948,12 @@ const DATA = {
       "name": "P6E 08號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2107,13 +1961,12 @@ const DATA = {
       "name": "P6E 09號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2121,13 +1974,12 @@ const DATA = {
       "name": "P6E 10號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2135,13 +1987,12 @@ const DATA = {
       "name": "P6E 11號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2149,13 +2000,12 @@ const DATA = {
       "name": "P6E 12號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2163,13 +2013,12 @@ const DATA = {
       "name": "P6E 13號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2177,13 +2026,12 @@ const DATA = {
       "name": "P6E 14號",
       "score": 113,
       "grandTotal": 113,
-      "totalScore": 113,
       "kills": 1,
       "title": "🥈【字根見習生】",
       "badge": "🥈【字根見習生】",
       "last_time": "2026-09-29 10:40:36",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2191,13 +2039,12 @@ const DATA = {
       "name": "P6E 15號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2205,13 +2052,12 @@ const DATA = {
       "name": "P6E 16號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2219,13 +2065,12 @@ const DATA = {
       "name": "P6E 17號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2233,13 +2078,12 @@ const DATA = {
       "name": "P6E 18號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2247,13 +2091,12 @@ const DATA = {
       "name": "P6E 19號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2261,13 +2104,12 @@ const DATA = {
       "name": "P6E 20號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2275,13 +2117,12 @@ const DATA = {
       "name": "P6E 21號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2289,13 +2130,12 @@ const DATA = {
       "name": "P6E 22號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2303,13 +2143,12 @@ const DATA = {
       "name": "P6E 23號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2317,13 +2156,12 @@ const DATA = {
       "name": "P6E 24號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2331,13 +2169,12 @@ const DATA = {
       "name": "P6E 25號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2345,13 +2182,12 @@ const DATA = {
       "name": "P6E 26號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2359,13 +2195,12 @@ const DATA = {
       "name": "P6E 27號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2373,13 +2208,12 @@ const DATA = {
       "name": "P6E 28號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2387,13 +2221,12 @@ const DATA = {
       "name": "P6E 29號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2401,13 +2234,12 @@ const DATA = {
       "name": "P6E 30號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2415,13 +2247,12 @@ const DATA = {
       "name": "P6E 31號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2429,13 +2260,12 @@ const DATA = {
       "name": "P6E 32號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2443,13 +2273,12 @@ const DATA = {
       "name": "P6E 33號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6E",
@@ -2457,13 +2286,12 @@ const DATA = {
       "name": "P6E 34號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2471,13 +2299,12 @@ const DATA = {
       "name": "P6F 01號",
       "score": 98,
       "grandTotal": 98,
-      "totalScore": 98,
       "kills": 1,
       "title": "🥈【字根見習生】",
       "badge": "🥈【字根見習生】",
       "last_time": "2026-09-29 13:36:10",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2485,13 +2312,12 @@ const DATA = {
       "name": "P6F 02號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2499,13 +2325,12 @@ const DATA = {
       "name": "P6F 03號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2513,13 +2338,12 @@ const DATA = {
       "name": "P6F 04號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2527,13 +2351,12 @@ const DATA = {
       "name": "P6F 05號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2541,13 +2364,12 @@ const DATA = {
       "name": "P6F 06號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2555,13 +2377,12 @@ const DATA = {
       "name": "P6F 07號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2569,13 +2390,12 @@ const DATA = {
       "name": "P6F 08號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2583,13 +2403,12 @@ const DATA = {
       "name": "P6F 09號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2597,13 +2416,12 @@ const DATA = {
       "name": "P6F 10號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2611,13 +2429,12 @@ const DATA = {
       "name": "P6F 11號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2625,13 +2442,12 @@ const DATA = {
       "name": "P6F 12號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2639,13 +2455,12 @@ const DATA = {
       "name": "P6F 13號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2653,13 +2468,12 @@ const DATA = {
       "name": "P6F 14號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2667,13 +2481,12 @@ const DATA = {
       "name": "P6F 15號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2681,13 +2494,12 @@ const DATA = {
       "name": "P6F 16號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2695,13 +2507,12 @@ const DATA = {
       "name": "P6F 17號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2709,13 +2520,12 @@ const DATA = {
       "name": "P6F 18號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥈【字根見習生】",
       "badge": "🥈【字根見習生】",
       "last_time": "2026-09-29 13:59:26",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2723,13 +2533,12 @@ const DATA = {
       "name": "P6F 19號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2737,13 +2546,12 @@ const DATA = {
       "name": "P6F 20號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2751,13 +2559,12 @@ const DATA = {
       "name": "P6F 21號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2765,13 +2572,12 @@ const DATA = {
       "name": "P6F 22號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2779,13 +2585,12 @@ const DATA = {
       "name": "P6F 23號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2793,13 +2598,12 @@ const DATA = {
       "name": "P6F 24號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2807,13 +2611,12 @@ const DATA = {
       "name": "P6F 25號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2821,13 +2624,12 @@ const DATA = {
       "name": "P6F 26號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2835,13 +2637,12 @@ const DATA = {
       "name": "P6F 27號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2849,13 +2650,12 @@ const DATA = {
       "name": "P6F 28號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2863,13 +2663,12 @@ const DATA = {
       "name": "P6F 29號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2877,13 +2676,12 @@ const DATA = {
       "name": "P6F 30號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2891,13 +2689,12 @@ const DATA = {
       "name": "P6F 31號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2905,13 +2702,12 @@ const DATA = {
       "name": "P6F 32號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     },
     {
       "cls": "P6F",
@@ -2919,239 +2715,17 @@ const DATA = {
       "name": "P6F 33號",
       "score": 0,
       "grandTotal": 0,
-      "totalScore": 0,
       "kills": 0,
       "title": "🥉【新手訓練家】",
       "badge": "🥉【新手訓練家】",
       "last_time": "--",
       "weekly_speed": {},
-      "best10": "--"
+      "best10": null
     }
   ],
   "top40": [
     {
       "rank": 1,
-      "cls": "P6F",
-      "num": 21,
-      "name": "P6F 21號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 09:14:15"
-    },
-    {
-      "rank": 2,
-      "cls": "P6F",
-      "num": 25,
-      "name": "P6F 25號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 09:15:00"
-    },
-    {
-      "rank": 3,
-      "cls": "P6F",
-      "num": 7,
-      "name": "P6F 07號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 09:17:53"
-    },
-    {
-      "rank": 4,
-      "cls": "P6F",
-      "num": 26,
-      "name": "P6F 26號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 09:18:06"
-    },
-    {
-      "rank": 5,
-      "cls": "P6F",
-      "num": 24,
-      "name": "P6F 24號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 13:06:16"
-    },
-    {
-      "rank": 6,
-      "cls": "P6C",
-      "num": 9,
-      "name": "P6C 09號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 17:27:47"
-    },
-    {
-      "rank": 7,
-      "cls": "P6B",
-      "num": 4,
-      "name": "P6B 04號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 17:51:48"
-    },
-    {
-      "rank": 8,
-      "cls": "P6D",
-      "num": 12,
-      "name": "P6D 12號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 18:12:25"
-    },
-    {
-      "rank": 9,
-      "cls": "P6F",
-      "num": 9,
-      "name": "P6F 09號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 19:14:08"
-    },
-    {
-      "rank": 10,
-      "cls": "P6D",
-      "num": 25,
-      "name": "P6D 25號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 19:20:19"
-    },
-    {
-      "rank": 11,
-      "cls": "P6E",
-      "num": 32,
-      "name": "P6E 32號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 20:02:43"
-    },
-    {
-      "rank": 12,
-      "cls": "P6E",
-      "num": 13,
-      "name": "P6E 13號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 20:08:11"
-    },
-    {
-      "rank": 13,
-      "cls": "P6D",
-      "num": 31,
-      "name": "P6D 31號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 20:21:37"
-    },
-    {
-      "rank": 14,
-      "cls": "P6B",
-      "num": 7,
-      "name": "P6B 07號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 20:42:49"
-    },
-    {
-      "rank": 15,
-      "cls": "P6D",
-      "num": 23,
-      "name": "P6D 23號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 20:43:27"
-    },
-    {
-      "rank": 16,
-      "cls": "P6D",
-      "num": 5,
-      "name": "P6D 05號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 20:59:33"
-    },
-    {
-      "rank": 17,
-      "cls": "P6E",
-      "num": 3,
-      "name": "P6E 03號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 21:05:48"
-    },
-    {
-      "rank": 18,
       "cls": "P6D",
       "num": 6,
       "name": "P6D 06號",
@@ -3161,62 +2735,88 @@ const DATA = {
       "hw4": 100.0,
       "total": 400.0,
       "badges": 5,
-      "date": "2026-09-21 21:08:55"
+      "date": "2026-09-14 19:45:25"
     },
     {
-      "rank": 19,
-      "cls": "P6B",
-      "num": 5,
-      "name": "P6B 05號",
+      "rank": 2,
+      "cls": "P6F",
+      "num": 29,
+      "name": "P6F 29號",
       "hw1": 100.0,
       "hw2": 100.0,
       "hw3": 100.0,
       "hw4": 100.0,
       "total": 400.0,
       "badges": 5,
-      "date": "2026-09-21 21:12:08"
+      "date": "2026-09-14 19:56:26"
     },
     {
-      "rank": 20,
-      "cls": "P6C",
-      "num": 2,
-      "name": "P6C 02號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 21:19:08"
-    },
-    {
-      "rank": 21,
+      "rank": 3,
       "cls": "P6D",
-      "num": 4,
-      "name": "P6D 04號",
+      "num": 5,
+      "name": "P6D 05號",
       "hw1": 100.0,
       "hw2": 100.0,
       "hw3": 100.0,
       "hw4": 100.0,
       "total": 400.0,
       "badges": 5,
-      "date": "2026-09-21 21:23:51"
+      "date": "2026-09-14 19:58:06"
     },
     {
-      "rank": 22,
-      "cls": "P6E",
-      "num": 4,
-      "name": "P6E 04號",
+      "rank": 4,
+      "cls": "P6D",
+      "num": 31,
+      "name": "P6D 31號",
       "hw1": 100.0,
       "hw2": 100.0,
       "hw3": 100.0,
       "hw4": 100.0,
       "total": 400.0,
       "badges": 5,
-      "date": "2026-09-21 21:23:54"
+      "date": "2026-09-14 20:05:51"
     },
     {
-      "rank": 23,
+      "rank": 5,
+      "cls": "P6C",
+      "num": 9,
+      "name": "P6C 09號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-14 20:33:05"
+    },
+    {
+      "rank": 6,
+      "cls": "P6C",
+      "num": 28,
+      "name": "P6C 28號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-14 21:09:50"
+    },
+    {
+      "rank": 7,
+      "cls": "P6F",
+      "num": 9,
+      "name": "P6F 09號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-14 21:41:43"
+    },
+    {
+      "rank": 8,
       "cls": "P6E",
       "num": 15,
       "name": "P6E 15號",
@@ -3226,218 +2826,23 @@ const DATA = {
       "hw4": 100.0,
       "total": 400.0,
       "badges": 5,
-      "date": "2026-09-21 21:49:56"
+      "date": "2026-09-14 22:01:49"
     },
     {
-      "rank": 24,
-      "cls": "P6F",
-      "num": 17,
-      "name": "P6F 17號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 21:52:45"
-    },
-    {
-      "rank": 25,
-      "cls": "P6A",
-      "num": 3,
-      "name": "P6A 03號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 21:55:27"
-    },
-    {
-      "rank": 26,
-      "cls": "P6D",
-      "num": 28,
-      "name": "P6D 28號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-21 22:33:58"
-    },
-    {
-      "rank": 27,
-      "cls": "P6A",
-      "num": 11,
-      "name": "P6A 11號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-22 14:48:16"
-    },
-    {
-      "rank": 28,
-      "cls": "P6A",
-      "num": 21,
-      "name": "P6A 21號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-22 14:49:14"
-    },
-    {
-      "rank": 29,
-      "cls": "P6A",
-      "num": 15,
-      "name": "P6A 15號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-22 19:06:35"
-    },
-    {
-      "rank": 30,
-      "cls": "P6D",
-      "num": 8,
-      "name": "P6D 08號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-22 20:22:41"
-    },
-    {
-      "rank": 31,
+      "rank": 9,
       "cls": "P6C",
-      "num": 30,
-      "name": "P6C 30號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-22 20:26:15"
-    },
-    {
-      "rank": 32,
-      "cls": "P6A",
       "num": 2,
-      "name": "P6A 02號",
+      "name": "P6C 02號",
       "hw1": 100.0,
       "hw2": 100.0,
       "hw3": 100.0,
       "hw4": 100.0,
       "total": 400.0,
       "badges": 5,
-      "date": "2026-09-22 21:03:33"
+      "date": "2026-09-14 22:03:32"
     },
     {
-      "rank": 33,
-      "cls": "P6B",
-      "num": 3,
-      "name": "P6B 03號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-22 21:26:02"
-    },
-    {
-      "rank": 34,
-      "cls": "P6C",
-      "num": 15,
-      "name": "P6C 15號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-22 21:34:03"
-    },
-    {
-      "rank": 35,
-      "cls": "P6D",
-      "num": 10,
-      "name": "P6D 10號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-22 21:36:14"
-    },
-    {
-      "rank": 36,
-      "cls": "P6B",
-      "num": 13,
-      "name": "P6B 13號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-22 22:26:50"
-    },
-    {
-      "rank": 37,
-      "cls": "P6A",
-      "num": 10,
-      "name": "P6A 10號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-22 22:50:56"
-    },
-    {
-      "rank": 38,
-      "cls": "P6A",
-      "num": 4,
-      "name": "P6A 04號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-23 20:53:07"
-    },
-    {
-      "rank": 39,
-      "cls": "P6A",
-      "num": 16,
-      "name": "P6A 16號",
-      "hw1": 100.0,
-      "hw2": 100.0,
-      "hw3": 100.0,
-      "hw4": 100.0,
-      "total": 400.0,
-      "badges": 5,
-      "date": "2026-09-23 21:05:03"
-    },
-    {
-      "rank": 40,
+      "rank": 10,
       "cls": "P6B",
       "num": 10,
       "name": "P6B 10號",
@@ -3447,923 +2852,1012 @@ const DATA = {
       "hw4": 100.0,
       "total": 400.0,
       "badges": 5,
-      "date": "2026-09-23 21:51:10"
+      "date": "2026-09-14 22:04:22"
+    },
+    {
+      "rank": 11,
+      "cls": "P6F",
+      "num": 10,
+      "name": "P6F 10號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-14 23:23:47"
+    },
+    {
+      "rank": 12,
+      "cls": "P6B",
+      "num": 28,
+      "name": "P6B 28號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 18:12:37"
+    },
+    {
+      "rank": 13,
+      "cls": "P6B",
+      "num": 4,
+      "name": "P6B 04號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 18:38:59"
+    },
+    {
+      "rank": 14,
+      "cls": "P6C",
+      "num": 3,
+      "name": "P6C 03號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 19:27:32"
+    },
+    {
+      "rank": 15,
+      "cls": "P6A",
+      "num": 21,
+      "name": "P6A 21號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 19:50:06"
+    },
+    {
+      "rank": 16,
+      "cls": "P6B",
+      "num": 5,
+      "name": "P6B 05號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 20:30:53"
+    },
+    {
+      "rank": 17,
+      "cls": "P6B",
+      "num": 3,
+      "name": "P6B 03號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 20:35:50"
+    },
+    {
+      "rank": 18,
+      "cls": "P6E",
+      "num": 13,
+      "name": "P6E 13號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 20:45:04"
+    },
+    {
+      "rank": 19,
+      "cls": "P6D",
+      "num": 23,
+      "name": "P6D 23號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 21:01:16"
+    },
+    {
+      "rank": 20,
+      "cls": "P6A",
+      "num": 3,
+      "name": "P6A 03號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 21:07:57"
+    },
+    {
+      "rank": 21,
+      "cls": "P6E",
+      "num": 14,
+      "name": "P6E 14號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 21:27:57"
+    },
+    {
+      "rank": 22,
+      "cls": "P6A",
+      "num": 12,
+      "name": "P6A 12號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 21:37:10"
+    },
+    {
+      "rank": 23,
+      "cls": "P6A",
+      "num": 11,
+      "name": "P6A 11號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-15 21:48:01"
+    },
+    {
+      "rank": 24,
+      "cls": "P6C",
+      "num": 17,
+      "name": "P6C 17號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-16 09:14:38"
+    },
+    {
+      "rank": 25,
+      "cls": "P6C",
+      "num": 15,
+      "name": "P6C 15號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-16 16:11:46"
+    },
+    {
+      "rank": 26,
+      "cls": "P6D",
+      "num": 25,
+      "name": "P6D 25號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-16 17:53:18"
+    },
+    {
+      "rank": 27,
+      "cls": "P6A",
+      "num": 4,
+      "name": "P6A 04號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-16 20:11:13"
+    },
+    {
+      "rank": 28,
+      "cls": "P6D",
+      "num": 26,
+      "name": "P6D 26號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-16 20:21:53"
+    },
+    {
+      "rank": 29,
+      "cls": "P6A",
+      "num": 20,
+      "name": "P6A 20號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-16 20:40:46"
+    },
+    {
+      "rank": 30,
+      "cls": "P6E",
+      "num": 3,
+      "name": "P6E 03號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-16 21:05:04"
+    },
+    {
+      "rank": 31,
+      "cls": "P6D",
+      "num": 27,
+      "name": "P6D 27號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-16 21:44:25"
+    },
+    {
+      "rank": 32,
+      "cls": "P6D",
+      "num": 28,
+      "name": "P6D 28號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-16 22:38:11"
+    },
+    {
+      "rank": 33,
+      "cls": "P6D",
+      "num": 4,
+      "name": "P6D 04號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-16 23:04:46"
+    },
+    {
+      "rank": 34,
+      "cls": "P6C",
+      "num": 13,
+      "name": "P6C 13號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-17 16:55:30"
+    },
+    {
+      "rank": 35,
+      "cls": "P6B",
+      "num": 13,
+      "name": "P6B 13號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-17 19:43:49"
+    },
+    {
+      "rank": 36,
+      "cls": "P6B",
+      "num": 22,
+      "name": "P6B 22號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-17 19:47:31"
+    },
+    {
+      "rank": 37,
+      "cls": "P6F",
+      "num": 26,
+      "name": "P6F 26號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-17 20:04:15"
+    },
+    {
+      "rank": 38,
+      "cls": "P6A",
+      "num": 2,
+      "name": "P6A 02號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-17 20:41:46"
+    },
+    {
+      "rank": 39,
+      "cls": "P6B",
+      "num": 30,
+      "name": "P6B 30號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-17 22:16:37"
+    },
+    {
+      "rank": 40,
+      "cls": "P6C",
+      "num": 22,
+      "name": "P6C 22號",
+      "hw1": 100.0,
+      "hw2": 100.0,
+      "hw3": 100.0,
+      "hw4": 100.0,
+      "total": 400.0,
+      "badges": 5,
+      "date": "2026-09-17 22:55:12"
     }
   ],
   "class_top10": {
     "P6A": [
       {
         "rank": 1,
-        "cls": "P6A",
-        "num": 3,
-        "name": "P6A 03號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 21,
+        "name": "21號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 21:55:27"
+        "date": "2026-09-15 19:50:06"
       },
       {
         "rank": 2,
-        "cls": "P6A",
-        "num": 11,
-        "name": "P6A 11號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 3,
+        "name": "03號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 14:48:16"
+        "date": "2026-09-15 21:07:57"
       },
       {
         "rank": 3,
-        "cls": "P6A",
-        "num": 21,
-        "name": "P6A 21號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 12,
+        "name": "12號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 14:49:14"
+        "date": "2026-09-15 21:37:10"
       },
       {
         "rank": 4,
-        "cls": "P6A",
-        "num": 15,
-        "name": "P6A 15號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 11,
+        "name": "11號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 19:06:35"
+        "date": "2026-09-15 21:48:01"
       },
       {
         "rank": 5,
-        "cls": "P6A",
-        "num": 2,
-        "name": "P6A 02號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 4,
+        "name": "04號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 21:03:33"
+        "date": "2026-09-16 20:11:13"
       },
       {
         "rank": 6,
-        "cls": "P6A",
-        "num": 10,
-        "name": "P6A 10號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 20,
+        "name": "20號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 22:50:56"
+        "date": "2026-09-16 20:40:46"
       },
       {
         "rank": 7,
-        "cls": "P6A",
-        "num": 4,
-        "name": "P6A 04號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 2,
+        "name": "02號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-23 20:53:07"
+        "date": "2026-09-17 20:41:46"
       },
       {
         "rank": 8,
-        "cls": "P6A",
-        "num": 16,
-        "name": "P6A 16號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 10,
+        "name": "10號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-23 21:05:03"
+        "date": "2026-09-18 15:59:46"
       },
       {
         "rank": 9,
-        "cls": "P6A",
-        "num": 6,
-        "name": "P6A 06號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 5,
+        "name": "05號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-26 12:09:39"
+        "date": "2026-09-18 21:34:30"
       },
       {
         "rank": 10,
-        "cls": "P6A",
-        "num": 12,
-        "name": "P6A 12號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 18,
+        "name": "18號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-26 13:20:52"
+        "date": "2026-09-18 22:12:01"
       }
     ],
     "P6B": [
       {
         "rank": 1,
-        "cls": "P6B",
-        "num": 4,
-        "name": "P6B 04號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 10,
+        "name": "10號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 17:51:48"
+        "date": "2026-09-14 22:04:22"
       },
       {
         "rank": 2,
-        "cls": "P6B",
-        "num": 7,
-        "name": "P6B 07號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 28,
+        "name": "28號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 20:42:49"
+        "date": "2026-09-15 18:12:37"
       },
       {
         "rank": 3,
-        "cls": "P6B",
-        "num": 5,
-        "name": "P6B 05號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 4,
+        "name": "04號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 21:12:08"
+        "date": "2026-09-15 18:38:59"
       },
       {
         "rank": 4,
-        "cls": "P6B",
-        "num": 3,
-        "name": "P6B 03號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 5,
+        "name": "05號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 21:26:02"
+        "date": "2026-09-15 20:30:53"
       },
       {
         "rank": 5,
-        "cls": "P6B",
-        "num": 13,
-        "name": "P6B 13號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 3,
+        "name": "03號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 22:26:50"
+        "date": "2026-09-15 20:35:50"
       },
       {
         "rank": 6,
-        "cls": "P6B",
-        "num": 10,
-        "name": "P6B 10號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 13,
+        "name": "13號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-23 21:51:10"
+        "date": "2026-09-17 19:43:49"
       },
       {
         "rank": 7,
-        "cls": "P6B",
-        "num": 9,
-        "name": "P6B 09號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 22,
+        "name": "22號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-24 20:47:41"
+        "date": "2026-09-17 19:47:31"
       },
       {
         "rank": 8,
-        "cls": "P6B",
         "num": 30,
-        "name": "P6B 30號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "name": "30號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-24 21:12:11"
+        "date": "2026-09-17 22:16:37"
       },
       {
         "rank": 9,
-        "cls": "P6B",
         "num": 16,
-        "name": "P6B 16號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "name": "16號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-25 18:47:40"
+        "date": "2026-09-18 21:54:00"
       },
       {
         "rank": 10,
-        "cls": "P6B",
-        "num": 18,
-        "name": "P6B 18號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 7,
+        "name": "07號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-25 20:40:55"
+        "date": "2026-09-18 22:47:20"
       }
     ],
     "P6C": [
       {
         "rank": 1,
-        "cls": "P6C",
         "num": 9,
-        "name": "P6C 09號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "name": "09號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 17:27:47"
+        "date": "2026-09-14 20:33:05"
       },
       {
         "rank": 2,
-        "cls": "P6C",
-        "num": 2,
-        "name": "P6C 02號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 28,
+        "name": "28號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 21:19:08"
+        "date": "2026-09-14 21:09:50"
       },
       {
         "rank": 3,
-        "cls": "P6C",
-        "num": 30,
-        "name": "P6C 30號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 2,
+        "name": "02號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 20:26:15"
+        "date": "2026-09-14 22:03:32"
       },
       {
         "rank": 4,
-        "cls": "P6C",
-        "num": 15,
-        "name": "P6C 15號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 3,
+        "name": "03號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 21:34:03"
+        "date": "2026-09-15 19:27:32"
       },
       {
         "rank": 5,
-        "cls": "P6C",
-        "num": 3,
-        "name": "P6C 03號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 17,
+        "name": "17號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-24 17:44:13"
+        "date": "2026-09-16 09:14:38"
       },
       {
         "rank": 6,
-        "cls": "P6C",
-        "num": 16,
-        "name": "P6C 16號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 15,
+        "name": "15號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-24 19:03:11"
+        "date": "2026-09-16 16:11:46"
       },
       {
         "rank": 7,
-        "cls": "P6C",
-        "num": 8,
-        "name": "P6C 08號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 13,
+        "name": "13號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-24 21:13:41"
+        "date": "2026-09-17 16:55:30"
       },
       {
         "rank": 8,
-        "cls": "P6C",
-        "num": 26,
-        "name": "P6C 26號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 22,
+        "name": "22號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-24 22:20:10"
+        "date": "2026-09-17 22:55:12"
       },
       {
         "rank": 9,
-        "cls": "P6C",
-        "num": 33,
-        "name": "P6C 33號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 30,
+        "name": "30號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-25 20:09:55"
+        "date": "2026-09-18 20:57:42"
       },
       {
         "rank": 10,
-        "cls": "P6C",
-        "num": 28,
-        "name": "P6C 28號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 8,
+        "name": "08號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-25 21:31:49"
+        "date": "2026-09-18 21:01:40"
       }
     ],
     "P6D": [
       {
         "rank": 1,
-        "cls": "P6D",
-        "num": 12,
-        "name": "P6D 12號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 6,
+        "name": "06號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 18:12:25"
+        "date": "2026-09-14 19:45:25"
       },
       {
         "rank": 2,
-        "cls": "P6D",
-        "num": 25,
-        "name": "P6D 25號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 5,
+        "name": "05號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 19:20:19"
+        "date": "2026-09-14 19:58:06"
       },
       {
         "rank": 3,
-        "cls": "P6D",
         "num": 31,
-        "name": "P6D 31號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "name": "31號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 20:21:37"
+        "date": "2026-09-14 20:05:51"
       },
       {
         "rank": 4,
-        "cls": "P6D",
         "num": 23,
-        "name": "P6D 23號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "name": "23號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 20:43:27"
+        "date": "2026-09-15 21:01:16"
       },
       {
         "rank": 5,
-        "cls": "P6D",
-        "num": 5,
-        "name": "P6D 05號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 25,
+        "name": "25號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 20:59:33"
+        "date": "2026-09-16 17:53:18"
       },
       {
         "rank": 6,
-        "cls": "P6D",
-        "num": 6,
-        "name": "P6D 06號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 26,
+        "name": "26號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 21:08:55"
+        "date": "2026-09-16 20:21:53"
       },
       {
         "rank": 7,
-        "cls": "P6D",
-        "num": 4,
-        "name": "P6D 04號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 27,
+        "name": "27號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 21:23:51"
+        "date": "2026-09-16 21:44:25"
       },
       {
         "rank": 8,
-        "cls": "P6D",
         "num": 28,
-        "name": "P6D 28號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "name": "28號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 22:33:58"
+        "date": "2026-09-16 22:38:11"
       },
       {
         "rank": 9,
-        "cls": "P6D",
-        "num": 8,
-        "name": "P6D 08號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 4,
+        "name": "04號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 20:22:41"
+        "date": "2026-09-16 23:04:46"
       },
       {
         "rank": 10,
-        "cls": "P6D",
-        "num": 10,
-        "name": "P6D 10號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 14,
+        "name": "14號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-22 21:36:14"
+        "date": "2026-09-18 20:35:29"
       }
     ],
     "P6E": [
       {
         "rank": 1,
-        "cls": "P6E",
-        "num": 32,
-        "name": "P6E 32號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 15,
+        "name": "15號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 20:02:43"
+        "date": "2026-09-14 22:01:49"
       },
       {
         "rank": 2,
-        "cls": "P6E",
         "num": 13,
-        "name": "P6E 13號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "name": "13號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 20:08:11"
+        "date": "2026-09-15 20:45:04"
       },
       {
         "rank": 3,
-        "cls": "P6E",
-        "num": 3,
-        "name": "P6E 03號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 14,
+        "name": "14號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 21:05:48"
+        "date": "2026-09-15 21:27:57"
       },
       {
         "rank": 4,
-        "cls": "P6E",
-        "num": 4,
-        "name": "P6E 04號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 3,
+        "name": "03號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 21:23:54"
+        "date": "2026-09-16 21:05:04"
       },
       {
         "rank": 5,
-        "cls": "P6E",
-        "num": 15,
-        "name": "P6E 15號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 32,
+        "name": "32號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 21:49:56"
+        "date": "2026-09-18 20:07:56"
       },
       {
         "rank": 6,
-        "cls": "P6E",
-        "num": 14,
-        "name": "P6E 14號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 9,
+        "name": "09號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-24 19:48:34"
+        "date": "2026-09-18 22:13:03"
       },
       {
         "rank": 7,
-        "cls": "P6E",
-        "num": 18,
-        "name": "P6E 18號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 17,
+        "name": "17號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-26 11:08:17"
+        "date": "2026-09-18 22:23:44"
       },
       {
         "rank": 8,
-        "cls": "P6E",
-        "num": 30,
-        "name": "P6E 30號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 22,
+        "name": "22號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-27 11:18:36"
+        "date": "2026-09-19 19:42:13"
       },
       {
         "rank": 9,
-        "cls": "P6E",
         "num": 24,
-        "name": "P6E 24號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "name": "24號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-27 14:43:30"
+        "date": "2026-09-19 20:41:12"
       },
       {
         "rank": 10,
-        "cls": "P6E",
-        "num": 8,
-        "name": "P6E 08號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 30,
+        "name": "30號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-27 17:21:05"
+        "date": "2026-09-20 09:32:22"
       }
     ],
     "P6F": [
       {
         "rank": 1,
-        "cls": "P6F",
-        "num": 21,
-        "name": "P6F 21號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 29,
+        "name": "29號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 09:14:15"
+        "date": "2026-09-14 19:56:26"
       },
       {
         "rank": 2,
-        "cls": "P6F",
-        "num": 25,
-        "name": "P6F 25號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 9,
+        "name": "09號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 09:15:00"
+        "date": "2026-09-14 21:41:43"
       },
       {
         "rank": 3,
-        "cls": "P6F",
-        "num": 7,
-        "name": "P6F 07號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 10,
+        "name": "10號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 09:17:53"
+        "date": "2026-09-14 23:23:47"
       },
       {
         "rank": 4,
-        "cls": "P6F",
         "num": 26,
-        "name": "P6F 26號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "name": "26號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 09:18:06"
+        "date": "2026-09-17 20:04:15"
       },
       {
         "rank": 5,
-        "cls": "P6F",
-        "num": 24,
-        "name": "P6F 24號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 27,
+        "name": "27號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 13:06:16"
+        "date": "2026-09-18 19:58:57"
       },
       {
         "rank": 6,
-        "cls": "P6F",
-        "num": 9,
-        "name": "P6F 09號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 25,
+        "name": "25號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 19:14:08"
+        "date": "2026-09-18 21:41:08"
       },
       {
         "rank": 7,
-        "cls": "P6F",
-        "num": 17,
-        "name": "P6F 17號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 32,
+        "name": "32號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-21 21:52:45"
+        "date": "2026-09-18 23:12:56"
       },
       {
         "rank": 8,
-        "cls": "P6F",
-        "num": 16,
-        "name": "P6F 16號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 3,
+        "name": "03號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-24 21:18:11"
+        "date": "2026-09-19 12:58:58"
       },
       {
         "rank": 9,
-        "cls": "P6F",
-        "num": 32,
-        "name": "P6F 32號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 12,
+        "name": "12號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-24 22:26:17"
+        "date": "2026-09-19 14:18:19"
       },
       {
         "rank": 10,
-        "cls": "P6F",
-        "num": 27,
-        "name": "P6F 27號",
-        "hw1": 100.0,
-        "hw2": 100.0,
-        "hw3": 100.0,
-        "hw4": 100.0,
+        "num": 14,
+        "name": "14號",
         "total": 400.0,
         "badges": 5,
-        "date": "2026-09-26 14:44:04"
+        "date": "2026-09-19 17:48:09"
       }
     ]
   },
   "perfect_students": {
     "P6A": [
-      "P6A 03號",
-      "P6A 11號",
-      "P6A 21號",
-      "P6A 15號",
-      "P6A 02號",
-      "P6A 10號",
-      "P6A 04號",
-      "P6A 16號",
-      "P6A 06號",
-      "P6A 12號",
-      "P6A 18號",
-      "P6A 30號",
-      "P6A 05號",
-      "P6A 27號",
-      "P6A 14號",
-      "P6A 01號",
-      "P6A 23號",
-      "P6A 08號",
-      "P6A 20號"
+      "02號",
+      "03號",
+      "04號",
+      "05號",
+      "08號",
+      "10號",
+      "11號",
+      "12號",
+      "14號",
+      "16號",
+      "18號",
+      "20號",
+      "21號",
+      "23號",
+      "24號",
+      "26號",
+      "27號",
+      "28號",
+      "30號"
     ],
     "P6B": [
-      "P6B 04號",
-      "P6B 07號",
-      "P6B 05號",
-      "P6B 03號",
-      "P6B 13號",
-      "P6B 10號",
-      "P6B 09號",
-      "P6B 30號",
-      "P6B 16號",
-      "P6B 18號",
-      "P6B 21號",
-      "P6B 17號",
-      "P6B 23號",
-      "P6B 31號",
-      "P6B 27號",
-      "P6B 22號",
-      "P6B 19號",
-      "P6B 01號",
-      "P6B 26號"
+      "01號",
+      "03號",
+      "04號",
+      "05號",
+      "07號",
+      "09號",
+      "10號",
+      "13號",
+      "15號",
+      "16號",
+      "17號",
+      "18號",
+      "19號",
+      "21號",
+      "22號",
+      "23號",
+      "26號",
+      "27號",
+      "28號",
+      "30號",
+      "31號"
     ],
     "P6C": [
-      "P6C 09號",
-      "P6C 02號",
-      "P6C 30號",
-      "P6C 15號",
-      "P6C 03號",
-      "P6C 16號",
-      "P6C 08號",
-      "P6C 26號",
-      "P6C 33號",
-      "P6C 28號",
-      "P6C 27號",
-      "P6C 25號",
-      "P6C 22號",
-      "P6C 31號",
-      "P6C 24號",
-      "P6C 10號",
-      "P6C 21號",
-      "P6C 18號",
-      "P6C 14號",
-      "P6C 04號",
-      "P6C 12號",
-      "P6C 17號",
-      "P6C 20號"
+      "02號",
+      "03號",
+      "04號",
+      "08號",
+      "09號",
+      "10號",
+      "12號",
+      "13號",
+      "14號",
+      "15號",
+      "17號",
+      "18號",
+      "20號",
+      "21號",
+      "22號",
+      "25號",
+      "28號",
+      "30號",
+      "31號"
     ],
     "P6D": [
-      "P6D 12號",
-      "P6D 25號",
-      "P6D 31號",
-      "P6D 23號",
-      "P6D 05號",
-      "P6D 06號",
-      "P6D 04號",
-      "P6D 28號",
-      "P6D 08號",
-      "P6D 10號",
-      "P6D 24號",
-      "P6D 27號",
-      "P6D 11號",
-      "P6D 26號",
-      "P6D 02號",
-      "P6D 13號"
+      "02號",
+      "04號",
+      "05號",
+      "06號",
+      "08號",
+      "10號",
+      "11號",
+      "12號",
+      "13號",
+      "14號",
+      "23號",
+      "24號",
+      "25號",
+      "26號",
+      "27號",
+      "28號",
+      "31號",
+      "34號"
     ],
     "P6E": [
-      "P6E 32號",
-      "P6E 13號",
-      "P6E 03號",
-      "P6E 04號",
-      "P6E 15號",
-      "P6E 14號",
-      "P6E 18號",
-      "P6E 30號",
-      "P6E 24號",
-      "P6E 08號",
-      "P6E 12號",
-      "P6E 27號",
-      "P6E 17號",
-      "P6E 22號"
+      "03號",
+      "08號",
+      "09號",
+      "12號",
+      "13號",
+      "14號",
+      "15號",
+      "17號",
+      "18號",
+      "22號",
+      "24號",
+      "27號",
+      "30號",
+      "32號"
     ],
     "P6F": [
-      "P6F 21號",
-      "P6F 25號",
-      "P6F 07號",
-      "P6F 26號",
-      "P6F 24號",
-      "P6F 09號",
-      "P6F 17號",
-      "P6F 16號",
-      "P6F 32號",
-      "P6F 27號",
-      "P6F 29號",
-      "P6F 06號",
-      "P6F 18號",
-      "P6F 12號",
-      "P6F 31號",
-      "P6F 10號",
-      "P6F 08號"
+      "03號",
+      "06號",
+      "07號",
+      "09號",
+      "10號",
+      "12號",
+      "14號",
+      "16號",
+      "19號",
+      "21號",
+      "24號",
+      "25號",
+      "26號",
+      "27號",
+      "29號",
+      "32號"
     ]
   },
   "roster": {
@@ -4581,7 +4075,857 @@ const DATA = {
       "33": "P6F 33號"
     }
   },
-  "tiers_config": [],
+  "connected_words": [
+    {
+      "char": "更",
+      "codes": [
+        "一",
+        "中",
+        "田",
+        "大"
+      ],
+      "keys": [
+        "M",
+        "L",
+        "W",
+        "K"
+      ],
+      "full": "一中田大 (MLWK)",
+      "secret": "【連體字取碼】筆畫交連不分割，依筆順取首橫【一(M)】＋貫穿豎【中(L)】＋日框【田(W)】＋末捺【大(K)】。標準倉頡全碼：一中田大 (MLWK)。"
+    },
+    {
+      "char": "事",
+      "codes": [
+        "十",
+        "中",
+        "中",
+        "弓"
+      ],
+      "keys": [
+        "J",
+        "L",
+        "L",
+        "N"
+      ],
+      "full": "十中中弓 (JLLN)",
+      "secret": "【連體字取碼】首橫【十(J)】＋貫穿長豎【中(L)】＋口框兩側【中(L)】＋末橫折鉤【弓(N)】。標準倉頡全碼：十中中弓 (JLLN)。"
+    },
+    {
+      "char": "車",
+      "codes": [
+        "十",
+        "田",
+        "十"
+      ],
+      "keys": [
+        "J",
+        "W",
+        "J"
+      ],
+      "full": "十田十 (JWJ)",
+      "secret": "【連體字取碼】首橫豎【十(J)】＋中間車框【田(W)】＋底橫貫豎【十(J)】。標準倉頡全碼：十田十 (JWJ)。速成碼為：十十 (JJ)！"
+    },
+    {
+      "char": "重",
+      "codes": [
+        "竹",
+        "十",
+        "田",
+        "土"
+      ],
+      "keys": [
+        "H",
+        "J",
+        "W",
+        "G"
+      ],
+      "full": "竹十田土 (HJWG)",
+      "secret": "【連體字取碼】首撇【竹(H)】＋橫豎【十(J)】＋中間框【田(W)】＋底土【土(G)】。標準倉頡全碼：竹十田土 (HJWG)。速成碼為：竹土 (HG)！"
+    },
+    {
+      "char": "申",
+      "codes": [
+        "中",
+        "田",
+        "中"
+      ],
+      "keys": [
+        "L",
+        "W",
+        "L"
+      ],
+      "full": "中田中 (LWL)",
+      "secret": "【連體字取碼】頂端懸針【中(L)】＋中間日框【田(W)】＋底端貫豎【中(L)】。標準倉頡全碼：中田中 (LWL)。速成碼為：中中 (LL)！"
+    },
+    {
+      "char": "亞",
+      "codes": [
+        "一",
+        "中",
+        "中",
+        "一"
+      ],
+      "keys": [
+        "M",
+        "L",
+        "L",
+        "M"
+      ],
+      "full": "一中中一 (MLLM)",
+      "secret": "【連體字取碼】首橫【一(M)】＋左豎【中(L)】＋右豎【中(L)】＋底橫【一(M)】。標準倉頡全碼：一中中一 (MLLM)。速成碼為：一一 (MM)！"
+    },
+    {
+      "char": "雨",
+      "codes": [
+        "一",
+        "中",
+        "月",
+        "卜"
+      ],
+      "keys": [
+        "M",
+        "L",
+        "B",
+        "Y"
+      ],
+      "full": "一中月卜 (MLBY)",
+      "secret": "【連體字取碼】首橫【一(M)】＋中豎【中(L)】＋外框【月(B)】＋內點【卜(Y)】。標準倉頡全碼：一中月卜 (MLBY)。速成碼為：一卜 (MY)！"
+    },
+    {
+      "char": "鳥",
+      "codes": [
+        "竹",
+        "日",
+        "卜",
+        "火"
+      ],
+      "keys": [
+        "H",
+        "A",
+        "Y",
+        "F"
+      ],
+      "full": "竹日卜火 (HAYF)",
+      "secret": "【連體字取碼】首撇【竹(H)】＋折筆【日(A)】＋中橫【卜(Y)】＋底四點【火(F)】。標準倉頡全碼：竹日卜火 (HAYF)。速成碼為：竹火 (HF)！"
+    },
+    {
+      "char": "夫",
+      "codes": [
+        "手",
+        "人"
+      ],
+      "keys": [
+        "Q",
+        "O"
+      ],
+      "full": "手人 (QO)",
+      "secret": "【連體字取碼】「夫」字筆劃交連，取首筆折交【手(Q)】＋末筆撇捺【人(O)】。標準倉頡全碼：手人 (QO)。"
+    },
+    {
+      "char": "長",
+      "codes": [
+        "尸",
+        "一",
+        "女"
+      ],
+      "keys": [
+        "S",
+        "M",
+        "V"
+      ],
+      "full": "尸一女 (SMV)",
+      "secret": "【連體字取碼】首筆豎折【尸(S)】＋中橫【一(M)】＋末筆撇捺折【女(V)】。標準倉頡全碼：尸一女 (SMV)。速成碼為：尸女 (SV)！"
+    },
+    {
+      "char": "東",
+      "codes": [
+        "木",
+        "田"
+      ],
+      "keys": [
+        "D",
+        "W"
+      ],
+      "full": "木田 (DW)",
+      "secret": "【連體字取碼】貫穿中幹木取【木(D)】，中間交疊框取【田(W)】。標準倉頡全碼：木田 (DW)。"
+    },
+    {
+      "char": "再",
+      "codes": [
+        "一",
+        "土",
+        "月"
+      ],
+      "keys": [
+        "M",
+        "G",
+        "B"
+      ],
+      "full": "一土月 (MGB)",
+      "secret": "【連體字取碼】首橫【一(M)】＋中貫土【土(G)】＋外框【月(B)】。標準倉頡全碼：一土月 (MGB)。速成碼為：一月 (MB)！"
+    },
+    {
+      "char": "求",
+      "codes": [
+        "戈",
+        "十",
+        "水"
+      ],
+      "keys": [
+        "I",
+        "J",
+        "E"
+      ],
+      "full": "戈十水 (IJE)",
+      "secret": "【連體字取碼】頂點【戈(I)】＋中幹橫豎【十(J)】＋底又【水(E)】。標準倉頡全碼：戈十水 (IJE)。速成碼為：戈水 (IE)！"
+    },
+    {
+      "char": "年",
+      "codes": [
+        "人",
+        "手"
+      ],
+      "keys": [
+        "O",
+        "Q"
+      ],
+      "full": "人手 (OQ)",
+      "secret": "【連體字取碼】頂撇【人(O)】＋下部干字身【手(Q)】。標準倉頡全碼：人手 (OQ)。"
+    },
+    {
+      "char": "卑",
+      "codes": [
+        "竹",
+        "竹",
+        "十"
+      ],
+      "keys": [
+        "H",
+        "H",
+        "J"
+      ],
+      "full": "竹竹十 (HHJ)",
+      "secret": "【三代倉頡取碼】頂撇【竹(H)】＋中框【竹(H)】＋末筆十【十(J)】。標準倉頡全碼：竹竹十 (HHJ)。速成碼為：竹十 (HJ)！"
+    }
+  ],
+  "split_words": [
+    {
+      "char": "聽",
+      "prefix_codes": [
+        "尸",
+        "土"
+      ],
+      "prefix_keys": [
+        "S",
+        "G"
+      ],
+      "body_codes": [
+        "十",
+        "田",
+        "心"
+      ],
+      "body_keys": [
+        "J",
+        "W",
+        "P"
+      ],
+      "full": "尸土十田心 (SGJWP)",
+      "secret": "【左右分體字·首尾首二尾】字首「耳」取首碼【尸(S)】＋尾碼【土(G)】（共2碼）；字身「𢛳」取首碼【十(J)】＋次碼【田(W)】＋尾碼【心(P)】（共3碼）。標準倉頡全碼為 5 碼：尸土十田心 (SGJWP)。速成碼為：尸心 (SP)！"
+    },
+    {
+      "char": "潑",
+      "prefix_codes": [
+        "水"
+      ],
+      "prefix_keys": [
+        "E"
+      ],
+      "body_codes": [
+        "弓",
+        "人",
+        "水"
+      ],
+      "body_keys": [
+        "N",
+        "O",
+        "E"
+      ],
+      "full": "水弓人水 (ENOE)",
+      "secret": "【左右分體字·首尾首二尾】字首三點水取【水(E)】（1碼）；字身「發」取登字頭首筆【弓(N)】＋撇捺【人(O)】＋底端又部【水(E)】（共3碼）。標準倉頡全碼為 4 碼：水弓人水 (ENEO)。速成碼為：水水 (EE)！"
+    },
+    {
+      "char": "術",
+      "prefix_codes": [
+        "竹",
+        "人"
+      ],
+      "prefix_keys": [
+        "H",
+        "O"
+      ],
+      "body_codes": [
+        "戈",
+        "木"
+      ],
+      "body_keys": [
+        "I",
+        "D"
+      ],
+      "full": "竹人戈木 (HOID)",
+      "secret": "【行部包圍分體字】字首「彳」取【竹人(HO)】（2碼）；字身「朮亍」次字首「朮」取首尾【戈金(IC)】，次字身「亍」取尾碼【弓(N)】（共3碼）。標準倉頡全碼為 5 碼：竹人戈金弓 (HOICN)。速成碼為：竹弓 (HN)！"
+    },
+    {
+      "char": "頭",
+      "prefix_codes": [
+        "一",
+        "廿"
+      ],
+      "prefix_keys": [
+        "M",
+        "T"
+      ],
+      "body_codes": [
+        "一",
+        "月",
+        "金"
+      ],
+      "body_keys": [
+        "M",
+        "B",
+        "C"
+      ],
+      "full": "一廿一月金 (MTMBC)",
+      "secret": "【左右分體字】字首「豆」取首橫【一(M)】＋底橫【廿(T)】（共2碼）；字身「頁」取首橫【一(M)】＋中框【月(B)】＋底點【金(C)】（共3碼）。標準倉頡全碼為 5 碼：一廿一月金 (MTMBC)。速成碼為：一金 (MC)！"
+    },
+    {
+      "char": "演",
+      "prefix_codes": [
+        "水"
+      ],
+      "prefix_keys": [
+        "E"
+      ],
+      "body_codes": [
+        "十",
+        "一",
+        "金"
+      ],
+      "body_keys": [
+        "J",
+        "M",
+        "C"
+      ],
+      "full": "水十一金 (EJMC)",
+      "secret": "【左右分體字】字首三點水取【水(E)】（1碼）；字身「寅」取寶蓋【十(J)】＋中橫【一(M)】＋底兩點【金(C)】（共3碼）。標準倉頡全碼為 4 碼：水十一金 (EJMC)。速成碼為：水金 (EC)！"
+    },
+    {
+      "char": "錄",
+      "prefix_codes": [
+        "金"
+      ],
+      "prefix_keys": [
+        "C"
+      ],
+      "body_codes": [
+        "女",
+        "弓",
+        "水"
+      ],
+      "body_keys": [
+        "V",
+        "N",
+        "E"
+      ],
+      "full": "金女弓水 (CNVE)",
+      "secret": "【左右分體字】字首金部取【金(C)】（1碼）；字身「录」取首筆【女(V)】＋次筆【弓(N)】＋尾筆又【水(E)】（共3碼）。標準倉頡全碼為 4 碼：金女弓水 (CNVE)。速成碼為：金水 (CE)！"
+    },
+    {
+      "char": "郵",
+      "prefix_codes": [
+        "竹",
+        "一"
+      ],
+      "prefix_keys": [
+        "H",
+        "M"
+      ],
+      "body_codes": [
+        "弓",
+        "中"
+      ],
+      "body_keys": [
+        "N",
+        "L"
+      ],
+      "full": "竹一弓中 (HMNL)",
+      "secret": "【左右分體字】字首「垂」取首撇【竹(H)】＋末橫【一(M)】（共2碼）；字身右側耳旁「阝」為複合字取【弓中(NL)】（共2碼）。標準倉頡全碼為 4 碼：竹一弓中 (HMNL)。速成碼為：竹中 (HL)！"
+    },
+    {
+      "char": "究",
+      "prefix_codes": [
+        "十",
+        "金"
+      ],
+      "prefix_keys": [
+        "J",
+        "C"
+      ],
+      "body_codes": [
+        "大",
+        "弓"
+      ],
+      "body_keys": [
+        "K",
+        "N"
+      ],
+      "full": "十金大弓 (JCKN)",
+      "secret": "【上下分體字】字首穴部取寶蓋與八【十金(JC)】（共2碼）；字身九部取首撇【大(K)】＋末筆彎折【弓(N)】（共2碼）。標準倉頡全碼為 4 碼：十金大弓 (JCKN)。速成碼為：十弓 (JN)！"
+    },
+    {
+      "char": "卵",
+      "prefix_codes": [
+        "竹",
+        "竹"
+      ],
+      "prefix_keys": [
+        "H",
+        "H"
+      ],
+      "body_codes": [
+        "尸",
+        "中",
+        "戈"
+      ],
+      "body_keys": [
+        "S",
+        "L",
+        "I"
+      ],
+      "full": "竹竹尸中戈 (HHSLI)",
+      "secret": "【左右分體字】字首左側取首撇【竹(H)】＋末撇【竹(H)】（共2碼）；字身右側取折筆【尸(S)】＋懸針【中(L)】＋末點【戈(I)】（共3碼）。標準倉頡全碼為 5 碼：竹竹尸中戈 (HHSLI)。速成碼為：竹戈 (HI)！"
+    },
+    {
+      "char": "兔",
+      "prefix_codes": [
+        "弓"
+      ],
+      "prefix_keys": [
+        "N"
+      ],
+      "body_codes": [
+        "日",
+        "戈"
+      ],
+      "body_keys": [
+        "A",
+        "I"
+      ],
+      "full": "弓日戈 (NAI)",
+      "secret": "【上下分體字·三代倉頡】字首「勹」取折筆【弓(N)】（1碼）；字身「口儿丶」取【山(U)】＋末點【戈(I)】（共2碼）。標準倉頡全碼為 3 碼：弓山戈 (NUI)。速成碼為：弓戈 (NI)！"
+    },
+    {
+      "char": "繁",
+      "prefix_codes": [
+        "人",
+        "大"
+      ],
+      "prefix_keys": [
+        "O",
+        "K"
+      ],
+      "body_codes": [
+        "女",
+        "戈",
+        "火"
+      ],
+      "body_keys": [
+        "V",
+        "I",
+        "F"
+      ],
+      "full": "人大女戈火 (OKVIF)",
+      "secret": "【上下分體字】字首「敏」取首撇【人(O)】＋末捺【大(K)】（共2碼）；字身「糸」取絞絲折【女(V)】＋點【戈(I)】＋小【火(F)】（共3碼）。標準倉頡全碼為 5 碼：人大女戈火 (OKVIF)。速成碼為：人火 (OF)！"
+    },
+    {
+      "char": "照",
+      "prefix_codes": [
+        "日",
+        "口"
+      ],
+      "prefix_keys": [
+        "A",
+        "R"
+      ],
+      "body_codes": [
+        "火"
+      ],
+      "body_keys": [
+        "F"
+      ],
+      "full": "日口火 (ARF)",
+      "secret": "【上下分體字】字首「昭」取日【日(A)】＋召口【口(R)】（共2碼）；字身「灬」四點底取【火(F)】（1碼）。標準倉頡全碼為 3 碼：日口火 (ARF)。速成碼為：日火 (AF)！"
+    }
+  ],
+  "special_words": [
+    {
+      "char": "身",
+      "type": "難字 X 鍵",
+      "codes": [
+        "竹",
+        "難",
+        "竹"
+      ],
+      "keys": [
+        "H",
+        "X",
+        "H"
+      ],
+      "full": "竹難竹 (HXH)",
+      "secret": "【難字規則】「身」為倉頡固定難字，取首撇【竹(H)】＋ 難字鍵【難(X)】＋ 末筆撇【竹(H)】。"
+    },
+    {
+      "char": "慶",
+      "type": "難字 X 鍵",
+      "codes": [
+        "戈",
+        "難",
+        "水"
+      ],
+      "keys": [
+        "I",
+        "X",
+        "E"
+      ],
+      "full": "戈難水 (IXE)",
+      "secret": "【難字規則】「慶」字繁雜，取首筆廣頭【戈(I)】＋ 難字鍵【難(X)】＋ 底部末筆又【水(E)】。"
+    },
+    {
+      "char": "龜",
+      "type": "難字 X 鍵",
+      "codes": [
+        "弓",
+        "難",
+        "山"
+      ],
+      "keys": [
+        "N",
+        "X",
+        "U"
+      ],
+      "full": "弓難山 (NXU)",
+      "secret": "【難字規則】「龜」為倉頡經典難字，取頂端折筆【弓(N)】＋ 難字鍵【難(X)】＋ 底端豎彎【山(U)】。"
+    },
+    {
+      "char": "鹿",
+      "type": "難字 X 鍵",
+      "codes": [
+        "戈",
+        "難",
+        "心"
+      ],
+      "keys": [
+        "I",
+        "X",
+        "P"
+      ],
+      "full": "戈難心 (IXP)",
+      "secret": "【難字規則】「鹿」字取頂部廣字頭【戈(I)】＋ 難字鍵【難(X)】＋ 底端匕【心(P)】。"
+    },
+    {
+      "char": "兼",
+      "type": "難字 X 鍵",
+      "codes": [
+        "廿",
+        "難",
+        "金"
+      ],
+      "keys": [
+        "T",
+        "X",
+        "C"
+      ],
+      "full": "廿難金 (TXC)",
+      "secret": "【難字規則】「兼」取頂端雙十【廿(T)】＋ 難字鍵【難(X)】＋ 底端兩捺【金(C)】。"
+    },
+    {
+      "char": "齊",
+      "type": "難字 X 鍵",
+      "codes": [
+        "卜",
+        "難"
+      ],
+      "keys": [
+        "Y",
+        "X"
+      ],
+      "full": "卜難 (YX)",
+      "secret": "【難字規則】「齊」字取字頂文頭【卜(Y)】＋ 難字鍵【難(X)】。速成碼：卜難 (YX)！"
+    },
+    {
+      "char": "臼",
+      "type": "難字 X 鍵",
+      "codes": [
+        "竹",
+        "難"
+      ],
+      "keys": [
+        "H",
+        "X"
+      ],
+      "full": "竹難 (HX)",
+      "secret": "【難字規則】「臼」字取左上撇折【竹(H)】＋ 難字鍵【難(X)】。速成碼：竹難 (HX)！"
+    },
+    {
+      "char": "淵",
+      "type": "難字 X 鍵",
+      "codes": [
+        "水",
+        "中",
+        "難",
+        "金"
+      ],
+      "keys": [
+        "E",
+        "L",
+        "X",
+        "C"
+      ],
+      "full": "水中文金 (ELXC)",
+      "secret": "【難字規則】「淵」左側三點水【水(E)】＋ 難字鍵【難(X)】＋ 內中豎【十(J)】。"
+    },
+    {
+      "char": "丐",
+      "type": "難字 X 鍵",
+      "codes": [
+        "一",
+        "難",
+        "女"
+      ],
+      "keys": [
+        "M",
+        "X",
+        "V"
+      ],
+      "full": "一難女 (MXV)",
+      "secret": "【難字規則】「丐」取頂橫【一(M)】＋ 難字鍵【難(X)】＋ 末筆折筆【女(V)】。"
+    },
+    {
+      "char": "肅",
+      "type": "難字 X 鍵",
+      "codes": [
+        "中",
+        "難"
+      ],
+      "keys": [
+        "L",
+        "X"
+      ],
+      "full": "中難 (LX)",
+      "secret": "【難字規則】「肅」取難字鍵【難(X)】＋ 貫穿懸針豎【中(L)】。"
+    },
+    {
+      "char": "門",
+      "type": "複合字",
+      "codes": [
+        "日",
+        "弓"
+      ],
+      "keys": [
+        "A",
+        "N"
+      ],
+      "full": "日弓 (AN)",
+      "secret": "【複合字】「門」作為字首或獨立字時為複合字，無論多繁複固定取【日(A)】＋【弓(N)】。"
+    },
+    {
+      "char": "目",
+      "type": "複合字",
+      "codes": [
+        "月",
+        "山"
+      ],
+      "keys": [
+        "B",
+        "U"
+      ],
+      "full": "月山 (BU)",
+      "secret": "【複合字】「目」作為字首時為複合字，固定取【月(B)】＋【山(U)】。"
+    },
+    {
+      "char": "鬼",
+      "type": "複合字",
+      "codes": [
+        "竹",
+        "戈"
+      ],
+      "keys": [
+        "H",
+        "I"
+      ],
+      "full": "竹戈 (HI)",
+      "secret": "【複合字】「鬼」為三代倉頡九大官方複合字之一，無論單獨成字或作為字首/字身，均固定取【竹(H)】＋【戈(I)】。"
+    },
+    {
+      "char": "虍",
+      "type": "複合字",
+      "codes": [
+        "卜",
+        "心"
+      ],
+      "keys": [
+        "Y",
+        "P"
+      ],
+      "full": "卜心 (YP)",
+      "secret": "【三代倉頡複合字】虎字頭「虍」為標準九大複合字之一，無論單獨成字或作為字首（如虎、虐、處、虛），固定只取首尾碼【卜(Y)】＋【心(P)】！"
+    },
+    {
+      "char": "阝",
+      "type": "複合字",
+      "codes": [
+        "弓",
+        "中"
+      ],
+      "keys": [
+        "N",
+        "L"
+      ],
+      "full": "弓中 (NL)",
+      "secret": "【複合字】耳字旁「阝」（左耳或右耳）固定取【弓(N)】＋【中(L)】。"
+    },
+    {
+      "char": "吂",
+      "type": "複合字",
+      "codes": [
+        "卜",
+        "口"
+      ],
+      "keys": [
+        "Y",
+        "R"
+      ],
+      "full": "卜口 (YR)",
+      "secret": "【三代倉頡複合字】「吂」為標準複合字之一，無論單獨成字或作為字首字身，固定只取首尾碼【卜(Y)】＋【口(R)】（YR）！"
+    },
+    {
+      "char": "鬥",
+      "type": "複合字",
+      "codes": [
+        "中",
+        "弓"
+      ],
+      "keys": [
+        "L",
+        "N"
+      ],
+      "full": "中弓 (LN)",
+      "secret": "【三代倉頡複合字】「鬥」字筆劃繁複，為標準九大複合字之一，無論單獨成字或作為字首（如鬧、鬨、鬩），固定只取首尾碼【中(L)】＋【弓(N)】！"
+    },
+    {
+      "char": "隹",
+      "type": "複合字",
+      "codes": [
+        "人",
+        "土"
+      ],
+      "keys": [
+        "O",
+        "G"
+      ],
+      "full": "人土 (OG)",
+      "secret": "【複合字】「隹」作為字首時，固定取【人(O)】＋【土(G)】。"
+    },
+    {
+      "char": "世",
+      "type": "特殊字",
+      "codes": [
+        "心",
+        "廿"
+      ],
+      "keys": [
+        "P",
+        "T"
+      ],
+      "full": "心廿 (PT)",
+      "secret": "【特殊字】「世」不可切分，依習慣取左端橫折【心(P)】＋ 雙十交叉【廿(T)】。"
+    },
+    {
+      "char": "東",
+      "type": "特殊字",
+      "codes": [
+        "木",
+        "田"
+      ],
+      "keys": [
+        "D",
+        "W"
+      ],
+      "full": "木田 (DW)",
+      "secret": "【特殊字】貫穿中幹木取【木(D)】，中間交疊框取【田(W)】。"
+    },
+    {
+      "char": "巨",
+      "type": "特殊字",
+      "codes": [
+        "尸",
+        "尸"
+      ],
+      "keys": [
+        "S",
+        "S"
+      ],
+      "full": "尸尸 (SS)",
+      "secret": "【特殊字】「巨」不可切分，取外框【尸(S)】＋ 內框折筆【尸(S)】。"
+    },
+    {
+      "char": "甩",
+      "type": "特殊字",
+      "codes": [
+        "月",
+        "山"
+      ],
+      "keys": [
+        "B",
+        "U"
+      ],
+      "full": "月山 (BU)",
+      "secret": "【特殊字】「甩」字取外框【月(B)】＋ 末筆豎彎鉤【山(U)】。"
+    },
+    {
+      "char": "瓦",
+      "type": "特殊字",
+      "codes": [
+        "一",
+        "女",
+        "弓",
+        "戈"
+      ],
+      "keys": [
+        "M",
+        "V",
+        "N",
+        "I"
+      ],
+      "full": "一女弓戈 (MVNI)",
+      "secret": "【特殊字】「瓦」字取首橫【一(M)】＋ 下部末筆折筆【女(V)】。"
+    },
+    {
+      "char": "甫",
+      "type": "特殊字",
+      "codes": [
+        "戈",
+        "十",
+        "月"
+      ],
+      "keys": [
+        "I",
+        "J",
+        "B"
+      ],
+      "full": "戈十月 (IJB)",
+      "secret": "【特殊字】「甫」字首筆點【戈(I)】＋ 中幹橫豎【十(J)】＋ 底部框【月(B)】。"
+    }
+  ],
   "cangjie_clean_letters": [
     {
       "code": "日",
@@ -5578,1309 +5922,6 @@ const DATA = {
       "color": "#EDE9FE",
       "border": "#7C3AED",
       "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1008.png"
-    }
-  ],
-  "connected_words": [
-    {
-      "char": "更",
-      "codes": [
-        "一",
-        "中",
-        "田",
-        "大"
-      ],
-      "secret": "【連體字取碼】筆畫交連不分割，依筆順取首橫【一(M)】＋貫穿豎【中(L)】＋日框【田(W)】＋末捺【大(K)】。全碼：一中田大 (MLWK)。",
-      "keys": [
-        "M",
-        "L",
-        "W",
-        "K"
-      ],
-      "full": "一中田大 (MLWK)"
-    },
-    {
-      "char": "事",
-      "codes": [
-        "十",
-        "中",
-        "中",
-        "弓"
-      ],
-      "secret": "【連體字取碼】首橫【十(J)】＋長豎【中(L)】＋口框兩側【中(L)】＋末橫折鉤【弓(N)】。全碼：十中中弓 (JLLN)。",
-      "keys": [
-        "J",
-        "L",
-        "L",
-        "N"
-      ],
-      "full": "十中中弓 (JLLN)"
-    },
-    {
-      "char": "車",
-      "codes": [
-        "十",
-        "田",
-        "十"
-      ],
-      "secret": "【連體字取碼】首橫豎【十(J)】＋中間車框【田(W)】＋底橫貫豎【十(J)】。全碼：十田十 (JWJ)。",
-      "keys": [
-        "J",
-        "W",
-        "J"
-      ],
-      "full": "十田十 (JWJ)"
-    },
-    {
-      "char": "重",
-      "codes": [
-        "竹",
-        "十",
-        "田",
-        "土"
-      ],
-      "secret": "【連體字取碼】首撇【竹(H)】＋橫豎【十(J)】＋中間框【田(W)】＋底土【土(G)】。全碼：竹十田土 (HJWG)。",
-      "keys": [
-        "H",
-        "J",
-        "W",
-        "G"
-      ],
-      "full": "竹十田土 (HJWG)"
-    },
-    {
-      "char": "申",
-      "codes": [
-        "中",
-        "田",
-        "中"
-      ],
-      "secret": "【連體字取碼】頂端懸針【中(L)】＋中間日框【田(W)】＋底端貫豎【中(L)】。全碼：中田中 (LWL)。",
-      "keys": [
-        "L",
-        "W",
-        "L"
-      ],
-      "full": "中田中 (LWL)"
-    },
-    {
-      "char": "亞",
-      "codes": [
-        "一",
-        "中",
-        "中",
-        "一"
-      ],
-      "secret": "【連體字取碼】首橫【一(M)】＋左豎【中(L)】＋右豎【中(L)】＋底橫【一(M)】。全碼：一中中一 (MLLM)。",
-      "keys": [
-        "M",
-        "L",
-        "L",
-        "M"
-      ],
-      "full": "一中中一 (MLLM)"
-    },
-    {
-      "char": "雨",
-      "codes": [
-        "一",
-        "中",
-        "月",
-        "卜"
-      ],
-      "secret": "【連體字取碼】首橫【一(M)】＋中豎【中(L)】＋外框【月(B)】＋內點【卜(Y)】。全碼：一中月卜 (MLBY)。",
-      "keys": [
-        "M",
-        "L",
-        "B",
-        "Y"
-      ],
-      "full": "一中月卜 (MLBY)"
-    },
-    {
-      "char": "鳥",
-      "codes": [
-        "竹",
-        "日",
-        "卜",
-        "火"
-      ],
-      "secret": "【連體字取碼】首撇【竹(H)】＋折筆【日(A)】＋中橫【卜(Y)】＋底四點【火(F)】。全碼：竹日卜火 (HAYF)。",
-      "keys": [
-        "H",
-        "A",
-        "Y",
-        "F"
-      ],
-      "full": "竹日卜火 (HAYF)"
-    },
-    {
-      "char": "夫",
-      "codes": [
-        "手",
-        "人"
-      ],
-      "secret": "【連體字取碼】「夫」字筆劃交連，取首筆折交【手(Q)】＋末筆撇捺【人(O)】。全碼：手人 (QO)。",
-      "keys": [
-        "Q",
-        "O"
-      ],
-      "full": "手人 (QO)"
-    },
-    {
-      "char": "長",
-      "codes": [
-        "尸",
-        "一",
-        "女"
-      ],
-      "secret": "【連體字取碼】首筆豎折【尸(S)】＋中橫【一(M)】＋末筆撇捺【女(V)】。全碼：尸一女 (SMV)。",
-      "keys": [
-        "S",
-        "M",
-        "V"
-      ],
-      "full": "尸一女 (SMV)"
-    },
-    {
-      "char": "東",
-      "codes": [
-        "木",
-        "田"
-      ],
-      "keys": [
-        "D",
-        "W"
-      ],
-      "full": "木田 (DW)",
-      "secret": "【連體字取碼】貫穿中幹木取【木(D)】，中間交疊框取【田(W)】。標準倉頡全碼：木田 (DW)。"
-    },
-    {
-      "char": "再",
-      "codes": [
-        "一",
-        "土",
-        "月"
-      ],
-      "secret": "【連體字取碼】首橫【一(M)】＋中貫土【土(G)】＋外框【月(B)】。全碼：一土月 (MGB)。",
-      "keys": [
-        "M",
-        "G",
-        "B"
-      ],
-      "full": "一土月 (MGB)"
-    },
-    {
-      "char": "求",
-      "codes": [
-        "戈",
-        "十",
-        "水"
-      ],
-      "secret": "【連體字取碼】頂點【戈(I)】＋中幹橫豎【十(J)】＋底又【水(E)】。全碼：戈十水 (IJE)。",
-      "keys": [
-        "I",
-        "J",
-        "E"
-      ],
-      "full": "戈十水 (IJE)"
-    },
-    {
-      "char": "年",
-      "codes": [
-        "人",
-        "手"
-      ],
-      "secret": "【連體字取碼】頂撇【人(O)】＋下部干字身【手(Q)】。全碼：人手 (OQ)。",
-      "keys": [
-        "O",
-        "Q"
-      ],
-      "full": "人手 (OQ)"
-    },
-    {
-      "char": "卑",
-      "codes": [
-        "竹",
-        "竹",
-        "十"
-      ],
-      "secret": "【連體字取碼】頂撇【竹(H)】＋中框【竹(H)】＋末筆十【十(J)】。全碼：竹竹十 (HHJ)。",
-      "keys": [
-        "H",
-        "H",
-        "J"
-      ],
-      "full": "竹竹十 (HHJ)"
-    },
-    {
-      "char": "垂",
-      "codes": [
-        "竹",
-        "十",
-        "廿",
-        "一"
-      ],
-      "secret": "【連體字取碼】首撇【竹(H)】＋橫豎【十(J)】＋中橫【廿(T)】＋底橫【一(M)】。全碼：竹十廿一 (HJTM)。",
-      "keys": [
-        "H",
-        "J",
-        "T",
-        "M"
-      ],
-      "full": "竹十廿一 (HJTM)"
-    },
-    {
-      "char": "串",
-      "codes": [
-        "中",
-        "中"
-      ],
-      "secret": "【連體字取碼】上口【中(L)】＋貫穿中幹【中(L)】。全碼：中中 (LL)。",
-      "keys": [
-        "L",
-        "L"
-      ],
-      "full": "中中 (LL)"
-    },
-    {
-      "char": "屯",
-      "codes": [
-        "心",
-        "山"
-      ],
-      "secret": "【連體字取碼】頂部橫折【心(P)】＋下部豎彎【山(U)】。全碼：心山 (PU)。",
-      "keys": [
-        "P",
-        "U"
-      ],
-      "full": "心山 (PU)"
-    },
-    {
-      "char": "互",
-      "codes": [
-        "一",
-        "女",
-        "弓",
-        "一"
-      ],
-      "secret": "【連體字取碼】首橫【一(M)】＋中間折【女(V)】＋底折【弓(N)】＋底橫【一(M)】。全碼：一女弓一 (MVNM)。",
-      "keys": [
-        "M",
-        "V",
-        "N",
-        "M"
-      ],
-      "full": "一女弓一 (MVNM)"
-    },
-    {
-      "char": "冊",
-      "codes": [
-        "月",
-        "廿"
-      ],
-      "secret": "【連體字取碼】外框【月(B)】＋貫穿雙豎橫【廿(T)】。全碼：月廿 (BT)。",
-      "keys": [
-        "B",
-        "T"
-      ],
-      "full": "月廿 (BT)"
-    },
-    {
-      "char": "舟",
-      "codes": [
-        "竹",
-        "月",
-        "卜",
-        "戈"
-      ],
-      "secret": "【連體字取碼】首撇【竹(H)】＋身【月(B)】＋身【卜(Y)】＋點【戈(I)】。全碼：竹月卜戈 (HBYI)。",
-      "keys": [
-        "H",
-        "B",
-        "Y",
-        "I"
-      ],
-      "full": "竹月卜戈 (HBYI)"
-    },
-    {
-      "char": "乃",
-      "codes": [
-        "弓",
-        "竹",
-        "尸"
-      ],
-      "secret": "【連體字取碼】首橫折折【弓(N)】＋撇【竹(H)】＋豎彎鉤【尸(S)】。全碼：弓竹尸 (NHS)。",
-      "keys": [
-        "N",
-        "H",
-        "S"
-      ],
-      "full": "弓竹尸 (NHS)"
-    },
-    {
-      "char": "巾",
-      "codes": [
-        "中",
-        "月"
-      ],
-      "secret": "【連體字取碼】外框【中(L)】＋懸針豎【月(B)】。全碼：中月 (LB)。",
-      "keys": [
-        "L",
-        "B"
-      ],
-      "full": "中月 (LB)"
-    },
-    {
-      "char": "毛",
-      "codes": [
-        "竹",
-        "手",
-        "山"
-      ],
-      "secret": "【連體字取碼】首撇【竹(H)】＋兩橫【手(Q)】＋末豎彎鉤【山(U)】。全碼：竹手山 (HQU)。",
-      "keys": [
-        "H",
-        "Q",
-        "U"
-      ],
-      "full": "竹手山 (HQU)"
-    },
-    {
-      "char": "生",
-      "codes": [
-        "竹",
-        "手",
-        "一"
-      ],
-      "secret": "【連體字取碼】首撇【竹(H)】＋中間橫豎【手(Q)】＋底橫【一(M)】。全碼：竹手一 (HQM)。",
-      "keys": [
-        "H",
-        "Q",
-        "M"
-      ],
-      "full": "竹手一 (HQM)"
-    },
-    {
-      "char": "丈",
-      "codes": [
-        "十",
-        "大"
-      ],
-      "secret": "【連體字取碼】首橫豎【十(J)】＋撇捺【大(K)】。全碼：十大 (JK)。",
-      "keys": [
-        "J",
-        "K"
-      ],
-      "full": "十大 (JK)"
-    },
-    {
-      "char": "之",
-      "codes": [
-        "戈",
-        "弓",
-        "人"
-      ],
-      "secret": "【連體字取碼】頂點【戈(I)】＋橫折【弓(N)】＋末捺【人(O)】。全碼：戈弓人 (INO)。",
-      "keys": [
-        "I",
-        "N",
-        "O"
-      ],
-      "full": "戈弓人 (INO)"
-    },
-    {
-      "char": "乎",
-      "codes": [
-        "竹",
-        "火",
-        "木"
-      ],
-      "secret": "【連體字取碼】首撇【竹(H)】＋中間八點【火(F)】＋懸針豎【木(D)】。全碼：竹火木 (HFD)。",
-      "keys": [
-        "H",
-        "F",
-        "D"
-      ],
-      "full": "竹火木 (HFD)"
-    },
-    {
-      "char": "正",
-      "codes": [
-        "一",
-        "卜",
-        "一"
-      ],
-      "secret": "【連體字取碼】首橫【一(M)】＋中豎點【卜(Y)】＋底橫【一(M)】。全碼：一卜一 (MYM)。",
-      "keys": [
-        "M",
-        "Y",
-        "M"
-      ],
-      "full": "一卜一 (MYM)"
-    },
-    {
-      "char": "平",
-      "codes": [
-        "一",
-        "火",
-        "十"
-      ],
-      "secret": "【連體字取碼】首橫【一(M)】＋兩點【火(F)】＋末十【十(J)】。全碼：一火十 (MFJ)。",
-      "keys": [
-        "M",
-        "F",
-        "J"
-      ],
-      "full": "一火十 (MFJ)"
-    },
-    {
-      "char": "自",
-      "codes": [
-        "竹",
-        "月",
-        "山"
-      ],
-      "secret": "【連體字取碼】首撇【竹(H)】＋外框【月(B)】＋底封口【山(U)】。全碼：竹月山 (HBU)。",
-      "keys": [
-        "H",
-        "B",
-        "U"
-      ],
-      "full": "竹月山 (HBU)"
-    }
-  ],
-  "split_words": [
-    {
-      "char": "聽",
-      "prefix_codes": [
-        "尸",
-        "土"
-      ],
-      "prefix_keys": [
-        "S",
-        "G"
-      ],
-      "body_codes": [
-        "十",
-        "田",
-        "心"
-      ],
-      "body_keys": [
-        "J",
-        "W",
-        "P"
-      ],
-      "full": "尸土十田心 (SGJWP)",
-      "secret": "【左右分體字·首尾首二尾】字首「耳」取首碼【尸(S)】＋尾碼【土(G)】（共2碼）；字身「𢛳」取首碼【十(J)】＋次碼【田(W)】＋尾碼【心(P)】（共3碼）。標準倉頡全碼為 5 碼：尸土十田心 (SGJWP)。速成碼為：尸心 (SP)！"
-    },
-    {
-      "char": "潑",
-      "prefix_codes": [
-        "水"
-      ],
-      "prefix_keys": [
-        "E"
-      ],
-      "body_codes": [
-        "弓",
-        "人",
-        "水"
-      ],
-      "body_keys": [
-        "N",
-        "O",
-        "E"
-      ],
-      "full": "水弓人水 (ENOE)",
-      "secret": "【左右分體字·首尾首二尾】字首三點水取【水(E)】（1碼）；字身「發」取登字頭首筆【弓(N)】＋撇捺【人(O)】＋底端又部【水(E)】（共3碼）。標準倉頡全碼為 4 碼：水弓人水 (ENEO)。速成碼為：水水 (EE)！"
-    },
-    {
-      "char": "術",
-      "prefix_codes": [
-        "竹",
-        "人"
-      ],
-      "prefix_keys": [
-        "H",
-        "O"
-      ],
-      "body_codes": [
-        "戈",
-        "金",
-        "弓"
-      ],
-      "body_keys": [
-        "I",
-        "C",
-        "N"
-      ],
-      "full": "竹人戈金弓 (HOICN)",
-      "secret": "【行部包圍分體字】字首「彳」取【竹人(HO)】（2碼）；字身「朮亍」次字首「朮」取首尾【戈金(IC)】，次字身「亍」取尾碼【弓(N)】（共3碼）。標準倉頡全碼為 5 碼：竹人戈金弓 (HOICN)。速成碼為：竹弓 (HN)！"
-    },
-    {
-      "char": "頭",
-      "prefix_codes": [
-        "一",
-        "廿"
-      ],
-      "prefix_keys": [
-        "M",
-        "T"
-      ],
-      "body_codes": [
-        "一",
-        "月",
-        "金"
-      ],
-      "body_keys": [
-        "M",
-        "B",
-        "C"
-      ],
-      "full": "一廿一月金 (MTMBC)",
-      "secret": "【左右分體字】字首「豆」取首橫【一(M)】＋底橫【廿(T)】（共2碼）；字身「頁」取首橫【一(M)】＋中框【月(B)】＋底點【金(C)】（共3碼）。標準倉頡全碼為 5 碼：一廿一月金 (MTMBC)。速成碼為：一金 (MC)！"
-    },
-    {
-      "char": "演",
-      "prefix_codes": [
-        "水"
-      ],
-      "prefix_keys": [
-        "E"
-      ],
-      "body_codes": [
-        "十",
-        "一",
-        "金"
-      ],
-      "body_keys": [
-        "J",
-        "M",
-        "C"
-      ],
-      "full": "水十一金 (EJMC)",
-      "secret": "【左右分體字】字首三點水取【水(E)】（1碼）；字身「寅」取寶蓋【十(J)】＋中橫【一(M)】＋底兩點【金(C)】（共3碼）。標準倉頡全碼為 4 碼：水十一金 (EJMC)。速成碼為：水金 (EC)！"
-    },
-    {
-      "char": "錄",
-      "prefix_codes": [
-        "金"
-      ],
-      "prefix_keys": [
-        "C"
-      ],
-      "body_codes": [
-        "女",
-        "弓",
-        "水"
-      ],
-      "body_keys": [
-        "V",
-        "N",
-        "E"
-      ],
-      "full": "金女弓水 (CVNE)",
-      "secret": "【左右分體字】字首金部取【金(C)】（1碼）；字身「录」取首筆【女(V)】＋次筆【弓(N)】＋尾筆又【水(E)】（共3碼）。標準倉頡全碼為 4 碼：金女弓水 (CNVE)。速成碼為：金水 (CE)！"
-    },
-    {
-      "char": "郵",
-      "prefix_codes": [
-        "竹",
-        "一"
-      ],
-      "prefix_keys": [
-        "H",
-        "M"
-      ],
-      "body_codes": [
-        "弓",
-        "中"
-      ],
-      "body_keys": [
-        "N",
-        "L"
-      ],
-      "full": "竹一弓中 (HMNL)",
-      "secret": "【左右分體字】字首「垂」取首撇【竹(H)】＋末橫【一(M)】（共2碼）；字身右側耳旁「阝」為複合字取【弓中(NL)】（共2碼）。標準倉頡全碼為 4 碼：竹一弓中 (HMNL)。速成碼為：竹中 (HL)！"
-    },
-    {
-      "char": "究",
-      "prefix_codes": [
-        "十",
-        "金"
-      ],
-      "prefix_keys": [
-        "J",
-        "C"
-      ],
-      "body_codes": [
-        "大",
-        "弓"
-      ],
-      "body_keys": [
-        "K",
-        "N"
-      ],
-      "full": "十金大弓 (JCKN)",
-      "secret": "【上下分體字】字首穴部取寶蓋與八【十金(JC)】（共2碼）；字身九部取首撇【大(K)】＋末筆彎折【弓(N)】（共2碼）。標準倉頡全碼為 4 碼：十金大弓 (JCKN)。速成碼為：十弓 (JN)！"
-    },
-    {
-      "char": "卵",
-      "prefix_codes": [
-        "竹",
-        "竹"
-      ],
-      "prefix_keys": [
-        "H",
-        "H"
-      ],
-      "body_codes": [
-        "尸",
-        "中",
-        "戈"
-      ],
-      "body_keys": [
-        "S",
-        "L",
-        "I"
-      ],
-      "full": "竹竹尸中戈 (HHSLI)",
-      "secret": "【左右分體字】字首左側取首撇【竹(H)】＋末撇【竹(H)】（共2碼）；字身右側取折筆【尸(S)】＋懸針【中(L)】＋末點【戈(I)】（共3碼）。標準倉頡全碼為 5 碼：竹竹尸中戈 (HHSLI)。速成碼為：竹戈 (HI)！"
-    },
-    {
-      "char": "兔",
-      "prefix_codes": [
-        "弓"
-      ],
-      "prefix_keys": [
-        "N"
-      ],
-      "body_codes": [
-        "山",
-        "戈"
-      ],
-      "body_keys": [
-        "U",
-        "I"
-      ],
-      "full": "弓山戈 (NUI)",
-      "secret": "【上下分體字·三代倉頡】字首「勹」取折筆【弓(N)】（1碼）；字身「口儿丶」取【山(U)】＋末點【戈(I)】（共2碼）。標準倉頡全碼為 3 碼：弓山戈 (NUI)。速成碼為：弓戈 (NI)！"
-    },
-    {
-      "char": "繁",
-      "prefix_codes": [
-        "人",
-        "大"
-      ],
-      "prefix_keys": [
-        "O",
-        "K"
-      ],
-      "body_codes": [
-        "女",
-        "戈",
-        "火"
-      ],
-      "body_keys": [
-        "V",
-        "I",
-        "F"
-      ],
-      "full": "人大女戈火 (OKVIF)",
-      "secret": "【上下分體字】字首「敏」取首撇【人(O)】＋末捺【大(K)】（共2碼）；字身「糸」取絞絲折【女(V)】＋點【戈(I)】＋小【火(F)】（共3碼）。標準倉頡全碼為 5 碼：人大女戈火 (OKVIF)。速成碼為：人火 (OF)！"
-    },
-    {
-      "char": "照",
-      "prefix_codes": [
-        "日",
-        "口"
-      ],
-      "prefix_keys": [
-        "A",
-        "R"
-      ],
-      "body_codes": [
-        "火"
-      ],
-      "body_keys": [
-        "F"
-      ],
-      "full": "日口火 (ARF)",
-      "secret": "【上下分體字】字首「昭」取日【日(A)】＋召口【口(R)】（共2碼）；字身「灬」四點底取【火(F)】（1碼）。標準倉頡全碼為 3 碼：日口火 (ARF)。速成碼為：日火 (AF)！"
-    }
-  ],
-  "special_words": [
-    {
-      "char": "身",
-      "codes": [
-        "竹",
-        "難",
-        "竹"
-      ],
-      "type": "難字 X 鍵",
-      "secret": "【難字規則】「身」為倉頡固定難字，取首撇【竹(H)】＋難字鍵【難(X)】＋末撇【竹(H)】。",
-      "keys": [
-        "H",
-        "X",
-        "H"
-      ],
-      "full": "竹難竹 (HXH)"
-    },
-    {
-      "char": "慶",
-      "codes": [
-        "戈",
-        "難",
-        "水"
-      ],
-      "type": "難字 X 鍵",
-      "secret": "【難字規則】「慶」字繁雜，取首筆廣頭【戈(I)】＋難字鍵【難(X)】＋底又【水(E)】。",
-      "keys": [
-        "I",
-        "X",
-        "E"
-      ],
-      "full": "戈難水 (IXE)"
-    },
-    {
-      "char": "龜",
-      "codes": [
-        "弓",
-        "難",
-        "山"
-      ],
-      "type": "難字 X 鍵",
-      "secret": "【難字規則】「龜」為倉頡經典難字，取頂端折筆【弓(N)】＋難字鍵【難(X)】＋底豎彎【山(U)】。",
-      "keys": [
-        "N",
-        "X",
-        "U"
-      ],
-      "full": "弓難山 (NXU)"
-    },
-    {
-      "char": "鹿",
-      "codes": [
-        "戈",
-        "難",
-        "心"
-      ],
-      "type": "難字 X 鍵",
-      "secret": "【難字規則】「鹿」字取頂部廣字頭【戈(I)】＋難字鍵【難(X)】＋底匕【心(P)】。",
-      "keys": [
-        "I",
-        "X",
-        "P"
-      ],
-      "full": "戈難心 (IXP)"
-    },
-    {
-      "char": "兼",
-      "codes": [
-        "廿",
-        "難",
-        "金"
-      ],
-      "type": "難字 X 鍵",
-      "secret": "【難字規則】「兼」取頂端雙十【廿(T)】＋難字鍵【難(X)】＋底兩捺【金(C)】。",
-      "keys": [
-        "T",
-        "X",
-        "C"
-      ],
-      "full": "廿難金 (TXC)"
-    },
-    {
-      "char": "齊",
-      "codes": [
-        "卜",
-        "難"
-      ],
-      "type": "難字 X 鍵",
-      "secret": "【難字規則】「齊」字取字頂文頭【卜(Y)】＋難字鍵【難(X)】。",
-      "keys": [
-        "Y",
-        "X"
-      ],
-      "full": "卜難 (YX)"
-    },
-    {
-      "char": "臼",
-      "codes": [
-        "竹",
-        "難"
-      ],
-      "type": "難字 X 鍵",
-      "secret": "【難字規則】「臼」字取左上撇折【竹(H)】＋難字鍵【難(X)】。",
-      "keys": [
-        "H",
-        "X"
-      ],
-      "full": "竹難 (HX)"
-    },
-    {
-      "char": "淵",
-      "codes": [
-        "水",
-        "難",
-        "十"
-      ],
-      "type": "難字 X 鍵",
-      "secret": "【難字規則】「淵」左側三點水【水(E)】＋難字鍵【難(X)】＋內豎【十(J)】。",
-      "keys": [
-        "E",
-        "X",
-        "J"
-      ],
-      "full": "水難十 (EXJ)"
-    },
-    {
-      "char": "丐",
-      "codes": [
-        "一",
-        "難",
-        "女"
-      ],
-      "type": "難字 X 鍵",
-      "secret": "【難字規則】「丐」取頂橫【一(M)】＋難字鍵【難(X)】＋底折【女(V)】。",
-      "keys": [
-        "M",
-        "X",
-        "V"
-      ],
-      "full": "一難女 (MXV)"
-    },
-    {
-      "char": "肅",
-      "codes": [
-        "中",
-        "難"
-      ],
-      "type": "難字 X 鍵",
-      "secret": "【難字規則】「肅」取首碼【中(L)】＋難字鍵【難(X)】。",
-      "keys": [
-        "L",
-        "X"
-      ],
-      "full": "中難 (LX)"
-    },
-    {
-      "char": "門",
-      "codes": [
-        "日",
-        "弓"
-      ],
-      "type": "複合字",
-      "secret": "【九大複合字】「門」為官方固定複合字，無論多繁複固定取【日(A)】＋【弓(N)】。",
-      "keys": [
-        "A",
-        "N"
-      ],
-      "full": "日弓 (AN)"
-    },
-    {
-      "char": "目",
-      "codes": [
-        "月",
-        "山"
-      ],
-      "type": "複合字",
-      "secret": "【九大複合字】「目」為三代官方複合字，固定取【月(B)】＋【山(U)】。",
-      "keys": [
-        "B",
-        "U"
-      ],
-      "full": "月山 (BU)"
-    },
-    {
-      "char": "鬼",
-      "codes": [
-        "竹",
-        "戈"
-      ],
-      "type": "複合字",
-      "secret": "【九大複合字】「鬼」為官方三代複合字，固定取頂端【竹(H)】＋【戈(I)】。",
-      "keys": [
-        "H",
-        "I"
-      ],
-      "full": "竹戈 (HI)"
-    },
-    {
-      "char": "虍",
-      "codes": [
-        "卜",
-        "心"
-      ],
-      "type": "複合字",
-      "secret": "【九大複合字】虎字頭「虍」為官方複合字，固定取【卜(Y)】＋【心(P)】。",
-      "keys": [
-        "Y",
-        "P"
-      ],
-      "full": "卜心 (YP)"
-    },
-    {
-      "char": "阝",
-      "codes": [
-        "弓",
-        "中"
-      ],
-      "type": "複合字",
-      "secret": "【九大複合字】耳字旁「阝」為官方複合字，固定取【弓(N)】＋【中(L)】。",
-      "keys": [
-        "N",
-        "L"
-      ],
-      "full": "弓中 (NL)"
-    },
-    {
-      "char": "氣",
-      "codes": [
-        "人",
-        "弓"
-      ],
-      "type": "複合字",
-      "secret": "【九大複合字】「氣」為官方複合字，固定取【人(O)】＋【弓(N)】。",
-      "keys": [
-        "O",
-        "N"
-      ],
-      "full": "人弓 (ON)"
-    },
-    {
-      "char": "鬥",
-      "codes": [
-        "中",
-        "弓"
-      ],
-      "type": "複合字",
-      "secret": "【九大複合字】「鬥」為官方固定複合字，筆畫繁複固定只取【中(L)】＋【弓(N)】。",
-      "keys": [
-        "L",
-        "N"
-      ],
-      "full": "中弓 (LN)"
-    },
-    {
-      "char": "隹",
-      "codes": [
-        "人",
-        "土"
-      ],
-      "type": "複合字",
-      "secret": "【九大複合字】「隹」為官方複合字，固定取【人(O)】＋【土(G)】。",
-      "keys": [
-        "O",
-        "G"
-      ],
-      "full": "人土 (OG)"
-    },
-    {
-      "char": "世",
-      "codes": [
-        "心",
-        "廿"
-      ],
-      "type": "特殊字",
-      "secret": "【特殊字】「世」不可切分，依筆勢習慣取橫折【心(P)】＋雙十【廿(T)】➔ 心廿 (PT)。",
-      "keys": [
-        "P",
-        "T"
-      ],
-      "full": "心廿 (PT)"
-    },
-    {
-      "char": "東",
-      "codes": [
-        "木",
-        "田"
-      ],
-      "type": "特殊字",
-      "secret": "【特殊字】貫穿中幹木取【木(D)】，中間交疊框取【田(W)】➔ 木田 (DW)。",
-      "keys": [
-        "D",
-        "W"
-      ],
-      "full": "木田 (DW)"
-    },
-    {
-      "char": "巨",
-      "codes": [
-        "尸",
-        "尸"
-      ],
-      "type": "特殊字",
-      "secret": "【特殊字】「巨」不可切分，取外框【尸(S)】＋內框折筆【尸(S)】➔ 尸尸 (SS)。",
-      "keys": [
-        "S",
-        "S"
-      ],
-      "full": "尸尸 (SS)"
-    },
-    {
-      "char": "甩",
-      "codes": [
-        "月",
-        "山"
-      ],
-      "type": "特殊字",
-      "secret": "【特殊字】「甩」字取外框【月(B)】＋末筆豎彎鉤【山(U)】➔ 月山 (BU)。",
-      "keys": [
-        "B",
-        "U"
-      ],
-      "full": "月山 (BU)"
-    },
-    {
-      "char": "瓦",
-      "codes": [
-        "一",
-        "女"
-      ],
-      "type": "特殊字",
-      "secret": "【特殊字】「瓦」字取首橫【一(M)】＋下部末筆折筆【女(V)】➔ 一女 (MV)。",
-      "keys": [
-        "M",
-        "V"
-      ],
-      "full": "一女 (MV)"
-    },
-    {
-      "char": "甫",
-      "codes": [
-        "戈",
-        "十",
-        "月"
-      ],
-      "type": "特殊字",
-      "secret": "【特殊字】「甫」字首筆點【戈(I)】＋中幹橫豎【十(J)】＋底框【月(B)】➔ 戈十月 (IJB)。",
-      "keys": [
-        "I",
-        "J",
-        "B"
-      ],
-      "full": "戈十月 (IJB)"
-    },
-    {
-      "char": "吂",
-      "codes": [
-        "卜",
-        "口"
-      ],
-      "type": "複合字",
-      "secret": "【九大複合字】「吂」為官方複合字，固定取【卜(Y)】＋【口(R)】。",
-      "keys": [
-        "Y",
-        "R"
-      ],
-      "full": "卜口 (YR)"
-    },
-    {
-      "char": "虎",
-      "codes": [
-        "卜",
-        "心",
-        "竹",
-        "山"
-      ],
-      "type": "複合字衍生",
-      "secret": "【複合字衍生】字首「虍」為複合字取【卜心(YP)】，字身「几」取【竹山(HU)】➔ 卜心竹山 (YPHU)。",
-      "keys": [
-        "Y",
-        "P",
-        "H",
-        "U"
-      ],
-      "full": "卜心竹山 (YPHU)"
-    },
-    {
-      "char": "盲",
-      "codes": [
-        "卜",
-        "口",
-        "月",
-        "山"
-      ],
-      "type": "複合字衍生",
-      "secret": "【複合字衍生】字首「吂」取【卜口(YR)】，字身「目」為複合字取【月山(BU)】➔ 卜口月山 (YRBU)。",
-      "keys": [
-        "Y",
-        "R",
-        "B",
-        "U"
-      ],
-      "full": "卜口月山 (YRBU)"
-    },
-    {
-      "char": "開",
-      "codes": [
-        "日",
-        "弓",
-        "一",
-        "廿"
-      ],
-      "type": "複合字衍生",
-      "secret": "【複合字衍生】字首「門」為複合字取【日弓(AN)】，字身「幵」取【一廿(MT)】➔ 日弓一廿 (ANMT)。",
-      "keys": [
-        "A",
-        "N",
-        "M",
-        "T"
-      ],
-      "full": "日弓一廿 (ANMT)"
-    },
-    {
-      "char": "閉",
-      "codes": [
-        "日",
-        "弓",
-        "木"
-      ],
-      "type": "複合字衍生",
-      "secret": "【複合字衍生】字首「門」為複合字取【日弓(AN)】，字身「才」取【木(D)】➔ 日弓木 (AND)。",
-      "keys": [
-        "A",
-        "N",
-        "D"
-      ],
-      "full": "日弓木 (AND)"
-    },
-    {
-      "char": "鬧",
-      "codes": [
-        "中",
-        "弓",
-        "卜",
-        "月"
-      ],
-      "type": "複合字衍生",
-      "secret": "【複合字衍生】字首「鬥」為複合字取【中弓(LN)】，字身「市」取【卜月(YB)】➔ 中弓卜月 (LNYB)。",
-      "keys": [
-        "L",
-        "N",
-        "Y",
-        "B"
-      ],
-      "full": "中弓卜月 (LNYB)"
-    },
-    {
-      "char": "雀",
-      "codes": [
-        "人",
-        "土",
-        "火"
-      ],
-      "type": "複合字衍生",
-      "secret": "【複合字衍生】字首「隹」為複合字取【人土(OG)】，字身「小」取【火(F)】➔ 人土火 (OGF)。",
-      "keys": [
-        "O",
-        "G",
-        "F"
-      ],
-      "full": "人土火 (OGF)"
-    },
-    {
-      "char": "陣",
-      "codes": [
-        "弓",
-        "中",
-        "十",
-        "十"
-      ],
-      "type": "複合字衍生",
-      "secret": "【複合字衍生】字首「阝」為複合字取【弓中(NL)】，字身「車」取【十十(JJ)】➔ 弓中十十 (NLJJ)。",
-      "keys": [
-        "N",
-        "L",
-        "J",
-        "J"
-      ],
-      "full": "弓中十十 (NLJJ)"
-    },
-    {
-      "char": "魂",
-      "codes": [
-        "一",
-        "戈",
-        "竹",
-        "戈"
-      ],
-      "type": "複合字衍生",
-      "secret": "【複合字衍生】字首「云」取【一戈(MI)】，字身「鬼」為複合字取【竹戈(HI)】➔ 一戈竹戈 (MIHI)。",
-      "keys": [
-        "M",
-        "I",
-        "H",
-        "I"
-      ],
-      "full": "一戈竹戈 (MIHI)"
-    },
-    {
-      "char": "魄",
-      "codes": [
-        "竹",
-        "日",
-        "竹",
-        "戈"
-      ],
-      "type": "複合字衍生",
-      "secret": "【複合字衍生】字首「白」取【竹日(HA)】，字身「鬼」為複合字取【竹戈(HI)】➔ 竹日竹戈 (HAHI)。",
-      "keys": [
-        "H",
-        "A",
-        "H",
-        "I"
-      ],
-      "full": "竹日竹戈 (HAHI)"
-    },
-    {
-      "char": "魁",
-      "codes": [
-        "竹",
-        "戈",
-        "十",
-        "十"
-      ],
-      "type": "複合字衍生",
-      "secret": "【複合字衍生】字首「鬼」為複合字取【竹戈(HI)】，字身「斗」取【十十(JJ)】➔ 竹戈十十 (HIJJ)。",
-      "keys": [
-        "H",
-        "I",
-        "J",
-        "J"
-      ],
-      "full": "竹戈十十 (HIJJ)"
-    },
-    {
-      "char": "皮",
-      "codes": [
-        "木",
-        "竹",
-        "水"
-      ],
-      "type": "特殊字",
-      "secret": "【特殊字】「皮」字取橫折【木(D)】＋撇【竹(H)】＋底又【水(E)】➔ 木竹水 (DHE)。",
-      "keys": [
-        "D",
-        "H",
-        "E"
-      ],
-      "full": "木竹水 (DHE)"
-    },
-    {
-      "char": "束",
-      "codes": [
-        "木",
-        "田"
-      ],
-      "type": "特殊字",
-      "secret": "【特殊字】中幹貫穿取【木(D)】＋中間口框【田(W)】➔ 木田 (DW)。",
-      "keys": [
-        "D",
-        "W"
-      ],
-      "full": "木田 (DW)"
     }
   ]
 };
@@ -8289,7 +7330,7 @@ const MODE2_WEEKLY_BANKS = {
           "I"
         ],
         "full": "竹戈 (HI)",
-        "secret": "鬼：竹戈 (HI)"
+        "secret": "鬼：竹戈 (HI) 【三代倉頡九大複合字之一】"
       },
       {
         "char": "几",
@@ -8567,16 +7608,16 @@ const MODE2_WEEKLY_BANKS = {
         "char": "兔",
         "codes": [
           "弓",
-          "山",
+          "日",
           "戈"
         ],
         "keys": [
           "N",
-          "U",
+          "A",
           "I"
         ],
-        "full": "弓山戈 (NUI)",
-        "secret": "兔：弓山戈 (NUI)"
+        "full": "弓日戈 (NAI)",
+        "secret": "兔：弓日戈 (NAI)"
       },
       {
         "char": "都",
@@ -9124,18 +8165,16 @@ const MODE2_WEEKLY_BANKS = {
           "竹",
           "人",
           "戈",
-          "金",
-          "弓"
+          "木"
         ],
         "keys": [
           "H",
           "O",
           "I",
-          "C",
-          "N"
+          "D"
         ],
-        "full": "竹人戈金弓 (HOICN)",
-        "secret": "術：竹人戈金弓 (HOICN)"
+        "full": "竹人戈木 (HOID)",
+        "secret": "術：竹人戈木 (HOID)"
       },
       {
         "char": "第",
@@ -9585,18 +8624,16 @@ const MODE2_WEEKLY_BANKS = {
           "竹",
           "人",
           "戈",
-          "金",
-          "弓"
+          "木"
         ],
         "keys": [
           "H",
           "O",
           "I",
-          "C",
-          "N"
+          "D"
         ],
-        "full": "竹人戈金弓 (HOICN)",
-        "secret": "術：竹人戈金弓 (HOICN)"
+        "full": "竹人戈木 (HOID)",
+        "secret": "術：竹人戈木 (HOID)"
       },
       {
         "char": "材",
@@ -14991,16 +14028,16 @@ const MODE2_WEEKLY_BANKS = {
           "水",
           "中",
           "難",
-          "中"
+          "金"
         ],
         "keys": [
           "E",
           "L",
           "X",
-          "L"
+          "C"
         ],
-        "full": "水中難中 (ELXL)",
-        "secret": "淵：水中難中 (ELXL)"
+        "full": "水中文金 (ELXC)",
+        "secret": "淵：水中文金 (ELXC)"
       },
       {
         "char": "肅",
@@ -17410,6 +16447,24 @@ const MODE2_WEEKLY_BANKS = {
   }
 };
 
-if (typeof window !== "undefined") {
-  window.MODE2_WEEKLY_BANKS = MODE2_WEEKLY_BANKS;
-}
+// 啟動時對全題庫執行自動校驗與鍵位映射歸一化
+(function sanitizeAllQuestionBanks() {
+  try {
+    if (typeof DATA !== 'undefined') {
+      ['connected_words', 'split_words', 'special_words'].forEach(bankName => {
+        if (Array.isArray(DATA[bankName])) {
+          DATA[bankName].forEach(autoDeriveWordKeys);
+        }
+      });
+    }
+    if (typeof MODE2_WEEKLY_BANKS !== 'undefined') {
+      Object.values(MODE2_WEEKLY_BANKS).forEach(b => {
+        if (b && Array.isArray(b.words)) {
+          b.words.forEach(autoDeriveWordKeys);
+        }
+      });
+    }
+  } catch(e) {
+    console.warn('字庫字根映射自動校準提醒:', e);
+  }
+})();

@@ -85,9 +85,9 @@ const SafeStorage = {
     let activeTab = 'top40';
     let currentLeaderboardType = 'combat';
     let currentLeaderboardFilter = 'ALL';
-    let speedLeaderboardWeek = 'w5_hw1';
+    let speedLeaderboardWeek = 'w6_hw1';
     let speedLeaderboardWordCount = 10;
-    let currentSpeedWeek = 'w5_hw1';
+    let currentSpeedWeek = 'w6_hw1';
     let currentSpeedWordCount = 10;
     let isSpeedPracticeMode = false;
     let speedWordList = [];
@@ -374,7 +374,7 @@ const SafeStorage = {
       } catch(e) {}
     }
 
-    function saveStudentStats(cls, num, scoreDelta, isKill, mode, bestTime = null, wordCount = 10, weekKey = 'w5_hw1') {
+    function saveStudentStats(cls, num, scoreDelta, isKill, mode, bestTime = null, wordCount = 10, weekKey = 'w6_hw1') {
       const key = `p6_score_${cls}_${num}`;
       const stats = getStudentStats(cls, num);
       stats.totalScore += scoreDelta;
@@ -1966,11 +1966,11 @@ const SafeStorage = {
     
 
     function getActiveSpeedWeek() {
-      // 支援網址參數手動切換測試 (例如 ?week=w2, ?week=w3, ?week=w4, ?week=w5)
+      // 支援網址參數手動切換測試 (例如 ?week=w2, ?week=w3, ?week=w4, ?week=w6)
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const qWk = urlParams.get('week');
-        if (qWk && ['w2', 'w3', 'w4', 'w5'].includes(qWk.toLowerCase())) {
+        if (qWk && ['w2', 'w3', 'w4', 'w6'].includes(qWk.toLowerCase())) {
           return qWk.toLowerCase();
         }
       } catch (e) {}
@@ -2010,7 +2010,7 @@ const SafeStorage = {
         } else {
           // 動態構建分組選單
           select.innerHTML = '';
-          const weekOrder = ['w5', 'w4', 'w3', 'w2'];
+          const weekOrder = ['w6', 'w4', 'w3', 'w2'];
           weekOrder.forEach(wk => {
             const isCur = (wk === activeWk);
             const grp = document.createElement('optgroup');
@@ -2053,7 +2053,7 @@ const SafeStorage = {
       }
 
       if (!hwKeys.includes(speedLeaderboardWeek)) {
-        speedLeaderboardWeek = hwKeys[0] || 'w5_hw1';
+        speedLeaderboardWeek = hwKeys[0] || 'w6_hw1';
       }
 
       // 優先加入「全部周次」按鈕以瀏覽全級生涯手速紀錄
@@ -2108,7 +2108,7 @@ const SafeStorage = {
       const wcSelect = document.getElementById('speed-word-count-select');
       const wkSelect = document.getElementById('speed-ready-week-select');
       if (wcSelect) currentSpeedWordCount = parseInt(wcSelect.value, 10) || 10;
-      if (wkSelect) currentSpeedWeek = wkSelect.value || 'w5_hw1';
+      if (wkSelect) currentSpeedWeek = wkSelect.value || 'w6_hw1';
     }
 
     function toggleSpeedPracticeMode() {
@@ -2699,7 +2699,7 @@ const SafeStorage = {
           const num = parseInt(parts[1], 10);
           if (!cls || isNaN(num) || num < 1 || num > 36) return;
           const recWc = parts[2] ? parseInt(parts[2], 10) : 10;
-          const recWk = parts.slice(3).join('_') || 'w5_hw1';
+          const recWk = parts.slice(3).join('_') || 'w6_hw1';
 
           if (recWc !== 10) return; // 六年級鎖定純10字
           if (speedLeaderboardWeek !== 'ALL' && recWk !== speedLeaderboardWeek) return;
