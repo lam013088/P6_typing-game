@@ -258,11 +258,30 @@ const SafeStorage = {
     // Local Storage & Stats Management
     function getStudentStats(cls, num) {
       const key = `p6_score_${cls}_${num}`;
+      let stats = { totalScore: 0, kills: 0, mode1Score: 0, mode2Score: 0, mode3Score: 0 };
       const val = SafeStorage.getItem(key);
       if (val) {
-        try { return JSON.parse(val); } catch(e) {}
+        try { Object.assign(stats, JSON.parse(val)); } catch(e) {}
       }
-      return { totalScore: 0, kills: 0, mode1Score: 0, mode2Score: 0, mode3Score: 0 };
+
+      // 🛡️ 雙向同步：從雲端榜單/基準資料庫獲取最新試算表真實累計總分與擊破數
+      if (typeof DATA !== 'undefined' && Array.isArray(DATA.benchmark_leaderboard)) {
+        const padNum = parseInt(num, 10);
+        const cloudMatch = DATA.benchmark_leaderboard.find(item => 
+          item.cls === cls && parseInt(item.num, 10) === padNum
+        );
+        if (cloudMatch) {
+          const cloudPts = (typeof cloudMatch.grandTotal === 'number') ? cloudMatch.grandTotal : 
+                           ((typeof cloudMatch.score === 'number') ? cloudMatch.score : (parseInt(cloudMatch.totalScore, 10) || 0));
+          if (cloudPts > stats.totalScore) {
+            stats.totalScore = cloudPts;
+          }
+          if (cloudMatch.kills && cloudMatch.kills > stats.kills) {
+            stats.kills = cloudMatch.kills;
+          }
+        }
+      }
+      return stats;
     }
 
     // =========================================================================
@@ -384,6 +403,24 @@ const SafeStorage = {
       else if (mode === 'special') stats.mode3Score = (stats.mode3Score || 0) + scoreDelta;
       stats.lastUpdate = new Date().toISOString();
       SafeStorage.setItem(key, JSON.stringify(stats));
+
+      // 🛡️ 即時同步記憶體中的 DATA.benchmark_leaderboard，確保榜單與技能館一致
+      if (typeof DATA !== 'undefined' && Array.isArray(DATA.benchmark_leaderboard)) {
+        const padNum = parseInt(num, 10);
+        const cloudMatch = DATA.benchmark_leaderboard.find(item => 
+          item.cls === cls && parseInt(item.num, 10) === padNum
+        );
+        if (cloudMatch) {
+          cloudMatch.grandTotal = stats.totalScore;
+          cloudMatch.score = stats.totalScore;
+          cloudMatch.totalScore = stats.totalScore;
+          cloudMatch.total = stats.totalScore;
+          cloudMatch.kills = stats.kills;
+          const { currentTier } = evalTierAndSkills(stats.totalScore);
+          cloudMatch.title = currentTier.title;
+          cloudMatch.badge = currentTier.badge;
+        }
+      }
 
       // 若為手速賽或關卡結算，發送可靠上傳
       sendReliableWebhook({
@@ -820,11 +857,20 @@ const SafeStorage = {
       const { currentTier, unlockedSkills } = evalTierAndSkills(stats.totalScore);
       activeSkills = unlockedSkills || [];
 
-      document.getElementById('trainer-display-name').textContent = currentStudent.name;
-      document.getElementById('trainer-display-title').textContent = currentTier.title;
-      document.getElementById('trainer-current-badge').textContent = currentTier.badge;
-      document.getElementById('trainer-display-kills').textContent = stats.kills;
-      document.getElementById('trainer-display-score').textContent = stats.totalScore.toLocaleString();
+      const nameEl = document.getElementById('trainer-display-name');
+      const titleEl = document.getElementById('trainer-display-title');
+      const badgeEl = document.getElementById('trainer-current-badge');
+      const killsEl = document.getElementById('trainer-display-kills');
+      const scoreEl = document.getElementById('trainer-display-score');
+
+      if (nameEl) nameEl.textContent = currentStudent.name;
+      if (titleEl) titleEl.textContent = currentTier.title;
+      if (badgeEl) badgeEl.textContent = currentTier.badge;
+      if (killsEl) killsEl.textContent = stats.kills;
+      if (scoreEl) scoreEl.textContent = stats.totalScore.toLocaleString();
+
+      // 🎖️ 同步刷新勳章技能館畫面與進度
+      renderSkillsHall();
     }
 
     // ==========================================
@@ -1317,7 +1363,8 @@ const SafeStorage = {
       }, 500);
 
       const shieldSkill = activeSkills.find(s => s.name.includes('聖盾防護'));
-      if (!roundShieldActive && shieldSkill && Math.random() < shieldSkill.rate) {
+      const timewardSkill = activeSkills.find(s => s.name.includes('時空結界'));
+      if (!roundShieldActive && ((shieldSkill && Math.random() < shieldSkill.rate) || (timewardSkill && Math.random() < timewardSkill.rate))) {
         roundShieldActive = true;
         triggerSkillToast('🛡️', '觸發【聖盾防護】！成功格擋失誤，保留連擊！');
         document.getElementById('game-prompt').innerHTML = `🛡️ <span style="color:#2563EB;font-weight:900;">聖盾格擋成功！失誤已免除，連擊保留，請再試！</span>`;
@@ -1424,14 +1471,44 @@ const SafeStorage = {
 
         const divineSkill = activeSkills.find(s => s.name.includes('神域天罰'));
         if (divineSkill && Math.random() < divineSkill.rate) {
-          skillBonus += 10;
-          triggerSkillToast('🌌', '觸發【神域天罰】！天雷降臨，額外獲得 +10 分！');
+          skillBonus += 6;
+          triggerSkillToast('🌌', '觸發【神域天罰】！天雷降臨，額外獲得 +6 分！');
         }
 
         const chainSkill = activeSkills.find(s => s.name.includes('極限連擊'));
         if (chainSkill && comboCount >= 2 && Math.random() < chainSkill.rate) {
           skillBonus += 3;
           triggerSkillToast('🌊', '觸發【極限連擊】！連擊增益額外獲得 +3 分！');
+        }
+
+        const auraSkill = activeSkills.find(s => s.name.includes('波導感知'));
+        if (auraSkill && comboCount >= 3 && Math.random() < auraSkill.rate) {
+          skillBonus += 2;
+          triggerSkillToast('🌀', '觸發【波導感知】！波導同頻，額外獲得 +2 分！');
+        }
+
+        const dynamaxSkill = activeSkills.find(s => s.name.includes('極巨衝能'));
+        if (dynamaxSkill && Math.random() < dynamaxSkill.rate) {
+          skillBonus += 4;
+          triggerSkillToast('🌠', '觸發【極巨衝能】！極巨能量爆發，額外獲得 +4 分！');
+        }
+
+        const swiftSkill = activeSkills.find(s => s.name.includes('疾風迅雷'));
+        if (swiftSkill && Math.random() < swiftSkill.rate) {
+          skillBonus += 3;
+          triggerSkillToast('⚡', '觸發【疾風迅雷】！疾風神速，額外獲得 +3 分！');
+        }
+
+        const starlightSkill = activeSkills.find(s => s.name.includes('星輝庇佑'));
+        if (starlightSkill && comboCount >= 4 && Math.random() < starlightSkill.rate) {
+          skillBonus += 4;
+          triggerSkillToast('💫', '觸發【星輝庇佑】！星輝守護，額外獲得 +4 分！');
+        }
+
+        const genesisSkill = activeSkills.find(s => s.name.includes('創世審判'));
+        if (genesisSkill && Math.random() < genesisSkill.rate) {
+          skillBonus += 6;
+          triggerSkillToast('🔱', '觸發【創世審判】！創世神光降臨，額外獲得 +6 分！');
         }
 
         roundEarned += skillBonus;
@@ -1594,6 +1671,11 @@ const SafeStorage = {
             });
             // 雲端即時 Top 40 資料同步正規化
             DATA.top40 = DATA.benchmark_leaderboard.slice(0, 40);
+
+            // 🔄 若當前已有學生登入，立即刷新其個人檔案與技能境界
+            if (currentStudent) {
+              loadStudentProfile();
+            }
           }
           if (data.speedLeaderboard || data.speedByWeek) {
             DATA.cloud_speed_records = data.speedLeaderboard || data.speedByWeek;
@@ -1882,29 +1964,114 @@ const SafeStorage = {
 
     // Skills Hall Modal
     function openSkillsModal() {
+      renderSkillsHall();
       openModal('modal-skills');
     }
 
     function renderSkillsHall() {
-      const tiersContainer = document.getElementById('tiers-grid-container');
-      tiersContainer.innerHTML = TIERS.map(t => `
-        <div class="tier-card" style="border: 2px solid ${t.color}40; background: ${t.bg};">
-          <div style="font-size: 28px; margin-bottom: 4px;">${t.badge}</div>
-          <div style="font-weight: 900; font-size: 14px; color: ${t.color};">${t.title}</div>
-          <div style="font-size: 11.5px; color: #64748B; font-weight: 700;">${t.min.toLocaleString()} 分解鎖</div>
-        </div>
-      `).join('');
+      let score = 0;
+      let studentName = '未登入訓練家';
+      if (currentStudent) {
+        const stats = getStudentStats(currentStudent.cls, currentStudent.num);
+        score = stats.totalScore || 0;
+        studentName = currentStudent.name;
+      } else {
+        const lastLogin = SafeStorage.getItem('p6_last_login');
+        if (lastLogin) {
+          try {
+            const st = JSON.parse(lastLogin);
+            if (st && st.cls && st.num) {
+              const stats = getStudentStats(st.cls, st.num);
+              score = stats.totalScore || 0;
+              studentName = st.name;
+            }
+          } catch(e) {}
+        }
+      }
 
+      const { currentTier, nextTier, unlockedSkills } = evalTierAndSkills(score);
+
+      // 1. 動態更新頂部當前境界標題與勳章
+      const titleEl = document.getElementById('hall-current-title');
+      if (titleEl) {
+        titleEl.innerHTML = `當前境界：<span style="color: ${currentTier.color}; font-size: 16px; font-weight: 900;">${currentTier.badge}【${currentTier.title}】</span>`;
+      }
+
+      // 2. 動態計算晉升下一階進度與文字說明
+      let pct = 100;
+      const ptsEl = document.getElementById('hall-current-pts');
+      const fillEl = document.getElementById('hall-progress-fill');
+      if (nextTier) {
+        const span = nextTier.min - currentTier.min;
+        const currentProgress = score - currentTier.min;
+        pct = Math.min(100, Math.max(0, Math.round((currentProgress / Math.max(1, span)) * 100)));
+        const needPts = nextTier.min - score;
+        if (ptsEl) {
+          ptsEl.innerHTML = `累積積分：<strong>${score.toLocaleString()}</strong> / 晉升【${nextTier.title}】需 ${nextTier.min.toLocaleString()} 分 (<span style="color: #2563EB; font-weight: 800;">還差 ${needPts.toLocaleString()} 分 · ${pct}%</span>)`;
+        }
+      } else {
+        if (ptsEl) {
+          ptsEl.innerHTML = `累積積分：<strong>${score.toLocaleString()}</strong> 分 (🏆 已榮登最高創世神皇殿堂！)`;
+        }
+      }
+      if (fillEl) {
+        fillEl.style.width = `${pct}%`;
+      }
+
+      // 3. 渲染 8 大境界卡片 (動態標註已達成、當前段位與未解鎖)
+      const tiersContainer = document.getElementById('tiers-grid-container');
+      if (tiersContainer) {
+        tiersContainer.innerHTML = TIERS.map(t => {
+          const isReached = score >= t.min;
+          const isCurrent = (t.title === currentTier.title);
+          let borderStyle = isCurrent 
+            ? `border: 2.5px solid ${t.color}; box-shadow: 0 0 14px ${t.color}55; transform: scale(1.03);` 
+            : (isReached ? `border: 2px solid ${t.color}80;` : `border: 2px solid #E2E8F0; opacity: 0.55;`);
+          let bgStyle = isReached ? t.bg : '#F8FAFC';
+          let statusBadge = isCurrent 
+            ? `<span style="font-size:10px; font-weight:900; background:${t.color}; color:#fff; padding:2px 8px; border-radius:10px; display:inline-block; margin-top:4px;">🌟 當前段位</span>`
+            : (isReached 
+                ? `<span style="font-size:10px; font-weight:800; color:#16A34A; background:#DCFCE7; padding:1px 6px; border-radius:6px; display:inline-block; margin-top:4px;">✓ 已達成</span>`
+                : `<span style="font-size:10px; font-weight:700; color:#94A3B8; display:inline-block; margin-top:4px;">🔒 差 ${(t.min - score).toLocaleString()} 分</span>`);
+          
+          return `
+            <div class="tier-card ${isReached ? 'unlocked' : 'locked'}" style="${borderStyle} background: ${bgStyle};">
+              <div class="tier-card-badge">${isReached ? t.badge : '🔒'}</div>
+              <div class="tier-card-title" style="color: ${isReached ? t.color : '#64748B'}; font-weight: 900; font-size: 14px;">${t.title}</div>
+              <div class="tier-card-score" style="color: ${isReached ? '#B45309' : '#94A3B8'}; font-size: 11px;">${t.min.toLocaleString()} 分解鎖</div>
+              ${statusBadge}
+            </div>
+          `;
+        }).join('');
+      }
+
+      // 4. 渲染 5 大技能殿堂 (動態高亮已解鎖技能)
       const skillsContainer = document.getElementById('skills-grid-container');
-      skillsContainer.innerHTML = SKILLS.map(s => `
-        <div class="skill-card">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-            <span style="font-weight: 900; font-size: 14.5px; color: #1E3A8A;">${s.name}</span>
-            <span style="font-size: 11px; font-weight: 800; color: #7E22CE; background: #F3E8FF; padding: 2px 8px; border-radius: 10px;">${s.reqPts} 分解鎖</span>
+      if (skillsContainer) {
+        const closeBtnHtml = `
+          <div style="margin-top: 24px; text-align: center; grid-column: 1 / -1;">
+            <button class="btn-primary-action" onclick="closeModal('modal-skills')" style="padding: 10px 36px; font-size: 15px; font-weight: 900; background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); border-radius: 30px; box-shadow: 0 4px 14px rgba(37,99,235,0.35); cursor: pointer;">
+              關閉技能館
+            </button>
           </div>
-          <p style="font-size: 12px; color: #475569; line-height: 1.4;">${s.desc}</p>
-        </div>
-      `).join('');
+        `;
+        const cardsHtml = SKILLS.map(s => {
+          const isUnlocked = score >= s.reqPts;
+          return `
+            <div class="skill-card ${isUnlocked ? 'unlocked' : 'locked'}">
+              <div class="skill-name-row">
+                <span class="skill-name">${isUnlocked ? ('⚡ ' + s.name) : ('🔒 ' + s.name)}</span>
+                <span class="skill-rate">${isUnlocked ? `發動率 ${Math.round(s.rate * 100)}%` : `需 ${s.reqPts.toLocaleString()} 分`}</span>
+              </div>
+              <div class="skill-desc">${s.desc}</div>
+              <div style="font-size: 10px; color: ${isUnlocked ? '#16A34A' : '#94A3B8'}; margin-top: 4px; font-weight: 700;">
+                ${isUnlocked ? '✅ 戰鬥已實裝發動' : `🔒 還差 ${(s.reqPts - score).toLocaleString()} 分自動解鎖`}
+              </div>
+            </div>
+          `;
+        }).join('');
+        skillsContainer.innerHTML = cardsHtml + closeBtnHtml;
+      }
     }
 
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
