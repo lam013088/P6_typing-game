@@ -68,7 +68,8 @@ window.SPEED_WEEK_SCHEDULES = window.SPEED_WEEK_SCHEDULES || [
   { week: 'w2', name: '第 2 周', title: '【第2周】字根複合與首尾特訓 (9/7 - 9/13)', start: new Date('2026-09-07T00:00:00+08:00'), end: new Date('2026-09-13T23:59:59+08:00') },
   { week: 'w3', name: '第 3 周', title: '【第 3 周】難字與分體字高頻特訓 (9/14 - 9/20)', start: new Date('2026-09-14T00:00:00+08:00'), end: new Date('2026-09-20T23:59:59+08:00') },
   { week: 'w4', name: '第 4 周', title: '【第 4 周】期初實力排位激戰 (9/21 - 10/04，第4/5周合拼)', start: new Date('2026-09-21T00:00:00+08:00'), end: new Date('2026-10-04T23:59:59+08:00') },
-  { week: 'w6', name: '第 6 周', title: '【第 6 周】手速極限突破爭霸 (10/5 - 10/11)', start: new Date('2026-10-05T00:00:00+08:00'), end: new Date('2026-10-11T23:59:59+08:00') }
+  { week: 'w6', name: '第 6 周', title: '【第 6 周】手速極限突破爭霸 (10/5 - 10/11)', start: new Date('2026-10-05T00:00:00+08:00'), end: new Date('2026-10-11T23:59:59+08:00') },
+  { week: 'w7', name: '第 7 周', title: '【第 7 周】倉頡全級競速爭霸 (10/12 - 10/19)', start: new Date('2026-10-12T00:00:00+08:00'), end: new Date('2026-10-19T23:59:59+08:00') }
 ];
 var TIERS = window.TIERS;
 var SKILLS = window.SKILLS;
