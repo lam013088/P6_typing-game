@@ -17555,16 +17555,16 @@ const MODE2_WEEKLY_BANKS = {
           "木",
           "女",
           "戈",
-          "人"
+          "戈"
         ],
         "keys": [
           "D",
           "V",
           "I",
-          "O"
+          "I"
         ],
-        "full": "木女戈人 (DVIO)",
-        "secret": "機：木女戈人 (DVIO)"
+        "full": "木女戈戈 (DVII)",
+        "secret": "機：木女戈戈 (DVII)"
       },
       {
         "char": "封",
